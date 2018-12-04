@@ -77,20 +77,17 @@ public class MainWindow extends JFrame implements MouseListener
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+		System.out.println("mouse exited");		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+		System.out.println("mouse pessed");		
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+		System.out.println("mouse released");		
 	}
 
 }
