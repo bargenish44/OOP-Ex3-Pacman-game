@@ -1,4 +1,4 @@
-package GUI;
+package Map;
 
 
 import java.awt.*;
@@ -9,7 +9,6 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class TestImagePane {
-
 	public static void main(String[] args) {
 		new TestImagePane();
 	}
