@@ -8,11 +8,17 @@ public class Packman {
 	private double speed;
 	private double Radius;
 
-	public Packman(double x,double y,double z, double speed, double Radious,int ID) {
+	public Packman(int ID,double x,double y,double z, double speed, double Radius) {
 		setOrinet(new Point3D(x, y, z));
 		setSpeed(speed);
 		setRadius(Radius);
 		setID(ID);
+	}
+	public Packman(int ID,Point3D p,double spped,double Raduis) {
+		setID(ID);
+		setOrinet(p);
+		setSpeed(spped);
+		setRadius(Raduis);
 	}
 	public Point3D getOrinet() {
 		return orinet;
@@ -37,5 +43,8 @@ public class Packman {
 	}
 	public void setID(int iD) {
 		ID = iD;
+	}
+	public String toString() {
+		return ID+","+orinet.toString()+","+speed+","+Radius;
 	}
 }

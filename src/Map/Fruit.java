@@ -6,12 +6,10 @@ public class Fruit {
 	private int ID;
 	private Point3D orient;
 	private double Weight;
-	private double Radius;
-	public Fruit(int ID,double x,double y,double z, double weight, double Radius) {
+	public Fruit(int ID,double x,double y,double z, double weight) {
 		setID(ID);
 		setOrient(new Point3D(x, y,z));
 		setWeight(weight);
-		setRadius(Radius);
 	}
 	public int getID() {
 		return ID;
@@ -31,10 +29,7 @@ public class Fruit {
 	public void setWeight(double weight) {
 		Weight = weight;
 	}
-	public double getRadius() {
-		return Radius;
-	}
-	public void setRadius(double radius) {
-		Radius = radius;
+	public String toString() {
+		return ID+","+orient.toString()+","+Weight;
 	}
 }

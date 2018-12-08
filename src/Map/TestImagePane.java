@@ -124,7 +124,7 @@ public class TestImagePane {
 					radius=Double.parseDouble(test2);
 					}catch(Exception ex) {}
 				}
-				Packmanarr.add(new Packman(x,y,0,speed,radius,count));
+				Packmanarr.add(new Packman(count,x,y,0,speed,radius));
 				count++;
 				repaint();	
 			}
@@ -133,23 +133,15 @@ public class TestImagePane {
 				y = e.getY();
 				System.out.println("right click you create new fruit X: " + x + " Y: " + y);
 				String test1= JOptionPane.showInputDialog("Please input fruit weight : ");
-				String test2= JOptionPane.showInputDialog("Please input fruit radius : ");
-				double weight=-1,radius=-1;
+				double weight=-1;
 				try {
 				weight=Double.parseDouble(test1);
-				}catch(Exception ex) {}
-				try {
-				radius=Double.parseDouble(test2);
 				}catch(Exception ex) {}
 				while(weight<=0) {
 					test1= JOptionPane.showInputDialog("Please input fruit weight(larger than 0) : ");
 					weight=Double.parseDouble(test1);
 				}
-				while(radius<=0) {
-					test2= JOptionPane.showInputDialog("Please input fruit radius(larger than 0) : ");
-					radius=Double.parseDouble(test2);
-				}
-				Fruitarr.add(new Fruit(counter,x,y,0,weight,radius));
+				Fruitarr.add(new Fruit(counter,x,y,0,weight));
 				counter++;
 				repaint();			
 			}
