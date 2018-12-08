@@ -11,6 +11,11 @@ public class Fruit {
 		setOrient(new Point3D(x, y,z));
 		setWeight(weight);
 	}
+	public Fruit(int ID,Point3D P,double weight) {
+		setID(ID);
+		setOrient(P);
+		setWeight(weight);
+	}
 	public int getID() {
 		return ID;
 	}

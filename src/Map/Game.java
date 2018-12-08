@@ -1,6 +1,17 @@
 package Map;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
+import Geom.Point3D;
+
 
 public class Game {
 	private ArrayList<Packman>arr=new ArrayList<>();
@@ -8,6 +19,10 @@ public class Game {
 	public Game(ArrayList<Packman>arr,ArrayList<Fruit> array) {
 		this.arr=arr;	
 		this.array=array;
+	}
+	public Game() {
+		arr=null;
+		array=null;
 	}
 	public String toString() {
 		String s="Type,id,Lat,Lon,Alt,Speed/Weight,Radius,"+arr.size()+","+array.size()+"\n";
@@ -20,17 +35,63 @@ public class Game {
 		return s;
 	}
 	public static void main(String[] args) {
-		Packman p=new Packman(0,4, 2, 4, 4, 2);
-		Packman p2=new Packman(1,4, 2, 4, 4, 2);
-		Fruit f=new Fruit(0, 6, 6, 6, 6);
-		Fruit f2=new Fruit(1, 4, 6, 2, 6);
-		ArrayList<Packman>arr=new ArrayList<>();
-		ArrayList<Fruit> array=new ArrayList<>();
-		arr.add(p);
-		arr.add(p2);
-		array.add(f);
-		array.add(f2);
-		Game g=new Game(arr, array);
-		System.out.println(g.toString());
+//		Packman p=new Packman(0,4, 2, 4, 4, 2);
+//		Packman p2=new Packman(1,4, 2, 4, 4, 2);
+//		Fruit f=new Fruit(0, 6, 6, 6, 6);
+//		Fruit f2=new Fruit(1, 4, 6, 2, 6);
+//		ArrayList<Packman>arr=new ArrayList<>();
+//		ArrayList<Fruit> array=new ArrayList<>();
+//		arr.add(p);
+//		arr.add(p2);
+//		array.add(f);
+//		array.add(f2);
+//		Game g=new Game(arr, array);
+//		System.out.println(g.toString());
+		load("C:\\Users\\barge\\Desktop\\מונחה עצמים מטלה 3\\data\\game_1543684662657.csv");
+	}
+	public static Game load(String CsvFile) 
+	{
+		String line = "";
+		String cvsSplitBy = ",";
+		Game g=new Game();
+		try (BufferedReader br = new BufferedReader(new FileReader(CsvFile))) 
+		{
+			//line=br.readLine();
+			while ((line = br.readLine()) != null) 
+			{
+				String[] userInfo = line.split(cvsSplitBy);
+				if(userInfo[0]=="P") {
+					g.arr.add(new Packman(Integer.parseInt(userInfo[1]), new Point3D(userInfo[2]+","+userInfo[3]+","+userInfo[4]),Double.parseDouble(userInfo[5]),Double.parseDouble(userInfo[6])));
+				}
+				else if(userInfo[0]=="F")
+					g.array.add(new Fruit(Integer.parseInt(userInfo[1]), new Point3D(userInfo[2]+","+userInfo[3]+","+userInfo[4]),Double.parseDouble(userInfo[5])));
+			}
+
+		} catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+		save(g);
+		return g;//לשלוח לפונקציה שיוצרת משחק
+	}
+	public static void save(Game g) {
+		//String fileName="game"+java.time.LocalDateTime.now()+".csv";
+		//fileName.replaceAll(":",".");
+		//System.out.println(fileName);
+		String fileName="game.csv";
+		String newfilepath="C:\\Users\\barge\\eclipse-workspace\\OOP--Ex3\\data\\"+fileName;
+		PrintWriter pw=null;
+		try 
+		{
+			pw = new PrintWriter(new File(newfilepath));
+		} 
+		catch (FileNotFoundException e) 
+		{
+			e.printStackTrace();
+			return;
+		}
+		pw.write(g.toString());
+		pw.close();
+		System.out.println("saved");
 	}
 }
