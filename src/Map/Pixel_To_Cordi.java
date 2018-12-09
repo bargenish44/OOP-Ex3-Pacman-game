@@ -1,23 +1,24 @@
 package Map;
 
-import Geom.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+
+import Geom.Point3D;
 
 
 public class Pixel_To_Cordi {
 
-	private BufferedImage _ing;
+	private BufferedImage img;
 	private int width;
 	private int Height;
 
 	public Pixel_To_Cordi () {		
-		this.width =_ing.getWidth();
-		this.Height = _ing.getHeight();	
+		this.width =img.getWidth();
+		this.Height = img.getHeight();	
 	}
 
 	public BufferedImage geImage () {
-		return this._ing;
+		return this.img;
 	}
 
 	public int getwidth() {
@@ -30,42 +31,45 @@ public class Pixel_To_Cordi {
 
 	}
 
-	public ArrayList<Game> Point_to_GPS( ArrayList<Game> _List){
-		for (int i = 0; i < _List.size(); i++) {
-			String [] arr = (_List.get(i).getPoint3D.split(","));
-			double new_X = (35.2022 + (Double.parseDouble(arr[0])/125000));
-			double new_Y = (32.10565 - (Double.parseDouble(arr[1])/150000));
-			_List.get(i).setPoint3D(String.valueOf(new_X)+ ","+String.valueOf(new_Y)+","+0);
+	public ArrayList<Game> Point_to_GPS( ArrayList<Game> arr){//ìñãø
+		for (int i = 0; i < arr.size(); i++) {
+			String [] str = (arr.get(i).getPoint3D.split(","));//ìñãø
+			double x = (35.2022 + (Double.parseDouble(str[0])/125000));
+			System.out.println(x);
+			double y = (32.10565 - (Double.parseDouble(str[1])/150000));
+			System.out.println(y);
+			arr.get(i).setPoint3D(String.valueOf(x)+ ","+String.valueOf(y)+","+0);
+			System.out.println(arr.get(i).toString());
 		}
-		return _List;
+		return arr;
 	}
 	
-	public ArrayList<Game> Point_to_Pixel( ArrayList<Game> _List){
-		for (int i = 0; i < _List.size(); i++) {
-			String [] arr_P = (_List.get(i).getPoint3D.split(","));
-			double new_X = (int)((Double.parseDouble(arr_P[0]) - 35.2022*125000));
-			double new_Y = (int)(32.10565 - (Double.parseDouble(arr_P[1])*150000));
-			_List.get(i).setPoint3D(String.valueOf(new_X)+ ","+String.valueOf(new_Y)+","+0);
+	public ArrayList<Game> Point_to_Pixel( ArrayList<Game> arr){//ìñãø
+		for (int i = 0; i < arr.size(); i++) {
+			String [] str = (arr.get(i).getPoint3D.split(","));//ìñãø
+			double x = (double)((Double.parseDouble(str[0]) - 35.2022*125000));
+			double y = (double)(32.10565 - (Double.parseDouble(str[1])*150000));
+			arr.get(i).setPoint3D(String.valueOf(x)+ ","+String.valueOf(y)+","+0);
 		}
-		return _List;
+		return arr;
 	}
-	public ArrayList<Packman> Pointp_to_Pixel( ArrayList<Packman> Pa_List){
-		for (int i = 0; i < Pa_List.size(); i++) {
-			String [] arr_Pa = (((String) Pa_List.get(i).getPoint3D).split(","));
-			double new_X = (int)((Double.parseDouble(arr_Pa[0]) - 35.2022*125000));
-			double new_Y = (int)(32.10565 - (Double.parseDouble(arr_Pa[1])*150000));
-			Pa_List.get(i).setPoint3D(String.valueOf(new_X)+ ","+String.valueOf(new_Y)+","+0);
+	public static ArrayList<Packman> Pointp_to_Pixel( ArrayList<Packman> arr){
+		for (int i = 0; i < arr.size(); i++) {
+			String [] str = (( arr.get(i).getOrinet().toString().split(",")));
+			double x = (double)((Double.parseDouble(str[0]) - 35.2022*125000));
+			double y = (double)(32.10565 - (Double.parseDouble(str[1])*150000));
+			arr.get(i).setOrinet(new Point3D(x+ ","+y+","+0));
 		}
-		return Pa_List;
+		return arr;
 	}
 	
-	public ArrayList<Fruit> PointF_to_Pixel( ArrayList<Fruit> Fruit_List){
-		for (int i = 0; i < Fruit_List.size(); i++) {
-			String [] arr_F = (((String) Fruit_List.get(i).getPoint3D).split(","));
-			double new_X = (int)((Double.parseDouble(arr_F[0]) - 35.2022*125000));
-			double new_Y = (int)(32.10565 - (Double.parseDouble(arr_F[1])*150000));
-			Fruit_List.get(i).setPoint3D(String.valueOf(new_X)+ ","+String.valueOf(new_Y)+","+0);
+	public static ArrayList<Fruit> PointF_to_Pixel( ArrayList<Fruit> arr){
+		for (int i = 0; i < arr.size(); i++) {
+			String [] str = (( arr.get(i).getOrient().toString().split(",")));
+			double x = (double)((Double.parseDouble(str[0]) - 35.2022*125000));
+			double y = (double)(32.10565 - (Double.parseDouble(str[1])*150000));
+			arr.get(i).setOrient(new Point3D(x+ ","+y+","+0));
 		}
-		return Fruit_List;
+		return arr;
 	}
 }

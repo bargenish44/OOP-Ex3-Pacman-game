@@ -88,7 +88,7 @@ public class JavaMenuBarExample implements Runnable, ActionListener
       JPanel panel = new JPanel(new FlowLayout());
       panel.add(okButton);
       getContentPane().add(panel);
-      okButton.addActionListener(this);
+      copyMenuItem.addActionListener(this);
       setPreferredSize(new Dimension(300, 200));
       pack();
       setLocationRelativeTo(frame);
@@ -96,7 +96,10 @@ public class JavaMenuBarExample implements Runnable, ActionListener
 
     public void actionPerformed(ActionEvent ev)
     {
-      setVisible(false);
+        setVisible(true);
+    	if(ev.getSource()==copyMenuItem) {
+    		System.out.println(1);
+    	}
     }
   }
 }
