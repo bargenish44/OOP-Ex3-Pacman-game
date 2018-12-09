@@ -23,10 +23,10 @@ public class TestImagePane {
 		EventQueue.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				try {
-					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-				} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-				}
+//				try {
+//					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+//				} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+//				}
 
 				try {
 					Image img = null;
@@ -34,6 +34,9 @@ public class TestImagePane {
 					packmanimage=new ImageIcon("pacman.jpg");
 					cherryimage=new ImageIcon("cherry.png");
 					JFrame frame = new JFrame("Testing");
+					JButton b=new JButton("hi");
+					b.setLocation(0, 0);
+					frame.add(b);
 					frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					frame.setLayout(new BorderLayout());
 					frame.add(new ImagePanel(img));
@@ -85,10 +88,10 @@ public class TestImagePane {
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			g.drawImage(scaled, 0, 0, null);
-			double x = getWidth();
-			double y = getHeight();
-			lat = ((y/y/180)-90)/-1;
-			lon=x/(x/360)-180;
+//			double x = getWidth();
+//			double y = getHeight();
+//			lat = ((y/y/180)-90)/-1;
+//			lon=x/(x/360)-180;
 			//System.out.println("[lon: " + lon + " lat: " + lat + "]: X: " + x + " Y: " + y);
 			for(int i=0;i<Packmanarr.size();i++) {
 				g.drawImage(packmanimage.getImage(), Packmanarr.get(i).getOrinet().ix(), Packmanarr.get(i).getOrinet().iy(),50,50,null);
@@ -107,21 +110,21 @@ public class TestImagePane {
 				String test2= JOptionPane.showInputDialog("Please input packman radius : ");
 				double speed=-1,radius=-1;
 				try {
-				speed=Double.parseDouble(test1);
+					speed=Double.parseDouble(test1);
 				}catch (Exception ex) {}
 				try {
-				radius=Double.parseDouble(test2);
+					radius=Double.parseDouble(test2);
 				}catch(Exception ex) {}
 				while(speed<=0) {
 					test1= JOptionPane.showInputDialog("Please input packman speed(larger than 0) : ");
 					try {
-					speed=Double.parseDouble(test1);
+						speed=Double.parseDouble(test1);
 					}catch(Exception ex) {}
 				}
 				while(radius<=0) {
 					test2= JOptionPane.showInputDialog("Please input packman radius(larger than 0) : ");
 					try {
-					radius=Double.parseDouble(test2);
+						radius=Double.parseDouble(test2);
 					}catch(Exception ex) {}
 				}
 				Packmanarr.add(new Packman(count,x,y,0,speed,radius));
@@ -132,10 +135,14 @@ public class TestImagePane {
 				x = e.getX();
 				y = e.getY();
 				System.out.println("right click you create new fruit X: " + x + " Y: " + y);
+//				try {
+//					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+//				} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+//				}
 				String test1= JOptionPane.showInputDialog("Please input fruit weight : ");
 				double weight=-1;
 				try {
-				weight=Double.parseDouble(test1);
+					weight=Double.parseDouble(test1);
 				}catch(Exception ex) {}
 				while(weight<=0) {
 					test1= JOptionPane.showInputDialog("Please input fruit weight(larger than 0) : ");

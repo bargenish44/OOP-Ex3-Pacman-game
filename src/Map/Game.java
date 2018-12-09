@@ -78,9 +78,6 @@ public class Game {
 		return g;//לשלוח לפונקציה שיוצרת משחק
 	}
 	public static void save(Game g) {
-		//String fileName="game"+java.time.LocalDateTime.now()+".csv";
-		//fileName.replaceAll(":",".");
-		//System.out.println(fileName);
 		String fileName="game.csv";
 		String newfilepath="data\\"+fileName;
 		PrintWriter pw=null;
