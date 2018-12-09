@@ -13,6 +13,7 @@ import java.util.Date;
 import Geom.Point3D;
 
 public class Game {
+	public final String getPoint3D = null;
 	private ArrayList<Packman>arr=new ArrayList<>();
 	private ArrayList<Fruit> array=new ArrayList<>();
 	public Game(ArrayList<Packman>arr,ArrayList<Fruit> array) {
@@ -93,5 +94,9 @@ public class Game {
 		pw.write(g.toString());
 		pw.close();
 		System.out.println("saved");
+	}
+	public void setPoint3D(String string) {
+		// TODO Auto-generated method stub
+		
 	}
 }

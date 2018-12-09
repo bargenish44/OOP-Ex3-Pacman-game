@@ -6,6 +6,7 @@ public class Fruit {
 	private int ID;
 	private Point3D orient;
 	private double Weight;
+	public String getPoint3D;
 	public Fruit(int ID,double x,double y,double z, double weight) {
 		setID(ID);
 		setOrient(new Point3D(x, y,z));
@@ -36,5 +37,9 @@ public class Fruit {
 	}
 	public String toString() {
 		return ID+","+orient.toString()+","+Weight;
+	}
+	public void setPoint3D(String string) {
+		// TODO Auto-generated method stub
+		
 	}
 }
