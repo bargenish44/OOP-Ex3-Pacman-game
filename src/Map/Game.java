@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -14,9 +15,9 @@ import Geom.Point3D;
 
 public class Game {
 	public final String getPoint3D = null;
-	private ArrayList<Packman>arr=new ArrayList<>();
 	private ArrayList<Fruit> array=new ArrayList<>();
-	public Game(ArrayList<Packman>arr,ArrayList<Fruit> array) {
+	private ArrayList<Packman>arr=new ArrayList<>();
+ 	public Game(ArrayList<Packman>arr,ArrayList<Fruit> array) {
 		this.arr=arr;	
 		this.array=array;
 	}
@@ -75,11 +76,13 @@ public class Game {
 		{
 			e.printStackTrace();
 		}
-		save(g);
+		//save(g);
 		return g;//לשלוח לפונקציה שיוצרת משחק
 	}
 	public static void save(Game g) {
-		String fileName="game.csv";
+		LocalTime s=LocalTime.now();
+		String str=s.toString().replaceAll(":", ".");
+		String fileName="game"+str+".csv";
 		String newfilepath="data\\"+fileName;
 		PrintWriter pw=null;
 		try 
@@ -98,5 +101,17 @@ public class Game {
 	public void setPoint3D(String string) {
 		// TODO Auto-generated method stub
 		
+	}
+	public ArrayList<Packman> getArr() {
+		return arr;
+	}
+	public void setArr(ArrayList<Packman> arr) {
+		this.arr = arr;
+	}
+	public ArrayList<Fruit> getArray() {
+		return array;
+	}
+	public void setArray(ArrayList<Fruit> array) {
+		this.array = array;
 	}
 }

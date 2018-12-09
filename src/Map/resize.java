@@ -18,6 +18,8 @@ public class resize implements ActionListener{
 	private JMenuBar menubar;
 	private JMenuItem save;
 	private JMenuItem run;
+	private JMenuItem how_to_run;
+	private JMenuItem about_the_game;
 	private JMenu menu2;
 	private JMenu menu;
 	private Image img;
@@ -32,8 +34,13 @@ public class resize implements ActionListener{
 			JFrame frame = new JFrame("OOP-EX3");
 			menubar = new JMenuBar();
 			menu = new JMenu("help");
-			menu.addActionListener(this);
 			menubar.add(menu);
+			about_the_game=new JMenuItem("about the game");
+			about_the_game.addActionListener(this);
+			menu.add(about_the_game);
+			how_to_run =new JMenuItem("how to run");
+			how_to_run.addActionListener(this);
+			menu.add(how_to_run);
 			menu2=new JMenu("option");
 			load=new JMenuItem("load");
 			load.addActionListener(this);
@@ -191,27 +198,29 @@ public class resize implements ActionListener{
 			int returnValue = fileChooser.showOpenDialog(null);
 			if (returnValue == JFileChooser.APPROVE_OPTION) {
 				File selectedFile = fileChooser.getSelectedFile();
-				System.out.println(selectedFile.getName());
-				try {
-					Desktop.getDesktop().open(selectedFile);
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				Game g=new Game(Game.load(selectedFile.toString()));
+				Packmanarr=g.getArr();
+				Fruitarr=g.getArray();
+				Game n=new Game(Packmanarr,Fruitarr);
+//				try {
+//					Desktop.getDesktop().open(selectedFile);
+//				} catch (IOException e1) {
+//					e1.printStackTrace();
+//				}
 			}
 		}
 		if(e.getSource()==save) {
 			System.out.println("save");
 			Packmanarr=Pixel_To_Cordi.Pointp_to_Pixel(Packmanarr);
 			Fruitarr=Pixel_To_Cordi.PointF_to_Pixel(Fruitarr);
-			Game g=new Game(Packmanarr,Fruitarr);
-			System.out.println(g.toString());
-			//Game.save(g);
+			Game.save(new Game(Packmanarr,Fruitarr));
 		}
 		if(e.getSource()==run)
 			System.out.println("run");
-		if(e.getSource()==menu)//לסדר
-			System.out.println("help");
+		if(e.getSource()==how_to_run)
+			System.out.println("how to run");
+		if(e.getSource()==about_the_game)
+			System.out.println("about the game");
 	}
 }
 
