@@ -12,7 +12,6 @@ import java.util.Date;
 
 import Geom.Point3D;
 
-
 public class Game {
 	private ArrayList<Packman>arr=new ArrayList<>();
 	private ArrayList<Fruit> array=new ArrayList<>();
@@ -21,8 +20,12 @@ public class Game {
 		this.array=array;
 	}
 	public Game() {
-		arr=null;
-		array=null;
+		arr=new ArrayList<>();
+		array=new ArrayList<>();
+	}
+	public Game(Game g) {
+		arr=g.arr;
+		array=g.array;
 	}
 	public String toString() {
 		String s="Type,id,Lat,Lon,Alt,Speed/Weight,Radius,"+arr.size()+","+array.size()+"\n";
@@ -56,14 +59,14 @@ public class Game {
 		Game g=new Game();
 		try (BufferedReader br = new BufferedReader(new FileReader(CsvFile))) 
 		{
-			//line=br.readLine();
+			line=br.readLine();
 			while ((line = br.readLine()) != null) 
 			{
 				String[] userInfo = line.split(cvsSplitBy);
-				if(userInfo[0]=="P") {
+				if(userInfo[0].equals("P")) {
 					g.arr.add(new Packman(Integer.parseInt(userInfo[1]), new Point3D(userInfo[2]+","+userInfo[3]+","+userInfo[4]),Double.parseDouble(userInfo[5]),Double.parseDouble(userInfo[6])));
 				}
-				else if(userInfo[0]=="F")
+				else if(userInfo[0].equals("F"))
 					g.array.add(new Fruit(Integer.parseInt(userInfo[1]), new Point3D(userInfo[2]+","+userInfo[3]+","+userInfo[4]),Double.parseDouble(userInfo[5])));
 			}
 
@@ -79,7 +82,7 @@ public class Game {
 		//fileName.replaceAll(":",".");
 		//System.out.println(fileName);
 		String fileName="game.csv";
-		String newfilepath="C:\\Users\\barge\\eclipse-workspace\\OOP--Ex3\\data\\"+fileName;
+		String newfilepath="data\\"+fileName;
 		PrintWriter pw=null;
 		try 
 		{
