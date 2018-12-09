@@ -8,6 +8,8 @@ import javax.imageio.ImageIO;
 import java.awt.event.*;
 import javax.swing.*;
 
+import javafx.scene.control.Menu;
+
 public class TestImagePane {
 	private ArrayList<Packman>Packmanarr=new ArrayList<>();
 	private ArrayList<Fruit>Fruitarr=new ArrayList<>();
@@ -32,16 +34,26 @@ public class TestImagePane {
 					img = ImageIO.read(new File("Ariel1.png"));
 					packmanimage=new ImageIcon("pacman.jpg");
 					cherryimage=new ImageIcon("cherry.png");
-					JFrame frame = new JFrame("Testing");
-					JButton b=new JButton("hi");
-					b.setLocation(0, 0);
-					frame.add(b);
+					JFrame frame = new JFrame("OOP-EX3");
+					JMenuBar menubar = new JMenuBar();
+					JMenu menu = new JMenu("help");
+					menubar.add(menu);
+					JMenu menu2=new JMenu("option");
+					JMenuItem load=new JMenuItem("load");
+					menu2.add(load);
+					JMenuItem save=new JMenuItem("save");
+					menu2.add(save);
+					JMenuItem run=new JMenuItem("run");
+					menu2.add(run);
+					menubar.add(menu2);
+					frame.setJMenuBar(menubar);
 					frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					frame.setLayout(new BorderLayout());
 					frame.add(new ImagePanel(img));
 					frame.pack();
 					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
+					
 				} catch (IOException | HeadlessException exp) {
 					exp.printStackTrace();
 				}
@@ -134,10 +146,6 @@ public class TestImagePane {
 				x = e.getX();
 				y = e.getY();
 				System.out.println("right click you create new fruit X: " + x + " Y: " + y);
-//				try {
-//					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-//				} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-//				}
 				String test1= JOptionPane.showInputDialog("Please input fruit weight : ");
 				double weight=-1;
 				try {
@@ -178,3 +186,4 @@ public class TestImagePane {
 		}
 	}
 }
+
