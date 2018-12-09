@@ -23,11 +23,10 @@ public class TestImagePane {
 		EventQueue.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-//				try {
-//					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-//				} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-//				}
-
+				try {
+					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+				} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+				}
 				try {
 					Image img = null;
 					img = ImageIO.read(new File("Ariel1.png"));
