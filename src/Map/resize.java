@@ -213,7 +213,7 @@ public class resize implements ActionListener{
 			System.out.println("run");
 			Path p=new Path(Packmanarr, Fruitarr);
 			ShortestPathAlg s=new ShortestPathAlg(p);
-			System.out.println(s.greedy(p));
+			System.out.println(s.Shortalgo(p));
 			Packmanarr=s.getArr();
 			Fruitarr=s.getArray();
 		}

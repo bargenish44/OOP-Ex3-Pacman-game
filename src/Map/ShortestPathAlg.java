@@ -43,7 +43,10 @@ public class ShortestPathAlg {
 		if(dist==0)return 0;
 		return dist/p.getSpeed();
 	}
-	public double greedy(Path p) {
+	public double Shortalgo(Path p) {
+		return greedy(p);
+	}
+	private double greedy(Path p) {
 		double time=0;
 		setP(p);
 		double min=Double.MAX_VALUE;

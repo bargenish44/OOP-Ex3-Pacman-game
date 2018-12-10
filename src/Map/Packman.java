@@ -7,7 +7,6 @@ public class Packman {
 	private Point3D orinet;
 	private double speed;
 	private double Radius;
-	public Object getPoint3D;
 
 	public Packman(int ID,double x,double y,double z, double speed, double Radius) {
 		setOrinet(new Point3D(x, y, z));
