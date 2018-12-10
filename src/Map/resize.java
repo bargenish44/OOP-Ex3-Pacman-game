@@ -105,8 +105,8 @@ public class resize implements ActionListener{
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			g.drawImage(scaled, 0, 0, this.getWidth(),this.getHeight(),this);
-			double x = getWidth();
-			double y = getHeight();
+			//			double x = getWidth();
+			//			double y = getHeight();
 			//lat= (35.2022 + (x/125000));
 			//lon = (32.10565 - (y/150000));	
 			//	System.out.println("[lon: " + lon + " lat: " + lat + "]: X: " + x + " Y: " + y);
@@ -124,74 +124,114 @@ public class resize implements ActionListener{
 				y = e.getY();
 				System.out.println("left click you create new packman X: " + x + " Y: " + y);
 				String test1= JOptionPane.showInputDialog("Please input packman speed : ");
-				String test2= JOptionPane.showInputDialog("Please input packman radius : ");
-				double speed=-1,radius=-1;
+				double speed=-1,radius=-1,high=0;
+				boolean ans=true;
+				boolean ans2=true;
 				try {
 					speed=Double.parseDouble(test1);
-				}catch (Exception ex) {}
-				try {
-					radius=Double.parseDouble(test2);
-				}catch(Exception ex) {}
-				while(speed<=0) {
+				}catch (NullPointerException n) {ans=false;}
+				catch(NumberFormatException ex) {speed=-1;}
+				while(speed<=0&&ans) {
 					test1= JOptionPane.showInputDialog("Please input packman speed(larger than 0) : ");	
 					try {
 						speed=Double.parseDouble(test1);
-					}catch(Exception ex) {}
+					}catch (NullPointerException n) {ans=false;}
+					catch(NumberFormatException ex) {speed=-1;}
 				}
-				while(radius<=0) {
-					test2= JOptionPane.showInputDialog("Please input packman radius(larger than 0) : ");
+				if(ans) {
+					String test2= JOptionPane.showInputDialog("Please input packman radius : ");
 					try {
 						radius=Double.parseDouble(test2);
-					}catch(Exception ex) {}
+					}catch (NullPointerException n) {ans=false;}
+					catch(NumberFormatException ex) {radius=-1;}
+					while(radius<=0&&ans) {
+						test2= JOptionPane.showInputDialog("Please input packman radius(larger than 0) : ");
+						try {
+							radius=Double.parseDouble(test2);
+						}catch (NullPointerException n) {ans=false;}
+						catch(NumberFormatException ex) {radius=-1;}
+					}
 				}
-				Packmanarr.add(new Packman(count,x,y,0,speed,radius));
-				count++;
-				repaint();	
+				if(ans) {
+					String test3=JOptionPane.showInputDialog("Please input packman high above ground : ");
+					try {
+						high=Double.parseDouble(test3);
+					}catch (NullPointerException n) {ans=false;}
+					catch(NumberFormatException ex) {ans2=false;}
+					while(!ans2&&ans) {
+						test3= JOptionPane.showInputDialog("Please input packman high above ground(0 or lrager) : ");
+						try {
+							high=Double.parseDouble(test3);
+						}catch (NullPointerException n) {ans=false;}
+						catch(NumberFormatException ex) {ans2=false;}
+					}
+				}
+				if(ans) {
+					Packmanarr.add(new Packman(count,x,y,high,speed,radius));
+					count++;
+					repaint();
+				}
+				else 
+					System.out.println("you quit before crete new packman");
 			}
 			else if(e.getButton() == MouseEvent.BUTTON3) {
 				x = e.getX();
 				y = e.getY();
 				System.out.println("right click you create new fruit X: " + x + " Y: " + y);
 				String test1= JOptionPane.showInputDialog("Please input fruit weight : ");
-				double weight=-1;
+				double weight=-1,high=0;
+				boolean ans=true;
+				boolean ans2=true;
 				try {
 					weight=Double.parseDouble(test1);
-				}catch(Exception ex) {}
-				while(weight<=0) {
+				}catch(NumberFormatException n) {weight=-1;}
+				catch(NullPointerException n) {ans=false;}
+				while(weight<=0&&ans) {
 					test1= JOptionPane.showInputDialog("Please input fruit weight(larger than 0) : ");
-					weight=Double.parseDouble(test1);
+					try {
+						weight=Double.parseDouble(test1);
+					}catch (NullPointerException n) {ans=false;}
+					catch(NumberFormatException ex) {weight=-1;}
 				}
-				Fruitarr.add(new Fruit(counter,x,y,0,weight));
-				counter++;
-				repaint();			
+				if(ans) {
+					String test2=JOptionPane.showInputDialog("Please input fruit high  : ");
+					try {
+						high=Double.parseDouble(test2);
+					}catch (NullPointerException n) {ans=false;}
+					catch(NumberFormatException ex) {ans2=false;}
+					while(!ans2&&ans) {
+						test2= JOptionPane.showInputDialog("Please input packman high above ground(0 or lrager) : ");
+						try {
+							high=Double.parseDouble(test2);
+						}catch (NullPointerException n) {ans=false;}
+						catch(NumberFormatException ex) {ans2=false;}
+					}
+				}
+				if(ans) {
+					Fruitarr.add(new Fruit(counter,x,y,high,weight));
+					counter++;
+					repaint();			
+				}
+				else
+					System.out.println("you quit before crete new fruit");
 			}
 		}
-
 		@Override
 		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
-
 		}
 
 		@Override
 		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-
 		}
 
 		@Override
 		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
-
 		}
 
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-
 		}
 	}
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==load) {
@@ -203,7 +243,9 @@ public class resize implements ActionListener{
 				Game g=new Game(Game.load(selectedFile.toString()));
 				Packmanarr=g.getArr();
 				Fruitarr=g.getArray();
-				Game n=new Game(Packmanarr,Fruitarr);			}
+				System.out.println(Fruitarr.size());
+				System.out.println(Packmanarr.size());
+			}
 		}
 		if(e.getSource()==save) {
 			System.out.println("save");
@@ -227,5 +269,5 @@ public class resize implements ActionListener{
 					"about the game", JOptionPane.PLAIN_MESSAGE);
 		}
 	}
-}
 
+}

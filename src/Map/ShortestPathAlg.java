@@ -38,7 +38,6 @@ public class ShortestPathAlg {
 		array=p.getFruitarr();
 	}
 	private double Calculatetime(Packman p,Fruit f) {
-		double time=0;
 		Circle c=new Circle(p.getOrinet(),p.getRadius());
 		double dist=c.distance3D(f.getOrient());
 		if(dist==0)return 0;
@@ -52,19 +51,23 @@ public class ShortestPathAlg {
 		setP(p);
 		double min=Double.MAX_VALUE;
 		int packmanindex=0;
+		int fruitindex=0;
 		Fruit fruittmp;
-		double tmp;
+		double tmp=0;
 		while(!array.isEmpty()) {
 			fruittmp=array.get(0);
 			for(int i=0;i<arr.size();i++) {
-				tmp=Calculatetime(arr.get(i),array.get(0));
-				if(tmp<min) {
-					min=tmp;
-					packmanindex=i;
+				for(int j=0;j<array.size();j++) {
+					tmp=Calculatetime(arr.get(i),array.get(j));
+					if(tmp<min) {
+						min=tmp;
+						packmanindex=i;
+						fruitindex=j;
+					}
 				}
 			}
 			time+=min;
-			array.remove(0);
+			array.remove(fruitindex);
 			arr.get(packmanindex).setOrinet(fruittmp.getOrient());//לשנות בהתאם לזויית ולמצוא נקודה מדויקת
 		}
 		return time;
