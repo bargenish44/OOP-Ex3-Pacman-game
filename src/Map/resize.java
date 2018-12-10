@@ -131,7 +131,7 @@ public class resize implements ActionListener{
 					radius=Double.parseDouble(test2);
 				}catch(Exception ex) {}
 				while(speed<=0) {
-					test1= JOptionPane.showInputDialog("Please input packman speed(larger than 0) : ");
+					test1= JOptionPane.showInputDialog("Please input packman speed(larger than 0) : ");	
 					try {
 						speed=Double.parseDouble(test1);
 					}catch(Exception ex) {}
@@ -201,13 +201,7 @@ public class resize implements ActionListener{
 				Game g=new Game(Game.load(selectedFile.toString()));
 				Packmanarr=g.getArr();
 				Fruitarr=g.getArray();
-				Game n=new Game(Packmanarr,Fruitarr);
-				//				try {
-				//					Desktop.getDesktop().open(selectedFile);
-				//				} catch (IOException e1) {
-				//					e1.printStackTrace();
-				//				}
-			}
+				Game n=new Game(Packmanarr,Fruitarr);			}
 		}
 		if(e.getSource()==save) {
 			System.out.println("save");
