@@ -2,6 +2,7 @@ package Map;
 
 import java.util.ArrayList;
 import Geom.Circle;
+import Geom.Path;
 
 public class ShortestPathAlg {
 	private Path p;

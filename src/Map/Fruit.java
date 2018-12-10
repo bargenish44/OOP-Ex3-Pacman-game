@@ -37,8 +37,4 @@ public class Fruit {
 	public String toString() {
 		return ID+","+orient.toString()+","+Weight;
 	}
-	public void setPoint3D(String string) {
-		// TODO Auto-generated method stub
-		
-	}
 }

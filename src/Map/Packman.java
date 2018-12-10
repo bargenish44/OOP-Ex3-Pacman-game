@@ -47,8 +47,4 @@ public class Packman {
 	public String toString() {
 		return ID+","+orinet.toString()+","+speed+","+Radius;
 	}
-	public void setPoint3D(String string) {
-		// TODO Auto-generated method stub
-		
-	}
 }

@@ -98,10 +98,6 @@ public class Game {
 		pw.close();
 		System.out.println("saved");
 	}
-	public void setPoint3D(String string) {
-		// TODO Auto-generated method stub
-		
-	}
 	public ArrayList<Packman> getArr() {
 		return arr;
 	}

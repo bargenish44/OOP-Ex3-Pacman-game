@@ -2,62 +2,39 @@ package Geom;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import Geom.Point3D;
+import Map.Fruit;
+import Map.Packman;
 /**
  * This class represents a path- arraylist of 3D point in space.
  * @author Bar Genish
  * @author Elyashiv Deri
  */
-public class Path implements Geom_element{
-	private ArrayList<Point3D> arr=new ArrayList<Point3D>();
-	public Path(ArrayList<Point3D> a) {//constractor
-		this.setArr(a);
+public class Path{
+	private ArrayList<Packman>packarr=new ArrayList<Packman>();
+	private ArrayList<Fruit>fruitarr=new ArrayList<Fruit>();
+
+	public Path(ArrayList<Packman> a, ArrayList<Fruit> b) {//constractor
+		setPackarr(a);
+		setFruitarr(b);
 	}
-	public Path(Point3D a) {//constractor
-		arr.clear();
-		arr.add(a);
+	public Path(Path p) {//constractor
+		setPackarr(p.getPackarr());
+		setFruitarr(p.getFruitarr());
 	}
-	public Path(double x,double y,double z) {//constractor
-		arr.clear();
-		arr.add(new Point3D(x,y,z));
+	//getters and setters
+	public ArrayList<Packman> getPackarr() {
+		return packarr;
 	}
-//getters and setters
-	public ArrayList<Point3D> getArr() {
-		return arr;
+	public void setPackarr(ArrayList<Packman> packarr) {
+		this.packarr = packarr;
+	}
+	public ArrayList<Fruit> getFruitarr() {
+		return fruitarr;
+	}
+	public void setFruitarr(ArrayList<Fruit> fruitarr) {
+		this.fruitarr = fruitarr;
 	}
 
-	public void setArr(ArrayList<Point3D> arr) {
-		this.arr = arr;
-	}
-	/** 
-	 * return the distance3d between the point3d p to the closest point3d in the array as double.
-	 * */
-	@Override
-	public double distance3D(Point3D p) {
-		if(arr.isEmpty()) return -1;
-		Iterator<Point3D>runner=arr.iterator();
-		double min=Double.MAX_VALUE;
-		double tmp=0;
-		while(runner.hasNext()) {
-			tmp=runner.next().distance3D(p);
-			if(tmp<min);
-			min=tmp;
-		}
-		return min;
-	}
-	/** 
-	 * return the distance2d between the point3d p to the closest point3d in the array as double.
-	 * */
-	@Override
-	public double distance2D(Point3D p) {
-		if(arr.isEmpty()) return -1;
-		Iterator<Point3D>runner=arr.iterator();
-		double min=Double.MAX_VALUE;
-		double tmp=0;
-		while(runner.hasNext()) {
-			tmp=runner.next().distance2D(p);
-			if(tmp<min);
-			min=tmp;
-		}
-		return min;
-	}
 }

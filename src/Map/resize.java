@@ -7,6 +7,8 @@ import javax.imageio.ImageIO;
 import java.awt.event.*;
 import javax.swing.*;
 
+import Geom.Path;
+
 public class resize implements ActionListener{
 	private ArrayList<Packman>Packmanarr=new ArrayList<>();
 	private ArrayList<Fruit>Fruitarr=new ArrayList<>();
@@ -109,10 +111,10 @@ public class resize implements ActionListener{
 			//lon = (32.10565 - (y/150000));	
 			//	System.out.println("[lon: " + lon + " lat: " + lat + "]: X: " + x + " Y: " + y);
 			for(int i=0;i<Packmanarr.size();i++) {
-				g.drawImage(packmanimage.getImage(), Packmanarr.get(i).getOrinet().ix(), Packmanarr.get(i).getOrinet().iy(),50,50,null);
+				g.drawImage(packmanimage.getImage(), Packmanarr.get(i).getOrinet().ix()-25, Packmanarr.get(i).getOrinet().iy()-25,50,50,null);
 			}
 			for(int i=0;i<Fruitarr.size();i++) {
-				g.drawImage(cherryimage.getImage(), Fruitarr.get(i).getOrient().ix(), Fruitarr.get(i).getOrient().iy(),50,50,null);
+				g.drawImage(cherryimage.getImage(), Fruitarr.get(i).getOrient().ix()-25, Fruitarr.get(i).getOrient().iy()-25,50,50,null);
 			}
 		}
 		@Override
