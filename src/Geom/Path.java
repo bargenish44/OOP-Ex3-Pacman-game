@@ -13,9 +13,11 @@ public class Path implements Geom_element{
 		this.setArr(a);
 	}
 	public Path(Point3D a) {//constractor
+		arr.clear();
 		arr.add(a);
 	}
 	public Path(double x,double y,double z) {//constractor
+		arr.clear();
 		arr.add(new Point3D(x,y,z));
 	}
 //getters and setters

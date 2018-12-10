@@ -209,8 +209,14 @@ public class resize implements ActionListener{
 			Fruitarr=Pixel_To_Cordi.PointF_to_Pixel(Fruitarr);
 			Game.save(new Game(Packmanarr,Fruitarr));
 		}
-		if(e.getSource()==run)
+		if(e.getSource()==run) {
 			System.out.println("run");
+			Path p=new Path(Packmanarr, Fruitarr);
+			ShortestPathAlg s=new ShortestPathAlg(p);
+			System.out.println(s.greedy(p));
+			Packmanarr=s.getArr();
+			Fruitarr=s.getArray();
+		}
 		if(e.getSource()==how_to_run)
 			System.out.println("how to run");
 		if(e.getSource()==about_the_game) {

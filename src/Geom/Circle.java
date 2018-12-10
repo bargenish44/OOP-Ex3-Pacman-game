@@ -58,5 +58,7 @@ public class Circle implements Geom_element {
 	public void set_radius(double radius) {
 		this.radius = radius;
 	}
-	
+	public String toString() {
+		return "Center is: "+cen.toString()+", radius is: "+radius;
+	}
 }

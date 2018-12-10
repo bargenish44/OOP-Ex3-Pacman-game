@@ -10,23 +10,29 @@ import Geom.Point3D;
  * @author Elyashiv Deri
  */
 public class Path{
-	private ArrayList<Point3D> arr=new ArrayList<Point3D>();
-	public Path(ArrayList<Point3D> a) {//constractor
-		this.setArr(a);
+	private ArrayList<Packman>packarr=new ArrayList<Packman>();
+	private ArrayList<Fruit>fruitarr=new ArrayList<Fruit>();
+	
+	public Path(ArrayList<Packman> a, ArrayList<Fruit> b) {//constractor
+		setPackarr(a);
+		setFruitarr(b);
 	}
-	public Path(Point3D a) {//constractor
-		arr.add(a);
-	}
-	public Path(double x,double y,double z) {//constractor
-		arr.add(new Point3D(x,y,z));
+	public Path(Path p) {//constractor
+		setPackarr(p.getPackarr());
+		setFruitarr(p.getFruitarr());
 	}
 //getters and setters
-	public ArrayList<Point3D> getArr() {
-		return arr;
+	public ArrayList<Packman> getPackarr() {
+		return packarr;
 	}
-
-	public void setArr(ArrayList<Point3D> arr) {
-		this.arr = arr;
+	public void setPackarr(ArrayList<Packman> packarr) {
+		this.packarr = packarr;
+	}
+	public ArrayList<Fruit> getFruitarr() {
+		return fruitarr;
+	}
+	public void setFruitarr(ArrayList<Fruit> fruitarr) {
+		this.fruitarr = fruitarr;
 	}
 
 }
