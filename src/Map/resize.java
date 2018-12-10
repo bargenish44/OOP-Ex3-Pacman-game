@@ -103,11 +103,11 @@ public class resize implements ActionListener{
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			g.drawImage(scaled, 0, 0, this.getWidth(),this.getHeight(),this);
-				double x = getWidth();
-				double y = getHeight();
+			double x = getWidth();
+			double y = getHeight();
 			//lat= (35.2022 + (x/125000));
 			//lon = (32.10565 - (y/150000));	
-		//	System.out.println("[lon: " + lon + " lat: " + lat + "]: X: " + x + " Y: " + y);
+			//	System.out.println("[lon: " + lon + " lat: " + lat + "]: X: " + x + " Y: " + y);
 			for(int i=0;i<Packmanarr.size();i++) {
 				g.drawImage(packmanimage.getImage(), Packmanarr.get(i).getOrinet().ix(), Packmanarr.get(i).getOrinet().iy(),50,50,null);
 			}
@@ -116,7 +116,7 @@ public class resize implements ActionListener{
 			}
 		}
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseClicked(MouseEvent e) {//להוסיף סגירה כשלוחצים cancel
 			if(e.getButton() == MouseEvent.BUTTON1) {
 				x = e.getX();
 				y = e.getY();
@@ -202,11 +202,11 @@ public class resize implements ActionListener{
 				Packmanarr=g.getArr();
 				Fruitarr=g.getArray();
 				Game n=new Game(Packmanarr,Fruitarr);
-//				try {
-//					Desktop.getDesktop().open(selectedFile);
-//				} catch (IOException e1) {
-//					e1.printStackTrace();
-//				}
+				//				try {
+				//					Desktop.getDesktop().open(selectedFile);
+				//				} catch (IOException e1) {
+				//					e1.printStackTrace();
+				//				}
 			}
 		}
 		if(e.getSource()==save) {
@@ -219,8 +219,9 @@ public class resize implements ActionListener{
 			System.out.println("run");
 		if(e.getSource()==how_to_run)
 			System.out.println("how to run");
-		if(e.getSource()==about_the_game)
+		if(e.getSource()==about_the_game) {
 			System.out.println("about the game");
+		}
 	}
 }
 
