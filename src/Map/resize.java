@@ -218,9 +218,11 @@ public class resize implements ActionListener{
 			Fruitarr=s.getArray();
 		}
 		if(e.getSource()==how_to_run)
-			System.out.println("how to run");
+			JOptionPane.showMessageDialog(null, "For new Packman pressed left click on mouse on the place in the map that you want,\nFor new Fruit pressed right click on mouse on the place in the map that you want,\nFor run the game pressed on run button on menu under option.",
+					"how to play", JOptionPane.PLAIN_MESSAGE);
 		if(e.getSource()==about_the_game) {
-			System.out.println("about the game");
+			JOptionPane.showMessageDialog(null, "This is a packman game:\nthe purpose is to eat all the fruit /nThe borad game is map, while the game start you can see on kml the path of the packmans and it prints the min time that we make our packmans eat all the fruit on board. \nCreated & Designed by :\nBar Genish and Elyashiv Deri." ,
+					"about the game", JOptionPane.PLAIN_MESSAGE);
 		}
 	}
 }
