@@ -7,7 +7,6 @@ import javax.imageio.ImageIO;
 import java.awt.event.*;
 import javax.swing.*;
 import Geom.Path;
-import Geom.Point3D;
 
 public class resize implements ActionListener{
 	private ArrayList<Packman>Packmanarr=new ArrayList<>();
@@ -119,11 +118,10 @@ public class resize implements ActionListener{
 			//lon = (32.10565 - (y/150000));	
 			//	System.out.println("[lon: " + lon + " lat: " + lat + "]: X: " + x + " Y: " + y);
 			for(int i=0;i<Packmanarr.size();i++) {
-				g.drawImage(packmanimage.getImage(), Packmanarr.get(i).getOrinet().ix(), Packmanarr.get(i).getOrinet().iy(),50,50,null);
-				System.out.println(Packmanarr.get(i).getOrinet().ix()+" the x of the drawn image");
+				g.drawImage(packmanimage.getImage(), Packmanarr.get(i).getOrinet().ix()-25, Packmanarr.get(i).getOrinet().iy()-25,50,50,null);
 			}
 			for(int i=0;i<Fruitarr.size();i++) {
-				g.drawImage(cherryimage.getImage(), Fruitarr.get(i).getOrient().ix(), Fruitarr.get(i).getOrient().iy(),50,50,null);
+				g.drawImage(cherryimage.getImage(), Fruitarr.get(i).getOrient().ix()-25, Fruitarr.get(i).getOrient().iy()-25,50,50,null);
 			}
 		}
 		@Override
@@ -182,13 +180,7 @@ public class resize implements ActionListener{
 					}
 				}
 				if(ans) {
-					Point3D p3d=new Point3D(x,y,high);
-					Map_To m=new Map_To(width,hight);
-					m.setOrient(p3d);
-					p3d=m.Pixel_TO_GPS(m.getOrient().x(), m.getOrient().y(),high);
-					System.out.println(p3d.toString());
-					Packmanarr.add(new Packman(count,p3d,speed,radius));
-					System.out.println(m.getOrient().x()+" the place that it add");
+					Packmanarr.add(new Packman(count,x,y,high,speed,radius));
 					count++;
 					repaint();
 				}
@@ -233,13 +225,7 @@ public class resize implements ActionListener{
 					}
 				}
 				if(ans) {
-					Point3D p3d=new Point3D(x,y,high);
-					System.out.println(x);
-					System.out.println(y);
-					Map_To m=new Map_To(width,hight);
-					m.setOrient(p3d);
-					p3d=m.Pixel_TO_GPS(m.getOrient().x(), m.getOrient().y(),high);
-					Fruitarr.add(new Fruit(counter,p3d,weight));
+					Fruitarr.add(new Fruit(counter,x,y,high,weight));
 					counter++;
 					repaint();			
 				}
