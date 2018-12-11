@@ -28,6 +28,8 @@ public class resize implements ActionListener{
 	private JMenu menu2;
 	private JMenu menu;
 	private Image img;
+	private int width;
+	private int hight;
 	public static void main(String[] args) {
 		new resize();
 	}
@@ -95,10 +97,10 @@ public class resize implements ActionListener{
 		@Override
 		public void invalidate() {
 			super.invalidate();
-			int width = getWidth();
-			int height = getHeight();
+			width = getWidth();
+			hight = getHeight();
 
-			if (width > 0 && height > 0) {
+			if (width > 0 && hight > 0) {
 				scaled = img.getScaledInstance(getWidth(), getHeight(), Image.SCALE_SMOOTH);
 			}
 		}
@@ -181,7 +183,7 @@ public class resize implements ActionListener{
 				}
 				if(ans) {
 					Point3D p3d=new Point3D(x,y,high);
-					Map_To m=new Map_To();
+					Map_To m=new Map_To(width,hight);
 					m.setOrient(p3d);
 					p3d=m.Pixel_TO_GPS(m.getOrient().x(), m.getOrient().y(),high);
 					System.out.println(p3d.toString());
@@ -232,7 +234,9 @@ public class resize implements ActionListener{
 				}
 				if(ans) {
 					Point3D p3d=new Point3D(x,y,high);
-					Map_To m=new Map_To();
+					System.out.println(x);
+					System.out.println(y);
+					Map_To m=new Map_To(width,hight);
 					m.setOrient(p3d);
 					p3d=m.Pixel_TO_GPS(m.getOrient().x(), m.getOrient().y(),high);
 					Fruitarr.add(new Fruit(counter,p3d,weight));

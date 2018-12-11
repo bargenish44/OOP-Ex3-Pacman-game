@@ -4,8 +4,10 @@ import Geom.*;
 
 public class Map_To {
 	private Point3D orient;
-	public Map_To() {
+	public Map_To(int x,int y) {
 		setOrient(new Point3D(0,0,0));
+		x_length=x-this.Right_Up.y()-this.left_Up.y();;
+		y_length=y-this.left_Down.x()-this.left_Up.x();;
 	}
 
 //ארבע פינות של התמונה בנקודות ג'י פי אס
