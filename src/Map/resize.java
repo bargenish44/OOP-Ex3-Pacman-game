@@ -118,7 +118,7 @@ public class resize implements ActionListener{
 			}
 		}
 		@Override
-		public void mouseClicked(MouseEvent e) {//להוסיף סגירה כשלוחצים cancel
+		public void mouseClicked(MouseEvent e) {
 			if(e.getButton() == MouseEvent.BUTTON1) {
 				x = e.getX();
 				y = e.getY();
@@ -130,26 +130,30 @@ public class resize implements ActionListener{
 				try {
 					speed=Double.parseDouble(test1);
 				}catch (NullPointerException n) {ans=false;}
-				catch(NumberFormatException ex) {speed=-1;}
+				//catch(NumberFormatException ex) {speed=-1;}
+				catch(Exception a) {speed=-1;}
 				while(speed<=0&&ans) {
 					test1= JOptionPane.showInputDialog("Please input packman speed(larger than 0) : ");	
 					try {
 						speed=Double.parseDouble(test1);
 					}catch (NullPointerException n) {ans=false;}
-					catch(NumberFormatException ex) {speed=-1;}
+					//catch(NumberFormatException ex) {speed=-1;}
+					catch(Exception a) {speed=-1;}
 				}
 				if(ans) {
 					String test2= JOptionPane.showInputDialog("Please input packman radius : ");
 					try {
 						radius=Double.parseDouble(test2);
 					}catch (NullPointerException n) {ans=false;}
-					catch(NumberFormatException ex) {radius=-1;}
+					//catch(NumberFormatException ex) {radius=-1;}
+					catch(Exception a) {radius=-1;}
 					while(radius<=0&&ans) {
 						test2= JOptionPane.showInputDialog("Please input packman radius(larger than 0) : ");
 						try {
 							radius=Double.parseDouble(test2);
 						}catch (NullPointerException n) {ans=false;}
-						catch(NumberFormatException ex) {radius=-1;}
+						//catch(NumberFormatException ex) {radius=-1;}
+						catch(Exception a) {radius=-1;}
 					}
 				}
 				if(ans) {
@@ -157,13 +161,15 @@ public class resize implements ActionListener{
 					try {
 						high=Double.parseDouble(test3);
 					}catch (NullPointerException n) {ans=false;}
-					catch(NumberFormatException ex) {ans2=false;}
+					//catch(NumberFormatException ex) {ans2=false;}
+					catch(Exception a) {ans2=false;}
 					while(!ans2&&ans) {
 						test3= JOptionPane.showInputDialog("Please input packman high above ground(0 or lrager) : ");
 						try {
 							high=Double.parseDouble(test3);
 						}catch (NullPointerException n) {ans=false;}
-						catch(NumberFormatException ex) {ans2=false;}
+						//catch(NumberFormatException ex) {ans2=false;}
+						catch(Exception a) {ans2=false;}
 					}
 				}
 				if(ans) {
@@ -184,27 +190,31 @@ public class resize implements ActionListener{
 				boolean ans2=true;
 				try {
 					weight=Double.parseDouble(test1);
-				}catch(NumberFormatException n) {weight=-1;}
+				}//catch(NumberFormatException n) {weight=-1;}
 				catch(NullPointerException n) {ans=false;}
+				catch(Exception a) {weight=-1;}
 				while(weight<=0&&ans) {
 					test1= JOptionPane.showInputDialog("Please input fruit weight(larger than 0) : ");
 					try {
 						weight=Double.parseDouble(test1);
 					}catch (NullPointerException n) {ans=false;}
-					catch(NumberFormatException ex) {weight=-1;}
+					//catch(NumberFormatException ex) {weight=-1;}
+					catch(Exception a) {weight=-1;}
 				}
 				if(ans) {
 					String test2=JOptionPane.showInputDialog("Please input fruit high  : ");
 					try {
 						high=Double.parseDouble(test2);
 					}catch (NullPointerException n) {ans=false;}
-					catch(NumberFormatException ex) {ans2=false;}
+					//catch(NumberFormatException ex) {ans2=false;}
+					catch(Exception a) {ans2=false;}
 					while(!ans2&&ans) {
-						test2= JOptionPane.showInputDialog("Please input packman high above ground(0 or lrager) : ");
+						test2= JOptionPane.showInputDialog("Please input valid packman high  : ");
 						try {
 							high=Double.parseDouble(test2);
 						}catch (NullPointerException n) {ans=false;}
-						catch(NumberFormatException ex) {ans2=false;}
+						//catch(NumberFormatException ex) {ans2=false;}
+						catch(Exception a) {ans2=false;}
 					}
 				}
 				if(ans) {
