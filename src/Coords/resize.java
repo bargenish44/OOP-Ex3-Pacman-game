@@ -1,4 +1,4 @@
-package Map;
+package Coords;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -6,27 +6,16 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import java.awt.event.*;
 import javax.swing.*;
-import Geom.Path;
 import Geom.Point3D;
+import Map.*;
 
-public class resize implements ActionListener{
+public class resize{
 	private ArrayList<Packman>Packmanarr=new ArrayList<>();
 	private ArrayList<Fruit>Fruitarr=new ArrayList<>();
-	private ArrayList<Packman>Packmanarrtemp=new ArrayList<>();
-	private ArrayList<Fruit>Fruitarrtemp=new ArrayList<>();
 	private ImageIcon packmanimage;
 	private ImageIcon cherryimage;
 	private int counter=0;
 	private int count=0;
-	private JMenuItem load;
-	private JMenuBar menubar;
-	private JMenuItem save;
-	private JMenuItem run;
-	private JMenuItem how_to_run;
-	private JMenuItem about_the_game;
-	private JMenuItem clear;
-	private JMenu menu2;
-	private JMenu menu;
 	private Image img;
 	public static void main(String[] args) {
 		new resize();
@@ -37,30 +26,6 @@ public class resize implements ActionListener{
 			packmanimage=new ImageIcon("pacman.jpg");
 			cherryimage=new ImageIcon("cherry.png");
 			JFrame frame = new JFrame("OOP-EX3");
-			menubar = new JMenuBar();
-			menu = new JMenu("help");
-			menubar.add(menu);
-			about_the_game=new JMenuItem("about the game");
-			about_the_game.addActionListener(this);
-			menu.add(about_the_game);
-			how_to_run =new JMenuItem("how to run");
-			how_to_run.addActionListener(this);
-			menu.add(how_to_run);
-			menu2=new JMenu("option");
-			clear=new JMenuItem("clear");
-			clear.addActionListener(this);
-			menu2.add(clear);
-			load=new JMenuItem("load");
-			load.addActionListener(this);
-			menu2.add(load);
-			save=new JMenuItem("save");
-			save.addActionListener(this);
-			menu2.add(save);
-			run=new JMenuItem("run");
-			run.addActionListener(this);
-			menu2.add(run);
-			menubar.add(menu2);
-			frame.setJMenuBar(menubar);
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.setLayout(new BorderLayout());
 			frame.add(new ImagePanel(img));
@@ -111,11 +76,6 @@ public class resize implements ActionListener{
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			g.drawImage(scaled, 0, 0, this.getWidth(),this.getHeight(),this);
-			//			double x = getWidth();
-			//			double y = getHeight();
-			//lat= (35.2022 + (x/125000));
-			//lon = (32.10565 - (y/150000));	
-			//	System.out.println("[lon: " + lon + " lat: " + lat + "]: X: " + x + " Y: " + y);
 			for(int i=0;i<Packmanarr.size();i++) {
 				g.drawImage(packmanimage.getImage(), Packmanarr.get(i).getOrinet().ix(), Packmanarr.get(i).getOrinet().iy(),50,50,null);
 				System.out.println(Packmanarr.get(i).getOrinet().ix()+" the x of the drawn image");
@@ -257,54 +217,6 @@ public class resize implements ActionListener{
 
 		@Override
 		public void mouseReleased(MouseEvent e) {
-		}
-	}
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()==load) {
-			System.out.println("load");
-			JFileChooser fileChooser = new JFileChooser();
-			int returnValue = fileChooser.showOpenDialog(null);
-			if (returnValue == JFileChooser.APPROVE_OPTION) {
-				File selectedFile = fileChooser.getSelectedFile();
-				Game g=new Game(Game.load(selectedFile.toString()));
-				Packmanarr=g.getArr();
-				Fruitarr=g.getArray();
-				System.out.println(Fruitarr.size());
-				System.out.println(Packmanarr.size());
-			}
-		}
-		if(e.getSource()==save) {
-			System.out.println("save");
-			Packmanarr=Pixel_To_Cordi.Pointp_to_Pixel(Packmanarr);
-			Fruitarr=Pixel_To_Cordi.PointF_to_Pixel(Fruitarr);
-			Game.save(new Game(Packmanarr,Fruitarr));
-		}
-		if(e.getSource()==run) {
-			System.out.println("run");
-			Packmanarrtemp=new ArrayList<>(Packmanarr);
-			Fruitarrtemp=new ArrayList<>(Fruitarr);
-			Path p=new Path(Packmanarr, Fruitarr);
-			ShortestPathAlg s=new ShortestPathAlg(p);
-			System.out.println(s.Shortalgo(p));
-			Packmanarr=s.getArr();
-			Fruitarr=s.getArray();
-			System.out.println(Fruitarrtemp.size());
-		}
-		if(e.getSource()==how_to_run)
-			JOptionPane.showMessageDialog(null, "For new Packman pressed left click on mouse on the place in the map that you want"
-					+ ",\nFor new Fruit pressed right click on mouse on the place in the map that you want,"
-					+ "\nFor run the game pressed on run button on menu under option."
-					+ "\nIf you want to go back before you run the game click run button on menu under option.",
-					"how to play", JOptionPane.PLAIN_MESSAGE);
-		if(e.getSource()==about_the_game) {
-			JOptionPane.showMessageDialog(null, "This is a packman game:\nthe purpose is to eat all the fruit /nThe borad game is map, while the game start you can see on kml the path of the packmans and it prints the min time that we make our packmans eat all the fruit on board. \nCreated & Designed by :\nBar Genish and Elyashiv Deri." ,
-					"about the game", JOptionPane.PLAIN_MESSAGE);
-		}
-		if(e.getSource()==clear) {//לסדר שחזרו למקום שלהם
-			Fruitarr=Fruitarrtemp;
-			Packmanarr.clear();
-			Packmanarr=Packmanarrtemp;
 		}
 	}
 }
