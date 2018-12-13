@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import java.awt.event.*;
 import javax.swing.*;
+
+import Geom.Path;
 import Geom.Point3D;
 
 public class resize implements ActionListener{
@@ -13,7 +15,7 @@ public class resize implements ActionListener{
 	private ArrayList<Fruit>Fruitarr=new ArrayList<>();
 	private ArrayList<Packman>Packmanarrtemp=new ArrayList<>();
 	private ArrayList<Fruit>Fruitarrtemp=new ArrayList<>();
-	private boolean ans=false;
+//	private boolean ans=false;
 	private ImageIcon packmanimage;
 	private ImageIcon cherryimage;
 	private int counter=0;
@@ -123,15 +125,15 @@ public class resize implements ActionListener{
 				//g.drawImage(cherryimage.getImage(), p.ix()-25, p.iy()-25,50,50,null);
 				g.drawImage(cherryimage.getImage(), Fruitarr.get(i).getOrient().ix()-25, Fruitarr.get(i).getOrient().iy()-25, 50, 50, null);
 			}
-			if(ans) {
-				g.drawLine(Packmanarr.get(0).getOrinet().ix(), Packmanarr.get(0).getOrinet().iy(), Fruitarr.get(0).getOrient().ix(), Fruitarr.get(0).getOrient().iy());
-			}
+//			if(ans) {
+//				g.drawLine(Packmanarr.get(0).getOrinet().ix(), Packmanarr.get(0).getOrinet().iy(), Fruitarr.get(0).getOrient().ix(), Fruitarr.get(0).getOrient().iy());
+//			}
 		}
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			if(e.getButton() == MouseEvent.BUTTON1) {
-				x = e.getX();
-				y = e.getY();
+				double x = e.getX();
+				double y = e.getY();
 				System.out.println("left click you create new packman X: " + x + " Y: " + y);
 				//x=x/getWidth();
 				//y=y/getHeight();
@@ -284,21 +286,21 @@ public class resize implements ActionListener{
 		}
 		if(e.getSource()==run) {
 			System.out.println("run");
-			ans=true;
-//			Packmanarrtemp=new ArrayList<>(Packmanarr);
-//			Fruitarrtemp=new ArrayList<>(Fruitarr);
-//			Path p=new Path(Packmanarr, Fruitarr);
-//			ShortestPathAlg s=new ShortestPathAlg(p);
-//			System.out.println(s.Shortalgo(p));
-//			//Packmanarr=s.getArr();
-//			//Fruitarr=s.getArray();
-//			Fruitarr=Fruitarrtemp;
+//			ans=true;
+			Packmanarrtemp=new ArrayList<>(Packmanarr);
+			Fruitarrtemp=new ArrayList<>(Fruitarr);
+			Path p=new Path(Packmanarr, Fruitarr);
+			ShortestPathAlg s=new ShortestPathAlg(p);
+			System.out.println(s.Shortalgo(p));
+			Packmanarr=s.getArr();
+//			Fruitarr=s.getArray();
+			Fruitarr=Fruitarrtemp;
 		}
 		if(e.getSource()==how_to_run)
 			JOptionPane.showMessageDialog(null, "For new Packman pressed left click on mouse on the place in the map that you want"
 					+ ",\nFor new Fruit pressed right click on mouse on the place in the map that you want,"
 					+ "\nFor run the game pressed on run button on menu under option."
-					+ "\nIf you want to go back before you run the game click run button on menu under option.",
+					+ "\nIf you want to go back before you run the game click clear button on menu under option.",
 					"how to play", JOptionPane.PLAIN_MESSAGE);
 		if(e.getSource()==about_the_game) {
 			JOptionPane.showMessageDialog(null, "This is a packman game:\nthe purpose is to eat all the fruit /nThe borad game is map, while the game start you can see on kml the path of the packmans and it prints the min time that we make our packmans eat all the fruit on board. \nCreated & Designed by :\nBar Genish and Elyashiv Deri." ,
