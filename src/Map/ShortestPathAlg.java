@@ -55,7 +55,7 @@ public class ShortestPathAlg {
 		Fruit fruittmp;
 		double tmp=0;
 		while(!array.isEmpty()) {
-			fruittmp=array.get(0);
+			
 			for(int i=0;i<arr.size();i++) {
 				for(int j=0;j<array.size();j++) {
 					tmp=Calculatetime(arr.get(i),array.get(j));
@@ -66,9 +66,11 @@ public class ShortestPathAlg {
 					}
 				}
 			}
+			fruittmp=array.get(fruitindex);
 			time+=min;
 			array.remove(fruitindex);
 			arr.get(packmanindex).setOrinet(fruittmp.getOrient());//לשנות בהתאם לזויית ולמצוא נקודה מדויקת
+			min=Double.MAX_VALUE;
 		}
 		return time;
 	}

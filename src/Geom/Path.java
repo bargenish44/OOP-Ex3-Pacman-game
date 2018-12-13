@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 import Geom.Point3D;
 import Map.Fruit;
+import Map.Game;
 import Map.Packman;
 /**
  * This class represents a path- arraylist of 3D point in space.
@@ -18,6 +19,10 @@ public class Path{
 	public Path(ArrayList<Packman> a, ArrayList<Fruit> b) {//constractor
 		setPackarr(a);
 		setFruitarr(b);
+	}
+	public Path(Game g) {
+		setPackarr(g.getArr());
+		setFruitarr(g.getArray());
 	}
 	public Path(Path p) {//constractor
 		setPackarr(p.getPackarr());

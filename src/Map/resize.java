@@ -6,13 +6,14 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import java.awt.event.*;
 import javax.swing.*;
-import Geom.Path;
+import Geom.Point3D;
 
 public class resize implements ActionListener{
 	private ArrayList<Packman>Packmanarr=new ArrayList<>();
 	private ArrayList<Fruit>Fruitarr=new ArrayList<>();
 	private ArrayList<Packman>Packmanarrtemp=new ArrayList<>();
 	private ArrayList<Fruit>Fruitarrtemp=new ArrayList<>();
+	private boolean ans=false;
 	private ImageIcon packmanimage;
 	private ImageIcon cherryimage;
 	private int counter=0;
@@ -112,16 +113,18 @@ public class resize implements ActionListener{
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			g.drawImage(scaled, 0, 0, this.getWidth(),this.getHeight(),this);
-			//			double x = getWidth();
-			//			double y = getHeight();
-			//lat= (35.2022 + (x/125000));
-			//lon = (32.10565 - (y/150000));	
-			//	System.out.println("[lon: " + lon + " lat: " + lat + "]: X: " + x + " Y: " + y);
 			for(int i=0;i<Packmanarr.size();i++) {
-				g.drawImage(packmanimage.getImage(), Packmanarr.get(i).getOrinet().ix()-25, Packmanarr.get(i).getOrinet().iy()-25,50,50,null);
+				//Point3D p=GPS_TO_Pixel(Packmanarr.get(i).getOrinet());
+				//g.drawImage(packmanimage.getImage(), p.ix()-25, p.iy()-25,50,50,null);
+				g.drawImage(packmanimage.getImage(), Packmanarr.get(i).getOrinet().ix()-25, Packmanarr.get(i).getOrinet().iy()-25, 50, 50, null);
 			}
 			for(int i=0;i<Fruitarr.size();i++) {
-				g.drawImage(cherryimage.getImage(), Fruitarr.get(i).getOrient().ix()-25, Fruitarr.get(i).getOrient().iy()-25,50,50,null);
+				//Point3D p=GPS_TO_Pixel(Fruitarr.get(i).getOrient());
+				//g.drawImage(cherryimage.getImage(), p.ix()-25, p.iy()-25,50,50,null);
+				g.drawImage(cherryimage.getImage(), Fruitarr.get(i).getOrient().ix()-25, Fruitarr.get(i).getOrient().iy()-25, 50, 50, null);
+			}
+			if(ans) {
+				g.drawLine(Packmanarr.get(0).getOrinet().ix(), Packmanarr.get(0).getOrinet().iy(), Fruitarr.get(0).getOrient().ix(), Fruitarr.get(0).getOrient().iy());
 			}
 		}
 		@Override
@@ -130,6 +133,9 @@ public class resize implements ActionListener{
 				x = e.getX();
 				y = e.getY();
 				System.out.println("left click you create new packman X: " + x + " Y: " + y);
+				//x=x/getWidth();
+				//y=y/getHeight();
+				//Point3D pixels=Pixel_TO_GPS(x, y, 0);
 				String test1= JOptionPane.showInputDialog("Please input packman speed : ");
 				double speed=-1,radius=-1,high=0;
 				boolean ans=true;
@@ -180,7 +186,11 @@ public class resize implements ActionListener{
 					}
 				}
 				if(ans) {
-					Packmanarr.add(new Packman(count,x,y,high,speed,radius));
+					//Point3D p=Pixel_TO_GPS(x, y, high);
+					//System.out.println("adding new packman");
+					//System.out.println(p.toString());
+					//Packmanarr.add(new Packman(count,p.x(),p.y(),high,speed,radius));
+					Packmanarr.add(new Packman(count, new Point3D(x, y, high), speed, radius));
 					count++;
 					repaint();
 				}
@@ -225,6 +235,8 @@ public class resize implements ActionListener{
 					}
 				}
 				if(ans) {
+					//Point3D p=Pixel_TO_GPS(x, y, high);
+					//Fruitarr.add(new Fruit(counter,p.x()/getWidth(),p.y()/getHeight(),high,weight));
 					Fruitarr.add(new Fruit(counter,x,y,high,weight));
 					counter++;
 					repaint();			
@@ -272,14 +284,15 @@ public class resize implements ActionListener{
 		}
 		if(e.getSource()==run) {
 			System.out.println("run");
-			Packmanarrtemp=new ArrayList<>(Packmanarr);
-			Fruitarrtemp=new ArrayList<>(Fruitarr);
-			Path p=new Path(Packmanarr, Fruitarr);
-			ShortestPathAlg s=new ShortestPathAlg(p);
-			System.out.println(s.Shortalgo(p));
-			Packmanarr=s.getArr();
-			Fruitarr=s.getArray();
-			System.out.println(Fruitarrtemp.size());
+			ans=true;
+//			Packmanarrtemp=new ArrayList<>(Packmanarr);
+//			Fruitarrtemp=new ArrayList<>(Fruitarr);
+//			Path p=new Path(Packmanarr, Fruitarr);
+//			ShortestPathAlg s=new ShortestPathAlg(p);
+//			System.out.println(s.Shortalgo(p));
+//			//Packmanarr=s.getArr();
+//			//Fruitarr=s.getArray();
+//			Fruitarr=Fruitarrtemp;
 		}
 		if(e.getSource()==how_to_run)
 			JOptionPane.showMessageDialog(null, "For new Packman pressed left click on mouse on the place in the map that you want"
@@ -296,5 +309,40 @@ public class resize implements ActionListener{
 			Packmanarr.clear();
 			Packmanarr=Packmanarrtemp;
 		}
+	}
+	Point3D left_Up = new Point3D(32.105770,  35.202469);
+	Point3D Right_Up = new Point3D(32.105770 , 35.211588);
+	Point3D left_Down = new Point3D(32.101899, 35.202469);
+	Point3D Right_Down = new Point3D(32.101899, 35.211588);
+	//חישוב של האורך
+
+	double x_length = this.Right_Up.y()-this.left_Up.y();
+	double y_length = this.left_Down.x()-this.left_Up.x();
+
+
+
+	//GPS המרה מפיקסל לנקודות 
+	public  Point3D Pixel_TO_GPS(double Dx , double Dy,double high) {
+		double lon_x = Dx * x_length+left_Up.y();
+		double lat_y = Dy * y_length+Right_Up.x();
+		Point3D answrInGps = new Point3D(lat_y,lon_x,high);
+		return answrInGps;
+
+	}
+
+	//המרה הפוכה
+	public Point3D GPS_TO_Pixel(Point3D p) {
+		double Dx = (p.y()-left_Up.y())/x_length;
+		double Dy = (p.x()-left_Up.x())/y_length;
+		return new Point3D(Dx,Dy);
+	}
+
+
+	//חישוב המרחק
+	public double Distance_IN_Pixels(Point3D p1, Point3D p2) {
+		Point3D ans_X =  Pixel_TO_GPS(p1.x(),p1.y(),p1.z());
+		Point3D ans_Y =  Pixel_TO_GPS(p2.x(),p2.y(),p1.z());
+		double answer = ans_X.distance3D(ans_Y);
+		return answer;
 	}
 }
