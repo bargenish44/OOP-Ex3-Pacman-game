@@ -5,60 +5,35 @@ import Geom.Circle;
 import Geom.Path;
 
 public class ShortestPathAlg {
-	private Path p;
-	private double time=0;
-	private ArrayList<Packman>arr;
-	private ArrayList<Fruit>array;
-	public ShortestPathAlg(Path p,ArrayList<Packman>arr,ArrayList<Fruit>array) {
-		setP(p);
+	private Game game;
+	public ShortestPathAlg(Game g) {
+		setGame(g);
 	}
-	public ShortestPathAlg(Path p) {
-		setP(p);
+	public ShortestPathAlg(ArrayList<Packman>arr,ArrayList<Fruit> array) {
+		setGame(new Game(arr,array));
 	}
-	public ShortestPathAlg(ArrayList<Packman>arr,ArrayList<Fruit>array){
-		Path p=new Path(arr, array);
-		setP(p);
-	}
-	public ShortestPathAlg(ShortestPathAlg ot) {
-		setP(ot.getP());
-		setTime(ot.getTime());
-	}
-	public double getTime() {
-		return time;
-	}
-	public void setTime(double time) {
-		this.time = time;
-	}
-	public Path getP() {
-		return p;
-	}
-	public void setP(Path p) {
-		this.p = p;
-		arr=p.getPackarr();
-		array=p.getFruitarr();
-	}
+
 	private double Calculatetime(Packman p,Fruit f) {
 		Circle c=new Circle(p.getOrinet(),p.getRadius());
 		double dist=c.distance3D(f.getOrient());
 		if(dist==0)return 0;
 		return dist/p.getSpeed();
 	}
-	public double Shortalgo(Path p) {
-		return greedy(p);
+	public double Shortalgo(Game g) {
+		return greedy(g);
 	}
-	private double greedy(Path p) {
+	private double greedy(Game g) {
 		double time=0;
-		setP(p);
+		setGame(g);
 		double min=Double.MAX_VALUE;
 		int packmanindex=0;
 		int fruitindex=0;
 		Fruit fruittmp;
 		double tmp=0;
-		while(!array.isEmpty()) {
-			
-			for(int i=0;i<arr.size();i++) {
-				for(int j=0;j<array.size();j++) {
-					tmp=Calculatetime(arr.get(i),array.get(j));
+		while(!g.getArray().isEmpty()) {
+			for(int i=0;i<g.getArr().size();i++) {
+				for(int j=0;j<g.getArray().size();j++) {
+					tmp=Calculatetime(g.getArr().get(i),g.getArray().get(j));
 					if(tmp<min) {
 						min=tmp;
 						packmanindex=i;
@@ -66,24 +41,18 @@ public class ShortestPathAlg {
 					}
 				}
 			}
-			fruittmp=array.get(fruitindex);
+			fruittmp=g.getArray().get(fruitindex);
 			time+=min;
-			array.remove(fruitindex);
-			arr.get(packmanindex).setOrinet(fruittmp.getOrient());//לשנות בהתאם לזויית ולמצוא נקודה מדויקת
+			g.getArray().remove(fruitindex);
+			g.getArr().get(packmanindex).setOrinet(fruittmp.getOrient());//לשנות בהתאם לזויית ולמצוא נקודה מדויקת
 			min=Double.MAX_VALUE;
 		}
 		return time;
 	}
-	public ArrayList<Packman> getArr() {
-		return arr;
+	public Game getGame() {
+		return game;
 	}
-	public void setArr(ArrayList<Packman> arr) {
-		this.arr = arr;
-	}
-	public ArrayList<Fruit> getArray() {
-		return array;
-	}
-	public void setArray(ArrayList<Fruit> array) {
-		this.array = array;
+	public void setGame(Game game) {
+		this.game = game;
 	}
 }

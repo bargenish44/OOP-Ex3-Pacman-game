@@ -135,14 +135,12 @@ public class resize implements ActionListener{
 				try {
 					speed=Double.parseDouble(test1);
 				}catch (NullPointerException n) {ans=false;}
-				//catch(NumberFormatException ex) {speed=-1;}
 				catch(Exception a) {speed=-1;}
 				while(speed<=0&&ans) {
 					test1= JOptionPane.showInputDialog("Please input packman speed(larger than 0) : ");	
 					try {
 						speed=Double.parseDouble(test1);
 					}catch (NullPointerException n) {ans=false;}
-					//catch(NumberFormatException ex) {speed=-1;}
 					catch(Exception a) {speed=-1;}
 				}
 				if(ans) {
@@ -192,134 +190,158 @@ public class resize implements ActionListener{
 				boolean ans2=true;
 				try {
 					weight=Double.parseDouble(test1);
-					catch(NullPointerException n) {ans=false;}
+				}catch(NullPointerException n) {ans=false;}
+				catch(Exception a) {weight=-1;}
+				while(weight<=0&&ans) {
+					test1= JOptionPane.showInputDialog("Please input fruit weight(larger than 0) : ");
+					try {
+						weight=Double.parseDouble(test1);
+					}catch (NullPointerException n) {ans=false;}
 					catch(Exception a) {weight=-1;}
-					while(weight<=0&&ans) {
-						test1= JOptionPane.showInputDialog("Please input fruit weight(larger than 0) : ");
-						try {
-							weight=Double.parseDouble(test1);
-						}catch (NullPointerException n) {ans=false;}
-						catch(Exception a) {weight=-1;}
-					}
-					if(ans) {
-						String test2=JOptionPane.showInputDialog("Please input fruit high  : ");
+				}
+				if(ans) {
+					String test2=JOptionPane.showInputDialog("Please input fruit high  : ");
+					try {
+						high=Double.parseDouble(test2);
+					}catch (NullPointerException n) {ans=false;}
+					catch(Exception a) {ans2=false;}
+					while(!ans2&&ans) {
+						test2= JOptionPane.showInputDialog("Please input valid packman high  : ");
 						try {
 							high=Double.parseDouble(test2);
 						}catch (NullPointerException n) {ans=false;}
 						catch(Exception a) {ans2=false;}
-						while(!ans2&&ans) {
-							test2= JOptionPane.showInputDialog("Please input valid packman high  : ");
-							try {
-								high=Double.parseDouble(test2);
-							}catch (NullPointerException n) {ans=false;}
-							catch(Exception a) {ans2=false;}
-						}
 					}
-					if(ans) {
-						Point3D p=PixelToCoords(x, y,high);
-						Fruitarr.add(new Fruit(counter,p.x(),p.y(),high,weight));
-						counter++;
-						repaint();			
-					}
-					else
-						System.out.println("you quit before crete new fruit");
 				}
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
+				if(ans) {
+					Point3D p=PixelToCoords(x, y,high);
+					Fruitarr.add(new Fruit(counter,p.x(),p.y(),high,weight));
+					counter++;
+					repaint();			
+				}
+				else
+					System.out.println("you quit before crete new fruit");
 			}
 		}
 		@Override
-		public void actionPerformed(ActionEvent e) {
-			if(e.getSource()==load) {
-				System.out.println("load");
-				JFileChooser fileChooser = new JFileChooser();
-				int returnValue = fileChooser.showOpenDialog(null);
-				if (returnValue == JFileChooser.APPROVE_OPTION) {
-					File selectedFile = fileChooser.getSelectedFile();
-					Game g=new Game(Game.load(selectedFile.toString()));
-					Packmanarr=g.getArr();
-					Fruitarr=g.getArray();
-					System.out.println(Fruitarr.size());
-					System.out.println(Packmanarr.size());
-				}
-			}
-			if(e.getSource()==save) {
-				System.out.println("save");
-				Game.save(new Game(Packmanarr,Fruitarr));
-			}
-			if(e.getSource()==run) {
-				System.out.println("run");
-				//			ans=true;
-				Packmanarrtemp=Packmanarr;
-				Fruitarrtemp=Fruitarr;
-				Path p=new Path(Packmanarr, Fruitarr);
-				ShortestPathAlg s=new ShortestPathAlg(p);
-				System.out.println(s.Shortalgo(p));
-				Packmanarr=s.getArr();
-				Fruitarr=s.getArray();
-				//Fruitarr=Fruitarrtemp;
-			}
-			if(e.getSource()==how_to_run)
-				JOptionPane.showMessageDialog(null, "For new Packman pressed left click on mouse on the place in the map that you want"
-						+ ",\nFor new Fruit pressed right click on mouse on the place in the map that you want,"
-						+ "\nFor run the game pressed on run button on menu under option,"
-						+ "\nIf you want to go back before you run the game click clear button on menu under option.",
-						"How to play", JOptionPane.PLAIN_MESSAGE);
-			if(e.getSource()==about_the_game) {
-				JOptionPane.showMessageDialog(null, "This is a packman game:\n"
-						+ "The purpose is to eat all the fruit \n"
-						+ "The borad game is map, while the game start you can see on kml the path of the packmans and it"
-						+ " prints the min time that we make our packmans eat all the fruit on board."
-						+ " \nCreated & Designed by :\nBar Genish and Elyashiv Deri." ,
-						"About the game", JOptionPane.PLAIN_MESSAGE);
-			}
-			if(e.getSource()==clear) {//לסדר שחזרו למקום שלהם
-				System.out.println("clear");
-				Fruitarr=Fruitarrtemp;
-				Packmanarr=Packmanarrtemp;
-				//Packmanarr=Packmanarrtemp;
-			}
-		}
-		Point3D leftUp = new Point3D(32.105770,  35.202469);
-		Point3D leftDown = new Point3D(32.101899, 35.202469);
-		Point3D RightUp = new Point3D(32.105770 , 35.211588);
-		Point3D RightDown = new Point3D(32.101899, 35.211588);
-		public Point3D PixelToCoords(int x, int y,double high) {
-			double widthPixel=width;
-			double HeightPixel=hight;
-			double YCoords = (((HeightPixel-(double)y)*35.211588)+((double)y*35.202469))/HeightPixel;
-			double XCoords = (((widthPixel-(double)x)*32.101899)+((double)x*32.105770))/widthPixel;
-			Point3D p2=new Point3D(XCoords,YCoords,high);
-			System.out.println(p2.toString());
-			return p2;
-		}
-		public Point3D CoordsToPixel(Point3D p) {
-			double widthPixel=width;
-			double HeightPixel=hight;
-			int widthcoords=(int) (widthPixel*((p.x()-32.101899)/(32.105770-32.101899)));
-			int Heightcoords=(int) (HeightPixel*(35.211588-p.y())/((35.211588-35.202469)));
-			Point3D p2=new Point3D(widthcoords,Heightcoords,p.z());
-			return p2;
+		public void mouseEntered(MouseEvent e) {
 		}
 
-		//חישוב המרחק
-		public double Distance_IN_Pixels(Point3D p1, Point3D p2) {
-			Point3D ans_X =  PixelToCoords(p1.ix(),p1.iy(),p1.z());
-			Point3D ans_Y =  PixelToCoords(p2.ix(),p2.iy(),p1.z());
-			double answer = ans_X.distance3D(ans_Y);
-			return answer;
+		@Override
+		public void mouseExited(MouseEvent e) {
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
 		}
 	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==load) {
+			System.out.println("load");
+			JFileChooser fileChooser = new JFileChooser();
+			int returnValue = fileChooser.showOpenDialog(null);
+			if (returnValue == JFileChooser.APPROVE_OPTION) {
+				File selectedFile = fileChooser.getSelectedFile();
+				Game g=new Game(Game.load(selectedFile.toString()));
+				Packmanarr=g.getArr();
+				Fruitarr=g.getArray();
+				System.out.println(Fruitarr.size());
+				System.out.println(Packmanarr.size());
+			}
+		}
+		if(e.getSource()==save) {
+			System.out.println("save");
+			Game.save(new Game(Packmanarr,Fruitarr));
+		}
+		if(e.getSource()==run) {
+			System.out.println("run");
+			//			ans=true;
+			Packmanarrtemp=Packmanarr;
+			Fruitarrtemp=Fruitarr;
+			Game g=new Game(Packmanarr, Fruitarr);
+			ShortestPathAlg s=new ShortestPathAlg(g);
+			System.out.println(s.Shortalgo(g));
+			Packmanarr=g.getArr();
+			Fruitarr=g.getArray();
+			//Fruitarr=Fruitarrtemp;
+		}
+		if(e.getSource()==how_to_run)
+			JOptionPane.showMessageDialog(null, "For new Packman pressed left click on mouse on the place in the map that you want"
+					+ ",\nFor new Fruit pressed right click on mouse on the place in the map that you want,"
+					+ "\nFor run the game pressed on run button on menu under option,"
+					+ "\nIf you want to go back before you run the game click clear button on menu under option.",
+					"How to play", JOptionPane.PLAIN_MESSAGE);
+		if(e.getSource()==about_the_game) {
+			JOptionPane.showMessageDialog(null, "This is a packman game:\n"
+					+ "The purpose is to eat all the fruit \n"
+					+ "The borad game is map, while the game start you can see on kml the path of the packmans and it"
+					+ " prints the min time that we make our packmans eat all the fruit on board."
+					+ " \nCreated & Designed by :\nBar Genish and Elyashiv Deri." ,
+					"About the game", JOptionPane.PLAIN_MESSAGE);
+		}
+		if(e.getSource()==clear) {//לסדר שחזרו למקום שלהם
+			System.out.println("clear");
+			Fruitarr=Fruitarrtemp;
+			Packmanarr=Packmanarrtemp;
+			//Packmanarr=Packmanarrtemp;
+		}
+	}
+
+	Point3D leftUp = new Point3D(32.105770,  35.202469);
+	Point3D leftDown = new Point3D(32.101899, 35.202469);
+	Point3D RightUp = new Point3D(32.105770 , 35.211588);
+	Point3D RightDown = new Point3D(32.101899, 35.211588);
+	public Point3D PixelToCoords(int x, int y,double high) {
+		double widthPixel=width;
+		double HeightPixel=hight;
+		double YCoords = (((HeightPixel-(double)y)*35.211588)+((double)y*35.202469))/HeightPixel;
+		double XCoords = (((widthPixel-(double)x)*32.101899)+((double)x*32.105770))/widthPixel;
+		Point3D p2=new Point3D(XCoords,YCoords,high);
+		System.out.println(p2.toString());
+		return p2;
+	}
+	public Point3D CoordsToPixel(Point3D p) {
+		double widthPixel=width;
+		double HeightPixel=hight;
+		int widthcoords=(int) (widthPixel*((p.x()-32.101899)/(32.105770-32.101899)));
+		int Heightcoords=(int) (HeightPixel*(35.211588-p.y())/((35.211588-35.202469)));
+		Point3D p2=new Point3D(widthcoords,Heightcoords,p.z());
+		return p2;
+	}
+	final int R = 6371;
+	public double Distance_IN_Pixels(Point3D p1, Point3D p2) {
+		final int R = 6371; // Radius of the earth
+		double latDistance = Math.toRadians(p2.x() - p1.x());
+		double lonDistance = Math.toRadians(p2.y() - p1.y());
+		double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)
+				+ Math.cos(Math.toRadians(p1.x())) * Math.cos(Math.toRadians(p2.x()))
+				* Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
+		double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+		double distance = R * c * 1000; // convert to meters
+		double height = p1.z() - p2.z();
+		distance = Math.pow(distance, 2) + Math.pow(height, 2);
+		return Math.sqrt(distance);
+	}
+	public  double[] azimuth_elevation_dist(Point3D gps0, Point3D gps1) {
+		double [] ans = {0,0,0};
+		ans[0] = gps0.north_angle(gps1);
+		ans[1] = gps0.up_angle(gps1); 
+		ans[2] =(distance3d(gps0, gps1));
+		return ans;
+	}
+	public double distance3d(Point3D gps0, Point3D gps1) {
+		double LonNorm=Math.cos(gps0.x()*Math.PI/180);
+		double diff = gps1.x()-gps0.x();
+		double radian = (diff*Math.PI)/180;
+		double tometer1 = Math.sin(radian)*R*1000;
+		double diff2 = gps1.y()-gps0.y();
+		double radian2 = (diff2*Math.PI)/180;
+		double tometer2 = Math.sin(radian2)*R*1000*LonNorm;
+		return Math.sqrt((tometer1*tometer1) + (tometer2*tometer2));
+	}
+}

@@ -1,45 +1,37 @@
 package Geom;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-
 import Geom.Point3D;
-import Map.Fruit;
-import Map.Game;
-import Map.Packman;
 /**
  * This class represents a path- arraylist of 3D point in space.
  * @author Bar Genish
  * @author Elyashiv Deri
  */
 public class Path{
-	private ArrayList<Packman>packarr=new ArrayList<Packman>();
-	private ArrayList<Fruit>fruitarr=new ArrayList<Fruit>();
+	private ArrayList<Point3D>arr=new ArrayList<Point3D>();
 
-	public Path(ArrayList<Packman> a, ArrayList<Fruit> b) {//constractor
-		setPackarr(a);
-		setFruitarr(b);
+	public Path() {//constractor
+		arr=new ArrayList<Point3D>();
 	}
-	public Path(Game g) {
-		setPackarr(g.getArr());
-		setFruitarr(g.getArray());
+	public Path( ArrayList<Point3D>arr) {
+		setArr(arr);
 	}
 	public Path(Path p) {//constractor
-		setPackarr(p.getPackarr());
-		setFruitarr(p.getFruitarr());
+		setArr(p.arr);
 	}
 	//getters and setters
-	public ArrayList<Packman> getPackarr() {
-		return packarr;
+	public ArrayList<Point3D> getArr() {
+		return arr;
 	}
-	public void setPackarr(ArrayList<Packman> packarr) {
-		this.packarr = packarr;
+	public void setArr(ArrayList<Point3D> array) {
+		arr = array;
 	}
-	public ArrayList<Fruit> getFruitarr() {
-		return fruitarr;
+	public double GetDist() {
+		double dist=0;
+		if(arr.size()<=1)return 0;
+		for(int i=0;i<arr.size()-1;i++) {
+			dist+=arr.get(i).distance3D(arr.get(i+1));
+		}
+		return dist+arr.get(arr.size()-2).distance3D(arr.get(arr.size()-1));
 	}
-	public void setFruitarr(ArrayList<Fruit> fruitarr) {
-		this.fruitarr = fruitarr;
-	}
-
 }
