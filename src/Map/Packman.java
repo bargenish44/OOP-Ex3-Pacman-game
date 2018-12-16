@@ -9,6 +9,7 @@ public class Packman {
 	private double speed;
 	private double Radius;
 	private Path path;
+	private double score=0;
 
 	public Packman(int ID,double x,double y,double z, double speed, double Radius) {
 		setOrinet(new Point3D(x, y, z));
@@ -58,5 +59,14 @@ public class Packman {
 	}
 	public void setPath(Path path) {
 		this.path = path;
+	}
+	public double getScore() {
+		return score;
+	}
+	public void setScore(double score) {
+		this.score += score;
+	}
+	public void resetScore() {
+		this.score=0;
 	}
 }
