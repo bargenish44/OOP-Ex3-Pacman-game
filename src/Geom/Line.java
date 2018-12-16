@@ -1,5 +1,7 @@
 package Geom;
 
+import Coords.Geom_element;
+
 public class Line implements Geom_element {
 	/**
 	 * This class represents a line-2 points of 3D point in space.
@@ -72,8 +74,10 @@ public class Line implements Geom_element {
 	public Point3D getEnd() {
 		return end;
 	}
-
 	public void setEnd(Point3D end) {
 		this.end = end;
+	}
+	public String toString() {
+		return "The line start at Point:("+start+") and end at point:("+end+")";
 	}
 }

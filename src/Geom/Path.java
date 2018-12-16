@@ -29,9 +29,11 @@ public class Path{
 	public double GetDist() {
 		double dist=0;
 		if(arr.size()<=1)return 0;
-		for(int i=0;i<arr.size()-1;i++) {
-			dist+=arr.get(i).distance3D(arr.get(i+1));
+		for(int i=0;i<arr.size();i++) {
+			try {
+				dist+=arr.get(i).distance3D(arr.get(i+1));
+			}catch(IndexOutOfBoundsException e) {}
 		}
-		return dist+arr.get(arr.size()-2).distance3D(arr.get(arr.size()-1));
+		return dist;
 	}
 }

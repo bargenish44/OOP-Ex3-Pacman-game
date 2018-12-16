@@ -35,6 +35,10 @@ public class Circle implements Geom_element {
 		if(dist<=0)return 0;
 		return dist;
 	}
+	public static void main(String[] args) {
+		Geom.Circle c=new Geom.Circle(new Point3D(9,3,0),5);
+		System.out.println(c);
+	}
 	/** 
 	 * return the distance2d between two points3d as double.
 	 * */
