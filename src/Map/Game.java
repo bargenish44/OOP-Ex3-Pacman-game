@@ -34,7 +34,9 @@ public class Game {
 			s+="P,"+arr.get(i).toString()+"\n";
 		}
 		for(int i=0;i<array.size();i++) {
-			s+="F,"+array.get(i).toString()+"\n";
+			try {
+				s+="F,"+array.get(i).toString()+"\n";
+			}catch(IndexOutOfBoundsException e) {}
 		}
 		return s;
 	}

@@ -9,7 +9,7 @@ public class gameTimer {
 	
 	public void startTimer(TimerTask task) {
 		_timer = new Timer();
-		_timer.scheduleAtFixedRate(task, 0, 10);
+		_timer.scheduleAtFixedRate(task, 0, 5);
 	}
 	public void endTimer() {
 		_timer.cancel();

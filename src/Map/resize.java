@@ -14,6 +14,7 @@ public class resize implements ActionListener{
 	private ArrayList<Fruit>Fruitarr=new ArrayList<>();
 	private ArrayList<Packman>Packmanarrtemp=new ArrayList<>();
 	private ArrayList<Fruit>Fruitarrtemp=new ArrayList<>();
+	private double[] times;
 	private boolean ans=false;
 	private ImageIcon packmanimage;
 	private ImageIcon cherryimage;
@@ -27,6 +28,7 @@ public class resize implements ActionListener{
 	private JMenuItem how_to_run;
 	private JMenuItem about_the_game;
 	private JMenuItem clear;
+	private JMenuItem Save_as_kml;
 	private JMenu menu2;
 	private JMenu menu;
 	private Image img;
@@ -35,7 +37,7 @@ public class resize implements ActionListener{
 	private gameTimer timer;
 	private String str="";
 	private JFrame frame;
-	
+
 	public static void main(String[] args) {
 		new resize();
 	}
@@ -58,6 +60,9 @@ public class resize implements ActionListener{
 			clear=new JMenuItem("Clear");
 			clear.addActionListener(this);
 			menu2.add(clear);
+			Save_as_kml=new JMenuItem("Save as kml");
+			Save_as_kml.addActionListener(this);
+			menu2.add(Save_as_kml);
 			load=new JMenuItem("Load");
 			load.addActionListener(this);
 			menu2.add(load);
@@ -76,7 +81,7 @@ public class resize implements ActionListener{
 			frame.setLocationRelativeTo(null);
 			frame.setVisible(true);
 			timer = new gameTimer();
-			
+
 		} catch (IOException | HeadlessException exp) {
 			exp.printStackTrace();
 		}
@@ -292,7 +297,7 @@ public class resize implements ActionListener{
 			Game.save(new Game(Packmanarr,Fruitarr));
 		}
 		if(e.getSource()==run) {
-			
+
 			System.out.println("run");
 			ans=true;
 			Packmanarrtemp=Packmanarr;
@@ -334,9 +339,12 @@ public class resize implements ActionListener{
 			Fruitarr=Fruitarrtemp;
 			Packmanarr=Packmanarrtemp;
 			//Packmanarr=Packmanarrtemp;
-			//ans=false;
+			ans=false;
 		}
-				
+		if(e.getSource()==Save_as_kml) {
+			System.out.println("Save as kml");
+		}
+
 		frame.repaint();
 	}
 

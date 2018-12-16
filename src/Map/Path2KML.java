@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class Path2KML {
-	private String str;
+	private String str="";
 	public void path2kml(Game g) {
 		String fileName="game2kml"+".csv";
 		String newfilepath="data\\"+fileName;
@@ -72,7 +72,6 @@ public class Path2KML {
 		String cvsSplitBy = ",";
 		try (BufferedReader br = new BufferedReader(new FileReader(csvPath))) 
 		{
-			line=br.readLine();
 			line=br.readLine();
 			while ((line = br.readLine()) != null) 
 			{
