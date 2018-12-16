@@ -3,11 +3,10 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.TimerTask;
 import javax.imageio.ImageIO;
 import java.awt.event.*;
 import javax.swing.*;
-
-import Geom.Path;
 import Geom.Point3D;
 
 public class resize implements ActionListener{
@@ -15,10 +14,11 @@ public class resize implements ActionListener{
 	private ArrayList<Fruit>Fruitarr=new ArrayList<>();
 	private ArrayList<Packman>Packmanarrtemp=new ArrayList<>();
 	private ArrayList<Fruit>Fruitarrtemp=new ArrayList<>();
-	//	private boolean ans=false;
+	private boolean ans=false;
 	private ImageIcon packmanimage;
 	private ImageIcon cherryimage;
 	private int counter=0;
+	private Color[] colors = {Color.BLUE,Color.GREEN,Color.ORANGE,Color.red,Color.YELLOW,Color.GRAY};
 	private int count=0;
 	private JMenuItem load;
 	private JMenuBar menubar;
@@ -32,6 +32,10 @@ public class resize implements ActionListener{
 	private Image img;
 	private int width;
 	private int hight;
+	private gameTimer timer;
+	private String str="";
+	private JFrame frame;
+	
 	public static void main(String[] args) {
 		new resize();
 	}
@@ -40,7 +44,7 @@ public class resize implements ActionListener{
 			img = ImageIO.read(new File("Ariel1.png"));
 			packmanimage=new ImageIcon("pacman.jpg");
 			cherryimage=new ImageIcon("cherry.png");
-			JFrame frame = new JFrame("OOP-EX3");
+			frame = new JFrame("OOP-EX3");
 			menubar = new JMenuBar();
 			menu = new JMenu("Help");
 			menubar.add(menu);
@@ -71,20 +75,17 @@ public class resize implements ActionListener{
 			frame.pack();
 			frame.setLocationRelativeTo(null);
 			frame.setVisible(true);
-
+			timer = new gameTimer();
+			
 		} catch (IOException | HeadlessException exp) {
 			exp.printStackTrace();
 		}
 	}
 
-	class ImagePanel extends JPanel implements MouseListener {
+	class ImagePanel extends JPanel implements MouseListener{
 
 		private static final long serialVersionUID = 1L;
-		double lat=0;
-		double lon=0;
 		private Image img;
-		double x=-1;
-		double y=-1;
 		public ImagePanel(String img) {
 			this(new ImageIcon(img).getImage());
 			this.addMouseListener(this); 
@@ -118,9 +119,35 @@ public class resize implements ActionListener{
 				Point3D p=CoordsToPixel(Fruitarr.get(i).getOrient());
 				g.drawImage(cherryimage.getImage(), p.ix()-25, p.iy()-25,50,50,null);
 			}
-			//			if(ans) {
-			//				g.drawLine(Packmanarr.get(0).getOrinet().ix(), Packmanarr.get(0).getOrinet().iy(), Fruitarr.get(0).getOrient().ix(), Fruitarr.get(0).getOrient().iy());
-			//			}
+			if(ans) {//להדפיס מרחק של כל פקמן
+				int count=0;
+				//double dist=0;
+				for(int i=0;i<Packmanarr.size();i++) {
+					Packman tmp=Packmanarr.get(i);
+					Point3D p=CoordsToPixel(tmp.getOrinet());
+					tmp.setOrinet(p);
+					if(tmp.getPath().getArr().size()>1) {
+						for(int j=0;j<tmp.getPath().getArr().size();j++) {
+							if(count==7)
+								count=0;
+							Point3D p1=CoordsToPixel(tmp.getPath().getArr().get(j));
+							try {
+								Point3D p2=CoordsToPixel(tmp.getPath().getArr().get(j+1));
+								g.setColor(colors[count]);
+								g.drawLine(p1.ix(), p1.iy(),p2.ix(),p2.iy());
+								Packmanarr.get(i).setOrinet(p2);
+								//dist+=p1.distance3D(p2);
+							}catch(IndexOutOfBoundsException e) {}
+						}
+						count++;
+						//str+=time.getActionCommand();
+						//System.out.println(dist+" count is: "+tmp.getID());
+					}
+					//dist=0;
+				}
+				//time.stop();
+				//System.out.println(str);
+			}
 		}
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -238,6 +265,11 @@ public class resize implements ActionListener{
 		@Override
 		public void mouseReleased(MouseEvent e) {
 		}
+		//		@Override
+		//		public void actionPerformed(ActionEvent arg0) {
+		//			str+=new Game(Packmanarr,Fruitarr).toString();
+		//			System.out.println("1");
+		//		}
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -252,6 +284,7 @@ public class resize implements ActionListener{
 				Fruitarr=g.getArray();
 				System.out.println(Fruitarr.size());
 				System.out.println(Packmanarr.size());
+				//ans=false;
 			}
 		}
 		if(e.getSource()==save) {
@@ -259,16 +292,28 @@ public class resize implements ActionListener{
 			Game.save(new Game(Packmanarr,Fruitarr));
 		}
 		if(e.getSource()==run) {
+			
 			System.out.println("run");
-			//			ans=true;
+			ans=true;
 			Packmanarrtemp=Packmanarr;
 			Fruitarrtemp=Fruitarr;
 			Game g=new Game(Packmanarr, Fruitarr);
 			ShortestPathAlg s=new ShortestPathAlg(g);
+			TimerTask task = new TimerTask() {
+				@Override
+				public void run() {
+					Game game=new Game(Packmanarr,Fruitarr);
+					str+=game.toString();
+					frame.repaint();
+				}
+			};
+			timer.startTimer(task);
 			System.out.println(s.Shortalgo(g));
+			timer.endTimer();
 			Packmanarr=g.getArr();
 			Fruitarr=g.getArray();
 			//Fruitarr=Fruitarrtemp;
+			System.out.println(str);
 		}
 		if(e.getSource()==how_to_run)
 			JOptionPane.showMessageDialog(null, "For new Packman pressed left click on mouse on the place in the map that you want"
@@ -289,7 +334,10 @@ public class resize implements ActionListener{
 			Fruitarr=Fruitarrtemp;
 			Packmanarr=Packmanarrtemp;
 			//Packmanarr=Packmanarrtemp;
+			//ans=false;
 		}
+				
+		frame.repaint();
 	}
 
 	Point3D leftUp = new Point3D(32.105770,  35.202469);
@@ -313,7 +361,7 @@ public class resize implements ActionListener{
 		Point3D p2=new Point3D(widthcoords,Heightcoords,p.z());
 		return p2;
 	}
-	final int R = 6371;
+	final static int R = 6371;
 	public double Distance_IN_Pixels(Point3D p1, Point3D p2) {
 		final int R = 6371; // Radius of the earth
 		double latDistance = Math.toRadians(p2.x() - p1.x());
@@ -334,7 +382,7 @@ public class resize implements ActionListener{
 		ans[2] =(distance3d(gps0, gps1));
 		return ans;
 	}
-	public double distance3d(Point3D gps0, Point3D gps1) {
+	public static double distance3d(Point3D gps0, Point3D gps1) {
 		double LonNorm=Math.cos(gps0.x()*Math.PI/180);
 		double diff = gps1.x()-gps0.x();
 		double radian = (diff*Math.PI)/180;

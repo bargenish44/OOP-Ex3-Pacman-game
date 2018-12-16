@@ -2,7 +2,6 @@ package Map;
 
 import java.util.ArrayList;
 import Geom.Circle;
-import Geom.Path;
 
 public class ShortestPathAlg {
 	private Game game;
@@ -15,8 +14,8 @@ public class ShortestPathAlg {
 
 	private double Calculatetime(Packman p,Fruit f) {
 		Circle c=new Circle(p.getOrinet(),p.getRadius());
-		double dist=c.distance3D(f.getOrient());
-		if(dist==0)return 0;
+		double dist=resize.distance3d(c.get_cen(),f.getOrient())-c.get_radius();
+		if(dist<=0)return 0;
 		return dist/p.getSpeed();
 	}
 	public double Shortalgo(Game g) {
@@ -43,6 +42,7 @@ public class ShortestPathAlg {
 			}
 			fruittmp=g.getArray().get(fruitindex);
 			time+=min;
+			g.getArr().get(packmanindex).getPath().getArr().add(fruittmp.getOrient());
 			g.getArray().remove(fruitindex);
 			g.getArr().get(packmanindex).setOrinet(fruittmp.getOrient());//לשנות בהתאם לזויית ולמצוא נקודה מדויקת
 			min=Double.MAX_VALUE;

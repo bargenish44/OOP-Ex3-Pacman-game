@@ -29,7 +29,7 @@ public class Circle implements Geom_element {
 	public double distance3D(Point3D p) {
 		double dist=cen.distance3D(p);
 		dist-=radius;
-		if(dist<0)return 0;
+		if(dist<=0)return 0;
 		return dist;
 	}
 	/** 

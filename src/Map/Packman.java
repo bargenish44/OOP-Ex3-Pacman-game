@@ -1,5 +1,6 @@
 package Map;
 
+import Geom.Path;
 import Geom.Point3D;
 
 public class Packman {
@@ -7,18 +8,23 @@ public class Packman {
 	private Point3D orinet;
 	private double speed;
 	private double Radius;
+	private Path path;
 
 	public Packman(int ID,double x,double y,double z, double speed, double Radius) {
 		setOrinet(new Point3D(x, y, z));
 		setSpeed(speed);
 		setRadius(Radius);
 		setID(ID);
+		setPath(new Path());
+		path.getArr().add(getOrinet());
 	}
 	public Packman(int ID,Point3D p,double spped,double Raduis) {
 		setID(ID);
 		setOrinet(p);
 		setSpeed(spped);
 		setRadius(Raduis);
+		setPath(new Path());
+		path.getArr().add(getOrinet());
 	}
 	public Point3D getOrinet() {
 		return orinet;
@@ -46,5 +52,11 @@ public class Packman {
 	}
 	public String toString() {
 		return ID+","+orinet.toString()+","+speed+","+Radius;
+	}
+	public Path getPath() {
+		return path;
+	}
+	public void setPath(Path path) {
+		this.path = path;
 	}
 }
