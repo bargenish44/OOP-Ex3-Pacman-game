@@ -1,4 +1,7 @@
 package Geom;
+
+import Coords.Geom_element;
+
 /**
  * This class represents Circle.
  * @author Bar Genish

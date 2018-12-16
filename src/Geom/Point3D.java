@@ -2,6 +2,8 @@ package Geom;
 
 import java.io.Serializable;
 
+import Coords.Geom_element;
+
 public class Point3D implements Geom_element, Serializable {
 
 	/**
