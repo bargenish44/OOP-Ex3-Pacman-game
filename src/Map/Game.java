@@ -82,7 +82,7 @@ public class Game {
 		}
 		pw.write(g.toString());
 		pw.close();
-		System.out.println("saved");
+		System.out.println("saved: "+newfilepath);
 	}
 	public ArrayList<Packman> getArr() {
 		return arr;
