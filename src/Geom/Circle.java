@@ -1,5 +1,7 @@
 package Geom;
 
+import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
+
 import Coords.Geom_element;
 
 /**
@@ -31,13 +33,8 @@ public class Circle implements Geom_element {
 	@Override
 	public double distance3D(Point3D p) {
 		double dist=cen.distance3D(p);
-		dist-=radius;
-		if(dist<=0)return 0;
-		return dist;
-	}
-	public static void main(String[] args) {
-		Geom.Circle c=new Geom.Circle(new Point3D(9,3,0),5);
-		System.out.println(c);
+		if(dist<=radius)return 0;
+		return dist-radius;
 	}
 	/** 
 	 * return the distance2d between two points3d as double.
@@ -49,7 +46,7 @@ public class Circle implements Geom_element {
 		if(dist<0)return 0;
 		return dist;
 	}
-//setters and getters
+	//setters and getters
 	public Point3D get_cen() {
 		return cen;
 	}

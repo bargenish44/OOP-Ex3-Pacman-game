@@ -14,7 +14,7 @@ public class MyFrame implements ActionListener{
 	private ArrayList<Fruit>Fruitarr=new ArrayList<>();
 	private ArrayList<Packman>Packmanarrtemp=new ArrayList<>();
 	private ArrayList<Fruit>Fruitarrtemp=new ArrayList<>();
-	private double[] times;
+	//	private double[] times;
 	private boolean ans=false;
 	private ImageIcon packmanimage;
 	private ImageIcon cherryimage;
@@ -35,7 +35,7 @@ public class MyFrame implements ActionListener{
 	private int width;
 	private int hight;
 	private gameTimer timer;
-	private String str="";
+	//	private String str="";
 	private JFrame frame;
 	private Map map;
 
@@ -297,30 +297,36 @@ public class MyFrame implements ActionListener{
 			Game.save(new Game(Packmanarr,Fruitarr));
 		}
 		if(e.getSource()==run) {
-
 			System.out.println("run");
 			ans=true;
-			Packmanarrtemp.clear();
+			//			Packmanarrtemp.clear();
 			Packmanarrtemp.addAll(Packmanarr);
-			Fruitarrtemp.clear();
+			//			Fruitarrtemp.clear();
 			Fruitarrtemp.addAll(Fruitarr);
 			Game g=new Game(Packmanarr, Fruitarr);
+			//			TimerTask task = new TimerTask() {
+			//				@Override
+			//				public void run() {
+			//					//					try {
+			//					//						Thread.sleep(10);
+			//					//					} catch (InterruptedException e) {
+			//					//						e.printStackTrace();
+			//					//					}
+			//					for(int j=0;j<2000000000;j++) {
+			//						for(int k=0;k<2000000000;k++) {
+			//						}
+			//					}
+			//					frame.repaint();
+			//				}
+			//			};
+			//			timer.startTimer(task);
 			ShortestPathAlg s=new ShortestPathAlg(g);
-			TimerTask task = new TimerTask() {
-				@Override
-				public void run() {
-					Game game=new Game(Packmanarr,Fruitarr);
-					str+=game.toString();
-					frame.repaint();
-				}
-			};
-			timer.startTimer(task);
 			System.out.println(s.Shortalgo(g));
-			timer.endTimer();
+			//timer.endTimer();
 			Packmanarr=g.getArr();
 			Fruitarr=g.getArray();
 			//Fruitarr=Fruitarrtemp;
-			System.out.println(str);
+			//			System.out.println(str);
 		}
 		if(e.getSource()==how_to_run)
 			JOptionPane.showMessageDialog(null, "For new Packman pressed left click on mouse on the place in the map that you want"
