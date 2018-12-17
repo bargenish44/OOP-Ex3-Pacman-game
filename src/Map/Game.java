@@ -15,7 +15,7 @@ import Geom.Point3D;
 public class Game {
 	private ArrayList<Fruit> array=new ArrayList<>();
 	private ArrayList<Packman>arr=new ArrayList<>();
-	public static String times;//for the test.
+	public static String GameName;//for the test.
 	public Game(ArrayList<Packman>arr,ArrayList<Fruit> array) {
 		this.arr=arr;	
 		this.array=array;
@@ -67,8 +67,8 @@ public class Game {
 	public static void save(Game g) {
 		LocalTime s=LocalTime.now();
 		String time=s.toString().replaceAll(":", ".");
-		times=time;
 		String fileName="game"+time+".csv";
+		GameName=fileName;
 		String newfilepath="data\\"+fileName;
 		PrintWriter pw=null;
 		try 

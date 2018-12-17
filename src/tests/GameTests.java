@@ -44,7 +44,7 @@ class GameTests {
 		array.add(f2);
 		Game g=new Game(arr, array);
 		Game.save(g);
-		Game g2=Game.load("data\\game"+g.times+".csv");
+		Game g2=Game.load("data\\"+g.GameName);
 		if(!g.toString().equals(g2.toString())) 
 			fail("load/save problem");
 	}
