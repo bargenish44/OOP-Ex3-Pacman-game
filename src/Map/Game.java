@@ -13,9 +13,9 @@ import java.util.ArrayList;
 import Geom.Point3D;
 
 public class Game {
-	public final String getPoint3D = null;
 	private ArrayList<Fruit> array=new ArrayList<>();
 	private ArrayList<Packman>arr=new ArrayList<>();
+	public static String times;//for the test.
 	public Game(ArrayList<Packman>arr,ArrayList<Fruit> array) {
 		this.arr=arr;	
 		this.array=array;
@@ -40,21 +40,6 @@ public class Game {
 		}
 		return s;
 	}
-	//	public static void main(String[] args) {
-	//		Packman p=new Packman(0,4, 2, 4, 4, 2);
-	//		Packman p2=new Packman(1,4, 2, 4, 4, 2);
-	//		Fruit f=new Fruit(0, 6, 6, 6, 6);
-	//		Fruit f2=new Fruit(1, 4, 6, 2, 6);
-	//		ArrayList<Packman>arr=new ArrayList<>();
-	//		ArrayList<Fruit> array=new ArrayList<>();
-	//		arr.add(p);
-	//		arr.add(p2);
-	//		array.add(f);
-	//		array.add(f2);
-	//		Game g=new Game(arr, array);
-	//		System.out.println(g.toString());
-	//		load("C:\\Users\\barge\\Desktop\\מונחה עצמים מטלה 3\\data\\game_1543684662657.csv");
-	//	}
 	public static Game load(String CsvFile) 
 	{
 		String line = "";
@@ -82,6 +67,7 @@ public class Game {
 	public static void save(Game g) {
 		LocalTime s=LocalTime.now();
 		String time=s.toString().replaceAll(":", ".");
+		times=time;
 		String fileName="game"+time+".csv";
 		String newfilepath="data\\"+fileName;
 		PrintWriter pw=null;
