@@ -38,6 +38,7 @@ public class MyFrame implements ActionListener{
 	//	private String str="";
 	private JFrame frame;
 	private Map map;
+	private boolean ans2=false;
 
 	public static void main(String[] args) {
 		new MyFrame();
@@ -140,6 +141,7 @@ public class MyFrame implements ActionListener{
 								Point3D p2=map.CoordsToPixel(tmp.getPath().getArr().get(j+1),width,hight);
 								g.setColor(colors[count]);
 								g.drawLine(p1.ix(), p1.iy(),p2.ix(),p2.iy());
+								System.out.println(p1.ix()+": p1x "+p1.iy()+": p1y "+p2.ix()+": p2x "+p2.iy()+": p2y .");
 								Packmanarr.get(i).setOrinet(p2);
 								//dist+=p1.distance3D(p2);
 							}catch(IndexOutOfBoundsException e) {}
@@ -150,6 +152,34 @@ public class MyFrame implements ActionListener{
 					}
 					//dist=0;
 				}
+				if(ans2) {
+					for(int i=0;i<Packmanarr.size();i++) {
+						for(int j=0;j<Packmanarr.get(i).getPath().getArr().size();j++){
+							//													TimerTask task = new TimerTask() {
+							//														@Override
+							//														public void run() {
+							//															frame.repaint();
+							//							try {
+							//								Thread.sleep(10000);
+							//							} catch (InterruptedException e) {
+							//								e.printStackTrace();
+							//							}
+							frame.repaint();
+							//														}
+							//						};
+							//													timer.startTimer(task);
+							Packmanarr.get(i).setOrinet(Packmanarr.get(i).getPath().getArr().get(j));
+							frame.repaint();
+							try {
+								Thread.sleep(20);
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+						}//timer.endTimer();
+						ans2=false;
+					}
+				}
+
 				//time.stop();
 				//System.out.println(str);
 			}
@@ -307,11 +337,12 @@ public class MyFrame implements ActionListener{
 			//			TimerTask task = new TimerTask() {
 			//				@Override
 			//				public void run() {
-			//					//					try {
-			//					//						Thread.sleep(10);
-			//					//					} catch (InterruptedException e) {
-			//					//						e.printStackTrace();
-			//					//					}
+			//					frame.repaint();
+			//					try {
+			//						Thread.sleep(1000);
+			//					} catch (InterruptedException e) {
+			//						e.printStackTrace();
+			//					}
 			//					for(int j=0;j<2000000000;j++) {
 			//						for(int k=0;k<2000000000;k++) {
 			//						}
@@ -322,9 +353,10 @@ public class MyFrame implements ActionListener{
 			//			timer.startTimer(task);
 			ShortestPathAlg s=new ShortestPathAlg(g);
 			System.out.println(s.Shortalgo(g));
-			//timer.endTimer();
+			//			timer.endTimer();
 			Packmanarr=g.getArr();
 			Fruitarr=g.getArray();
+			ans2=true;
 			//Fruitarr=Fruitarrtemp;
 			//			System.out.println(str);
 		}

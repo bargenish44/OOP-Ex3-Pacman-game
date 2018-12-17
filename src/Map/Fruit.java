@@ -1,11 +1,14 @@
 package Map;
 
+import java.sql.Time;
+
 import Geom.Point3D;
 
 public class Fruit {
 	private int ID;
 	private Point3D orient;
 	private double Weight;
+	private long dead;
 	public Fruit(int ID,double x,double y,double z, double weight) {
 		setID(ID);
 		setOrient(new Point3D(x, y,z));
@@ -36,5 +39,11 @@ public class Fruit {
 	}
 	public String toString() {
 		return ID+","+orient.toString()+","+Weight;
+	}
+	public long getDead() {
+		return dead;
+	}
+	public void setDead(long dead) {
+		this.dead = dead;
 	}
 }

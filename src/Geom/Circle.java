@@ -32,7 +32,7 @@ public class Circle implements Geom_element {
 	 * */
 	@Override
 	public double distance3D(Point3D p) {
-		double dist=cen.distance3D(p);
+		double dist=Map.Map.distance3d(cen, p);
 		if(dist<=radius)return 0;
 		return dist-radius;
 	}
