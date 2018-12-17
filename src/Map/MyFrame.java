@@ -300,8 +300,10 @@ public class MyFrame implements ActionListener{
 
 			System.out.println("run");
 			ans=true;
-			Packmanarrtemp=Packmanarr;
-			Fruitarrtemp=Fruitarr;
+			Packmanarrtemp.clear();
+			Packmanarrtemp.addAll(Packmanarr);
+			Fruitarrtemp.clear();
+			Fruitarrtemp.addAll(Fruitarr);
 			Game g=new Game(Packmanarr, Fruitarr);
 			ShortestPathAlg s=new ShortestPathAlg(g);
 			TimerTask task = new TimerTask() {
@@ -336,8 +338,10 @@ public class MyFrame implements ActionListener{
 		}
 		if(e.getSource()==clear) {//לסדר שחזרו למקום שלהם
 			System.out.println("clear");
-			Fruitarr=Fruitarrtemp;
-			Packmanarr=Packmanarrtemp;
+			Fruitarr.clear();
+			Fruitarr.addAll(Fruitarrtemp);
+			Packmanarr.clear();
+			Packmanarr.addAll(Packmanarrtemp);
 			//Packmanarr=Packmanarrtemp;
 			ans=false;
 		}

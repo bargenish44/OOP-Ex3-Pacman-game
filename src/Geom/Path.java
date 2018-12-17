@@ -24,7 +24,8 @@ public class Path{
 		return arr;
 	}
 	public void setArr(ArrayList<Point3D> array) {
-		arr = array;
+		arr.clear();
+		arr.addAll(array);
 	}
 	public double GetDist() {
 		double dist=0;

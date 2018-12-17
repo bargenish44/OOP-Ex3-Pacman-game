@@ -37,8 +37,8 @@ public class Map {//2 נקודות או 4? להחליט
 		return p2;
 	}
 	public Point3D CoordsToPixel(Point3D p,int width,int hight) {
-//		double widthPixel=this.getWidth();
-//		double HeightPixel=this.getHeight();
+		//		double widthPixel=this.getWidth();
+		//		double HeightPixel=this.getHeight();
 		int widthcoords=(int) (width*((p.x()-RightDown.x())/(leftUp.x()-RightDown.x())));
 		int Heightcoords=(int) (hight*(RightDown.y()-p.y())/((RightDown.y()-leftUp.y())));
 		Point3D p2=new Point3D(widthcoords,Heightcoords,p.z());
