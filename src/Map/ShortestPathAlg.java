@@ -1,7 +1,10 @@
 package Map;
 
 import java.util.ArrayList;
+
+import Coords.MyCoords;
 import Geom.Circle;
+import Geom.Point3D;
 import Map.Map;
 public class ShortestPathAlg {
 	private Game game;
@@ -41,11 +44,19 @@ public class ShortestPathAlg {
 				}
 			}
 			fruittmp=g.getArray().get(fruitindex);
-			time+=min;
 			g.getArr().get(packmanindex).setScore(g.getArray().get(fruitindex).getWeight());
-			g.getArr().get(packmanindex).getPath().getArr().add(fruittmp.getOrient());
+			Point3D p=calcvector(g.getArr().get(packmanindex).getOrinet(),fruittmp.getOrient());
+			p=normalvector(g.getArr().get(packmanindex).getOrinet(),p);
+			MyCoords my=new MyCoords(g.getArr().get(packmanindex).getOrinet());
+			Point3D temp;
+			while(min>0) {
+				temp=my.add(my.getPoint3D(), p);
+				g.getArr().get(packmanindex).getPath().getArr().add(temp);
+				g.getArr().get(packmanindex).setOrinet(temp);
+				min=Calculatetime(g.getArr().get(packmanindex),g.getArray().get(fruitindex));
+				time+=min;
+			}
 			g.getArray().remove(fruitindex);
-			g.getArr().get(packmanindex).setOrinet(fruittmp.getOrient());//לשנות בהתאם לזויית ולמצוא נקודה מדויקת
 			min=Double.MAX_VALUE;
 		}
 		return time;
@@ -55,5 +66,12 @@ public class ShortestPathAlg {
 	}
 	public void setGame(Game game) {
 		this.game = game;
+	}
+	public Point3D calcvector(Point3D p,Point3D p2) {
+		return new Point3D(p.x()-p2.x(),p.y()-p2.y(),p.z()-p2.z());
+	}
+	public Point3D normalvector(Point3D p,Point3D vector) {
+		double sum=vector.x()*vector.x()+vector.y()*vector.y()+vector.z()*vector.z();
+		return new Point3D(vector.x()/sum,vector.y()/sum,vector.z()/sum);
 	}
 }

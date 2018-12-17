@@ -38,7 +38,7 @@ public class Map {
 		double YCoords = (((hight-(double)y)*RightDown.y())+((double)y*leftUp.y()))/hight;
 		double XCoords = (((width-(double)x)*RightDown.x())+((double)x*leftUp.x()))/width;
 		Point3D p2=new Point3D(XCoords,YCoords,high);
-//		System.out.println(p2.toString());
+		//		System.out.println(p2.toString());
 		return p2;
 	}
 	public Point3D CoordsToPixel(Point3D p,int width,int hight) {
@@ -76,5 +76,12 @@ public class Map {
 		double radian2 = (diff2*Math.PI)/180;
 		double tometer2 = Math.sin(radian2)*R*1000*LonNorm;
 		return Math.sqrt((tometer1*tometer1) + (tometer2*tometer2));
+	}
+	public Point3D calcvector(Point3D p,Point3D p2) {
+		return new Point3D(p.x()-p2.x(),p.y()-p2.y(),p.z()-p2.z());
+	}
+	public Point3D normalvector(Point3D p,Point3D vector) {
+		double sum=vector.x()*vector.x()+vector.y()*vector.y()+vector.z()*vector.z();
+		return new Point3D(vector.x()/sum,vector.y()/sum,vector.z()/sum);
 	}
 }

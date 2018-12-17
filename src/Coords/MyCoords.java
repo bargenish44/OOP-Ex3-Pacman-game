@@ -21,7 +21,29 @@ import Coords.coords_converter;
 public class MyCoords implements coords_converter {
 
 	private double _x,_y,_z;
-
+	public MyCoords(Point3D p) {
+		_x=p.x();
+		_y=p.y();
+		_z=p.z();
+	}
+	public MyCoords(double x,double y, double z) {
+		_x=x;
+		_y=y;
+		_z=z;
+	}
+	public MyCoords() {
+		_x=0;
+		_y=0;
+		_z=0;
+	}
+	public Point3D getPoint3D() {
+		return new Point3D(_x,_y,_z);
+	}
+	public void setPoint3D(Point3D p) {
+		_x=p.x();
+		_y=p.y();
+		_z=p.z();
+	}
 	final static int world = 6371000;
 	/** computes a new point which is the gps point transformed by a 3D vector (in meters)
 	 * @param gps Point3D
@@ -127,13 +149,7 @@ public class MyCoords implements coords_converter {
 		double tometer2 = Math.sin(radian2)*world*LonNorm;
 
 		double diff3 = gps1.z()-gps0.z();
-
-
-
 		Point3D vector3d=new Point3D (tometer1 , tometer2, diff3);
-
-
-
 		return vector3d;
 
 	}
@@ -187,7 +203,7 @@ public class MyCoords implements coords_converter {
 		this._z=R*Math.sin(lat);
 
 	}
-	
+
 	//GPS-המרה ל 
 	public Point3D Convert_To_Gps() {		
 
@@ -199,12 +215,12 @@ public class MyCoords implements coords_converter {
 
 		return new Point3D (x,y,r);
 
-		
+
 
 	}
 
 
-//המרת קרטזית
+	//המרת קרטזית
 	public Point3D ConvertToCartesian() {
 
 		double Gps_x = Math.cos(_y/180*Math.PI) * Math.cos(_x/180*Math.PI)*(world+_z);;
