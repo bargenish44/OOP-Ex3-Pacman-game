@@ -7,7 +7,7 @@ import Geom.Point3D;
  * @author Bar Genish
  * @author Elyashiv Deri
  */
-public class Path{
+public class Path{//לשנות את המרחק לפיקסלים ואז לבדוק
 	private ArrayList<Point3D>arr=new ArrayList<Point3D>();
 
 	public Path() {//constractor

@@ -1,24 +1,19 @@
 package Map;
 import Geom.Point3D;
 
-public class Map {//2 נקודות או 4? להחליט
+public class Map {
 	private Point3D leftUp;
-	private Point3D leftDown;
-	private Point3D RightUp;
 	private Point3D RightDown;
 	private String map;
+	final static int R = 6371;
 	public Map() {
 		leftUp = new Point3D(32.105770,  35.202469);
-		leftDown = new Point3D(32.101899, 35.202469);
-		RightUp = new Point3D(32.105770 , 35.211588);
 		RightDown = new Point3D(32.101899, 35.211588);
 		this.setMap("Ariel1.png");
 	}
 	public Map(Point3D leftUp,Point3D rightDown,String map) {
 		this.leftUp=leftUp;
 		this.RightDown=rightDown;
-		this.leftDown=new Point3D(rightDown.x(),leftUp.y());
-		this.RightUp=new Point3D(leftUp.x(),RightDown.y());
 		this.setMap(map);
 	}//getters and setters
 	public String getMap() {
@@ -27,24 +22,31 @@ public class Map {//2 נקודות או 4? להחליט
 	public void setMap(String map) {
 		this.map = map;
 	}
+	public Point3D getLeftUp() {
+		return leftUp;
+	}
+	public void setLeftUp(Point3D leftUp) {
+		this.leftUp = leftUp;
+	}
+	public Point3D getRightDown() {
+		return RightDown;
+	}
+	public void setRightDown(Point3D rightDown) {
+		RightDown = rightDown;
+	}
 	public Point3D PixelToCoords(int x, int y,double high,int width,int hight) {
-		//		double widthPixel=this.getWidth();
-		//		double HeightPixel=this.getHeight();
 		double YCoords = (((hight-(double)y)*RightDown.y())+((double)y*leftUp.y()))/hight;
 		double XCoords = (((width-(double)x)*RightDown.x())+((double)x*leftUp.x()))/width;
 		Point3D p2=new Point3D(XCoords,YCoords,high);
-		System.out.println(p2.toString());
+//		System.out.println(p2.toString());
 		return p2;
 	}
 	public Point3D CoordsToPixel(Point3D p,int width,int hight) {
-		//		double widthPixel=this.getWidth();
-		//		double HeightPixel=this.getHeight();
 		int widthcoords=(int) (width*((p.x()-RightDown.x())/(leftUp.x()-RightDown.x())));
 		int Heightcoords=(int) (hight*(RightDown.y()-p.y())/((RightDown.y()-leftUp.y())));
 		Point3D p2=new Point3D(widthcoords,Heightcoords,p.z());
 		return p2;
 	}
-	final static int R = 6371;
 	public double Distance_IN_Pixels(Point3D p1, Point3D p2) {
 		final int R = 6371; // Radius of the earth
 		double latDistance = Math.toRadians(p2.x() - p1.x());
