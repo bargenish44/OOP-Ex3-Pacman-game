@@ -166,8 +166,10 @@ public class MyFrame implements ActionListener{
 								Packmanarr.get(i).setOrinet(Packmanarr.get(i).getPath().getArr().get(j));
 								frame.repaint();
 								try {
-									Thread.sleep(10000);
+									System.out.println(2);
+									Thread.sleep(100000);
 								} catch (InterruptedException e) {
+									System.out.println(1);
 									e.printStackTrace();
 								}
 							}
@@ -175,8 +177,6 @@ public class MyFrame implements ActionListener{
 						ans2=false;
 					}											
 				};
-				thread=new Thread(target);
-				thread.start();
 				frame.repaint();
 			}
 		}
@@ -324,7 +324,10 @@ public class MyFrame implements ActionListener{
 		}
 		if(e.getSource()==run) {
 			System.out.println("run");
-			ans=true;
+			ans2=true;
+			thread=new Thread(target);
+			thread.start();
+			//			ans=true;
 			//			Packmanarrtemp.clear();
 			Packmanarrtemp.addAll(Packmanarr);
 			//			Fruitarrtemp.clear();
@@ -333,7 +336,7 @@ public class MyFrame implements ActionListener{
 			System.out.println(ShortestPathAlg.Shortalgo(g));
 			Packmanarr=g.getArr();
 			Fruitarr=g.getArray();
-			ans2=true;
+			//			ans2=true;
 		}
 		if(e.getSource()==how_to_run)
 			JOptionPane.showMessageDialog(null, "For new Packman pressed left click on mouse on the place in the map that you want"

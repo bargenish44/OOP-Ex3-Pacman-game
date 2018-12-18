@@ -9,6 +9,7 @@ public class Packman {
 	private double speed;
 	private double Radius;
 	private Path path;
+	private double time=0;
 	private double score=0;
 
 	public Packman(int ID,double x,double y,double z, double speed, double Radius) {
@@ -68,5 +69,14 @@ public class Packman {
 	}
 	public void resetScore() {
 		this.score=0;
+	}
+	public double getTime() {
+		return time;
+	}
+	public void setTime(double time) {
+		this.time += time;
+	}
+	public void resetTime() {
+		this.time=0;
 	}
 }
