@@ -15,7 +15,7 @@ public class Solution {
 	public Solution Solutionistime(double time) {
 		//להריץ את המסלול עד השעה המסויימת ולהחזיר את המערך בנקודה הזאת
 		for(int i=0;i<time;i++) {
-			
+
 		}
 	}
 	public ArrayList<Path> getArr() {

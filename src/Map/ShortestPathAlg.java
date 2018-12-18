@@ -24,6 +24,7 @@ public class ShortestPathAlg {
 		return greedy(g);
 	}
 	private static double greedy(Game g) {
+		long start = System.nanoTime();
 		double time=0;
 		double min=Double.MAX_VALUE;
 		int packmanindex=0;
@@ -31,7 +32,6 @@ public class ShortestPathAlg {
 		ArrayList<Packman>arr=g.getArr();
 		Fruit fruittmp;
 		double tmp=0;
-		long start = System.currentTimeMillis();
 		while(!g.getArray().isEmpty()) {
 			for(int i=0;i<g.getArr().size();i++) {
 				for(int j=0;j<g.getArray().size();j++) {
@@ -51,9 +51,10 @@ public class ShortestPathAlg {
 			//			Point3D temp=g.getArr().get(packmanindex).getOrinet();
 			time+=min;
 			patheat(g.getArr().get(packmanindex),fruittmp,p);
-//			System.out.println(start);
-			g.getArray().get(fruitindex).setDead(System.currentTimeMillis());
+			//			System.out.println(start);
+			g.getArray().get(fruitindex).setDead(System.nanoTime()-start);
 			System.out.println(g.getArray().get(fruitindex).getDead());
+			//			System.out.println(System.nanoTime());
 			g.getArray().remove(fruitindex);
 			min=Double.MAX_VALUE;
 			g.setArr(arr);

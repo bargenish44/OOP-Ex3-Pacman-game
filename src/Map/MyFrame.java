@@ -351,8 +351,8 @@ public class MyFrame implements ActionListener{
 			//				}
 			//			};
 			//			timer.startTimer(task);
-			ShortestPathAlg s=new ShortestPathAlg(g);
-			System.out.println(s.Shortalgo(g));
+			//			ShortestPathAlg s=new ShortestPathAlg(g);
+			System.out.println(ShortestPathAlg.Shortalgo(g));
 			//			timer.endTimer();
 			Packmanarr=g.getArr();
 			Fruitarr=g.getArray();
