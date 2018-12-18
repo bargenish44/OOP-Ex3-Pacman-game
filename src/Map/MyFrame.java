@@ -39,6 +39,8 @@ public class MyFrame implements ActionListener{
 	private JFrame frame;
 	private Map map;
 	private boolean ans2=false;
+	private Thread thread;
+	private Runnable target;
 
 	public static void main(String[] args) {
 		new MyFrame();
@@ -141,47 +143,41 @@ public class MyFrame implements ActionListener{
 								Point3D p2=map.CoordsToPixel(tmp.getPath().getArr().get(j+1),width,hight);
 								g.setColor(colors[count]);
 								g.drawLine(p1.ix(), p1.iy(),p2.ix(),p2.iy());
-								System.out.println(p1.ix()+": p1x "+p1.iy()+": p1y "+p2.ix()+": p2x "+p2.iy()+": p2y .");
+								//								System.out.println(p1.ix()+": p1x "+p1.iy()+": p1y "+p2.ix()+": p2x "+p2.iy()+": p2y .");
 								Packmanarr.get(i).setOrinet(p2);
 								//dist+=p1.distance3D(p2);
 							}catch(IndexOutOfBoundsException e) {}
+							//							count++;
 						}
-						count++;
 						//str+=time.getActionCommand();
 						//System.out.println(dist+" count is: "+tmp.getID());
 					}
+					//					System.out.println(count);
 					//dist=0;
 				}
-				if(ans2) {
-					for(int i=0;i<Packmanarr.size();i++) {
-						for(int j=0;j<Packmanarr.get(i).getPath().getArr().size();j++){
-							//													TimerTask task = new TimerTask() {
-							//														@Override
-							//														public void run() {
-							//															frame.repaint();
-							//							try {
-							//								Thread.sleep(10000);
-							//							} catch (InterruptedException e) {
-							//								e.printStackTrace();
-							//							}
-							frame.repaint();
-							//														}
-							//						};
-							//													timer.startTimer(task);
-							Packmanarr.get(i).setOrinet(Packmanarr.get(i).getPath().getArr().get(j));
-							frame.repaint();
-							try {
-								Thread.sleep(20);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
+			}
+			if(ans2) {
+				target=new Runnable() {
+					@Override
+					public void run() {
+						for(int i=0;i<Packmanarr.size();i++) {
+							for(int j=0;j<Packmanarr.get(i).getPath().getArr().size();j++){
+								frame.repaint();
+								Packmanarr.get(i).setOrinet(Packmanarr.get(i).getPath().getArr().get(j));
+								frame.repaint();
+								try {
+									Thread.sleep(10000);
+								} catch (InterruptedException e) {
+									e.printStackTrace();
+								}
 							}
-						}//timer.endTimer();
+						}
 						ans2=false;
-					}
-				}
-
-				//time.stop();
-				//System.out.println(str);
+					}											
+				};
+				thread=new Thread(target);
+				thread.start();
+				frame.repaint();
 			}
 		}
 		@Override
@@ -334,31 +330,10 @@ public class MyFrame implements ActionListener{
 			//			Fruitarrtemp.clear();
 			Fruitarrtemp.addAll(Fruitarr);
 			Game g=new Game(Packmanarr, Fruitarr);
-			//			TimerTask task = new TimerTask() {
-			//				@Override
-			//				public void run() {
-			//					frame.repaint();
-			//					try {
-			//						Thread.sleep(1000);
-			//					} catch (InterruptedException e) {
-			//						e.printStackTrace();
-			//					}
-			//					for(int j=0;j<2000000000;j++) {
-			//						for(int k=0;k<2000000000;k++) {
-			//						}
-			//					}
-			//					frame.repaint();
-			//				}
-			//			};
-			//			timer.startTimer(task);
-			//			ShortestPathAlg s=new ShortestPathAlg(g);
 			System.out.println(ShortestPathAlg.Shortalgo(g));
-			//			timer.endTimer();
 			Packmanarr=g.getArr();
 			Fruitarr=g.getArray();
 			ans2=true;
-			//Fruitarr=Fruitarrtemp;
-			//			System.out.println(str);
 		}
 		if(e.getSource()==how_to_run)
 			JOptionPane.showMessageDialog(null, "For new Packman pressed left click on mouse on the place in the map that you want"

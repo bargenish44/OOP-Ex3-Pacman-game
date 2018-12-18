@@ -27,7 +27,7 @@ public class Path{//לשנות את המרחק לפיקסלים ואז לבדוק
 		arr.clear();
 		arr.addAll(array);
 	}
-	public double GetDist() {
+	public double GetDist() {//לשנות למרחק במטרים
 		double dist=0;
 		if(arr.size()<=1)return 0;
 		for(int i=0;i<arr.size();i++) {
