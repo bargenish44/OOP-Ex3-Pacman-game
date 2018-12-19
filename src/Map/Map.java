@@ -77,14 +77,12 @@ public class Map {
 		double tometer2 = Math.sin(radian2)*R*1000*LonNorm;
 		return Math.sqrt((tometer1*tometer1) + (tometer2*tometer2));
 	}
-	public static void main(String[] args) {
-		System.out.println(distance3d(new Point3D(32.10526801,35.21085983,0),new Point3D(32.10526801,35.21085983,0)));
-	}
-	public Point3D calcvector(Point3D p,Point3D p2) {
-		return new Point3D(p.x()-p2.x(),p.y()-p2.y(),p.z()-p2.z());
-	}
-	public Point3D normalvector(Point3D p,Point3D vector) {
-		double sum=vector.x()*vector.x()+vector.y()*vector.y()+vector.z()*vector.z();
-		return new Point3D(vector.x()/sum,vector.y()/sum,vector.z()/sum);
-	}
+	
+//	public Point3D calcvector(Point3D p,Point3D p2) {
+//		return new Point3D(p.x()-p2.x(),p.y()-p2.y(),p.z()-p2.z());
+//	}
+//	public Point3D normalvector(Point3D p,Point3D vector) {
+//		double sum=vector.x()*vector.x()+vector.y()*vector.y()+vector.z()*vector.z();
+//		return new Point3D(vector.x()/sum,vector.y()/sum,vector.z()/sum);
+//	}
 }

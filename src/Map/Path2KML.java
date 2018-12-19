@@ -3,19 +3,19 @@ package Map;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Path2KML {
-	private static String[] str= {"1970-01-01T02:02:49","1970-01-01T02:00:00","1970-01-01T02:04:15","1970-01-01T02:07:56"};
-	private static int l=0;
 	public static boolean path2kml(Game g) {
 		ArrayList<String> content = new ArrayList<String>();
 		String kmlstart = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-				"<kml xmlns=\"http://www.opengis.net/kml/2.2\">\n<Document><Style id=\"red\"><IconStyle><Icon><href>http://maps.google.com/mapfiles/ms/icons/red-dot.png</href></Icon></IconStyle></Style><Style id=\"yellow\"><IconStyle><Icon><href>http://maps.google.com/mapfiles/ms/icons/yellow-dot.png</href></Icon></IconStyle></Style><Style id=\"green\"><IconStyle><Icon><href>http://maps.google.com/mapfiles/ms/icons/green-dot.png</href></Icon></IconStyle></Style><Folder><name>Wifi Networks</name>\n";
+				"<kml xmlns=\"http://www.opengis.net/kml/2.2\">\n<Document><Style id=\"red\">\r\n" + 
+				"<IconStyle><Icon><href>http://maps.google.com/mapfiles/ms/icons/red-dot.png</href></Icon></IconStyle>\r\n" + 
+				"</Style><Style id=\"Packman\"><IconStyle><Icon><href>http://www.iconhot.com/icon/png/quiet/256/pac-man.png</href></Icon></IconStyle>\r\n" + 
+				"</Style><Style id=\"Fruit\"><IconStyle><Icon><href>http://chittagongit.com//images/cherry-icon/cherry-icon-15.jpg</href></Icon></IconStyle></Style>";
 		content.add(kmlstart);
 
-		String kmlend = "\n</Folder></Document></kml>";
+		String kmlend = "\n</Document></kml>";
 		try{
 			FileWriter fw = new FileWriter("data\\mygamekml.kml");
 			BufferedWriter bw = new BufferedWriter(fw);
@@ -24,10 +24,10 @@ public class Path2KML {
 				String kmlelement ="<Placemark>\n" +
 						"<name>fruit"+tmp.getID()+"</name>\n" +
 						"<description>bar genish and elyashiv deri</description>\n" +
-						"<styleUrl>"+"red"+"</styleUrl>"+"<Point>\n" +
+						"<styleUrl>"+"Fruit"+"</styleUrl>"+"<Point>\n" +
 						"<coordinates>"+tmp.getOrient().y()+","+tmp.getOrient().x()+","+tmp.getOrient().z()+"</coordinates>" +
 						"</Point>\n" +
-						"<TimeStamp>\n\t<when>"+str[l++]+"</when>"+"\n</TimeStamp>"+
+						"<TimeStamp>\n\t<when>"+g.getArray().get(i).getDead()+"</when>"+"\n</TimeStamp>"+
 						"</Placemark>";
 				content.add(kmlelement);
 			}
@@ -36,10 +36,10 @@ public class Path2KML {
 				String kmlelement ="<Placemark>\n" +
 						"<name>Packman"+tmp.getID()+"</name>\n" +
 						"<description>bar genish and elyashiv deri</description>\n" +
-						"<styleUrl>"+"yellow"+"</styleUrl>"+"<Point>\n" +
+						"<styleUrl>"+"Packman"+"</styleUrl>"+"<Point>\n" +
 						"<coordinates>"+tmp.getOrinet().y()+","+tmp.getOrinet().x()+","+tmp.getOrinet().z()+"</coordinates>" +
 						"</Point>\n" +
-						"<TimeStamp>\n\t<when>"+str[l++]+"</when>"+"\n</TimeStamp>"+
+						"<TimeStamp>\n\t<when>"+g.getArr().get(i).getOrinet().getDead()+"</when>"+"\n</TimeStamp>"+
 						"</Placemark>";
 				content.add(kmlelement);
 			}
@@ -49,10 +49,10 @@ public class Path2KML {
 					String kmlelement ="<Placemark>\n" +
 							"<name>Packman"+tmp.getID()+"</name>\n" +
 							"<description>bar genish and elyashiv deri</description>\n" +
-							"<styleUrl>"+"yellow"+"</styleUrl>"+"<Point>\n" +
+							"<styleUrl>"+"Packman"+"</styleUrl>"+"<Point>\n" +
 							"<coordinates>"+tmp.getPath().getArr().get(j).y()+","+tmp.getPath().getArr().get(j).x()+","+tmp.getPath().getArr().get(j).z()+"</coordinates>" +
 							"</Point>\n" +
-							"<TimeStamp>\n\t<when>"+str[l++]+"</when>"+"\n</TimeStamp>"+
+							"<TimeStamp>\n\t<when>"+tmp.getPath().getArr().get(j).getDead()+"</when>"+"\n</TimeStamp>"+
 							"</Placemark>";
 					content.add(kmlelement);
 				}

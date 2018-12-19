@@ -1,33 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
-<Document><Style id="red"><IconStyle><Icon><href>http://maps.google.com/mapfiles/ms/icons/red-dot.png</href></Icon></IconStyle></Style><Style id="yellow"><IconStyle><Icon><href>http://maps.google.com/mapfiles/ms/icons/yellow-dot.png</href></Icon></IconStyle></Style><Style id="green"><IconStyle><Icon><href>http://maps.google.com/mapfiles/ms/icons/green-dot.png</href></Icon></IconStyle></Style><Folder><name>Wifi Networks</name>
-<Placemark>
+<Document><Style id="red">
+<IconStyle><Icon><href>http://maps.google.com/mapfiles/ms/icons/red-dot.png</href></Icon></IconStyle>
+</Style><Style id="Packman"><IconStyle><Icon><href>http://www.iconhot.com/icon/png/quiet/256/pac-man.png</href></Icon></IconStyle>
+</Style><Style id="Fruit"><IconStyle><Icon><href>http://chittagongit.com//images/cherry-icon/cherry-icon-15.jpg</href></Icon></IconStyle></Style><Placemark>
 <name>fruit0</name>
 <description>bar genish and elyashiv deri</description>
-<styleUrl>red</styleUrl><Point>
+<styleUrl>Fruit</styleUrl><Point>
 <coordinates>35.20573393,32.10462702,10.0</coordinates></Point>
 <TimeStamp>
 	<when>1970-01-01T02:02:49</when>
 </TimeStamp></Placemark><Placemark>
 <name>fruit1</name>
 <description>bar genish and elyashiv deri</description>
-<styleUrl>red</styleUrl><Point>
+<styleUrl>Fruit</styleUrl><Point>
 <coordinates>35.20498036,32.10478793,0.0</coordinates></Point>
 <TimeStamp>
 	<when>1970-01-01T02:00:00</when>
 </TimeStamp></Placemark><Placemark>
 <name>Packman0</name>
 <description>bar genish and elyashiv deri</description>
-<styleUrl>yellow</styleUrl><Point>
+<styleUrl>Packman</styleUrl><Point>
 <coordinates>35.2035022,32.1045513,10.0</coordinates></Point>
 <TimeStamp>
 	<when>1970-01-01T02:04:15</when>
 </TimeStamp></Placemark><Placemark>
 <name>Packman1</name>
 <description>bar genish and elyashiv deri</description>
-<styleUrl>yellow</styleUrl><Point>
+<styleUrl>Packman</styleUrl><Point>
 <coordinates>35.21019738,32.10451344,0.0</coordinates></Point>
 <TimeStamp>
 	<when>1970-01-01T02:07:56</when>
 </TimeStamp></Placemark>
-</Folder></Document></kml>
+</Document></kml>

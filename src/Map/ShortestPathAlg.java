@@ -7,13 +7,7 @@ import Geom.Circle;
 import Geom.Point3D;
 import Map.Map;
 public class ShortestPathAlg {
-	//	private static Game game;
-	//	public ShortestPathAlg(Game g) {
-	//		setGame(g);
-	//	}
-	//	public ShortestPathAlg(ArrayList<Packman>arr,ArrayList<Fruit> array) {
-	//		setGame(new Game(arr,array));
-	//	}
+
 	private static double Calculatetime(Packman p,Fruit f) {
 		Circle c=new Circle(p.getOrinet(),p.getRadius());
 		double dist=Map.distance3d(c.get_cen(),f.getOrient())-c.get_radius();
@@ -21,10 +15,7 @@ public class ShortestPathAlg {
 		return dist/p.getSpeed();
 	}
 	public static double Shortalgo(Game g) {
-		return greedy(g);
-	}
-	private static double greedy(Game g) {
-		long start = System.nanoTime();
+		//		long start = System.nanoTime();
 		double time=0;
 		double min=Double.MAX_VALUE;
 		int packmanindex=0;
@@ -47,17 +38,17 @@ public class ShortestPathAlg {
 			fruittmp=g.getArray().get(fruitindex);
 			g.getArr().get(packmanindex).setScore(g.getArray().get(fruitindex).getWeight());
 			Point3D p=calcvector(g.getArr().get(packmanindex).getOrinet(),fruittmp.getOrient());
-			//p=normalvector(p);
-			p=new Point3D(p.x()/100,p.y()/100,p.z()/100);
-			//			Point3D temp=g.getArr().get(packmanindex).getOrinet();
-			time+=min;
-			patheat(arr.get(packmanindex),fruittmp,p);
-			System.out.println(arr.get(packmanindex).getOrinet().toString());
-			//			System.out.println(start);
-			g.getArray().get(fruitindex).setDead(System.nanoTime()-start);
+			if(!p.toString().equals("0.0,0.0,0.0")){
+				System.out.println(p.toString());
+				p=normalvector(p);
+				System.out.println("p is: "+p.toString());
+				//				g.getArr().get(packmanindex).setTime(min);
+				patheat(arr.get(packmanindex),fruittmp,p);
+			}
+			//			g.getArray().get(fruitindex).setDead(System.nanoTime()-start);
 			//			System.out.println(g.getArray().get(fruitindex).getDead());
 			//			System.out.println(System.nanoTime());
-			g.getArray().get(fruitindex).setDead(System.nanoTime()-start);
+			//			g.getArray().get(fruitindex).setDead(System.nanoTime()-start);
 			g.getArray().remove(fruitindex);
 			min=Double.MAX_VALUE;
 			//			g.setArr(arr);
@@ -68,20 +59,31 @@ public class ShortestPathAlg {
 		return time;
 	}
 	private static void patheat(Packman pack,Fruit f,Point3D norm) {//לסדר
-		System.out.println(pack.getOrinet().toString());
 		Circle c=new Circle(pack.getOrinet(),pack.getRadius());
-		double dist=c.distance3D(f.getOrient());
+		double dist=Map.distance3d(c.get_cen(),f.getOrient())-c.get_radius();
 		int i=0;
+		boolean ans=false;
 		while(dist>0) {//להוסיף פור שירןץ לפי המהירות של הפקמן ולחשב שהפקמן ילך מטר ולא סתם צעד בנרמול 
-			c.get_cen().add(norm);
-			dist=c.distance3D(f.getOrient());
-			pack.getPath().getArr().add(c.get_cen());
-			//			System.out.println(pack.getPath().getArr().get(i++));
-			pack.setOrinet(c.get_cen());
+			for(int j=1;j<=pack.getSpeed();j++) {
+				c.get_cen().add(norm);
+				dist=Map.distance3d(c.get_cen(),f.getOrient())-c.get_radius();
+				if(dist<=0) {
+					pack.setTime(1/j);
+					pack.getPath().getArr().add(c.get_cen());
+					System.out.println(pack.getPath().getArr().get(i++));
+					pack.setOrinet(c.get_cen());
+					ans=true;
+				}
+			}
+			if(!ans) {
+				pack.setTime(1);
+				pack.getPath().getArr().add(c.get_cen());
+				pack.setOrinet(c.get_cen());
+			}
 		}
 	}
 	public static Point3D calcvector(Point3D p,Point3D p2) {
-		return new Point3D(p2.x()-p.x(),p2.y()-p.y(),p2.z()-p.z());
+		return new Point3D(p.x()-p2.x(),p.y()-p2.y(),p.z()-p2.z());
 	}
 	public static Point3D normalvector(Point3D vector) {
 		double sum=vector.x()*vector.x()+vector.y()*vector.y()+vector.z()*vector.z();

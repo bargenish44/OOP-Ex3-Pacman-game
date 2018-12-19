@@ -9,7 +9,7 @@ public class PlaySound {
 		PlaySound obj2=new PlaySound("bite.wav");
 	}
 
-	@SuppressWarnings("restriction")
+//	@SuppressWarnings("restriction")
 
 	public PlaySound(String path) throws IOException {// open the sound file as a Java input stream
 		String gongFile = path;
