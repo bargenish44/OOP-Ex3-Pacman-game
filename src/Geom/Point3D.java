@@ -13,6 +13,8 @@ public class Point3D implements Geom_element, Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private double _x,_y,_z;
+	private String live;//לסדר
+	private String dead;//לסדר
 
 	public Point3D(double x,double y,double z) {
 		_x=x;
@@ -291,6 +293,22 @@ public class Point3D implements Geom_element, Serializable {
 
 		this._z=R*Math.sin(lat);
 
+	}
+
+	public String getLive() {
+		return live;
+	}
+
+	public void setLive(String live) {
+		this.live = live;
+	}
+
+	public String getDead() {
+		return dead;
+	}
+
+	public void setDead(String dead) {
+		this.dead = dead;
 	}
 
 }

@@ -52,6 +52,7 @@ public class ShortestPathAlg {
 			//			Point3D temp=g.getArr().get(packmanindex).getOrinet();
 			time+=min;
 			patheat(arr.get(packmanindex),fruittmp,p);
+			System.out.println(arr.get(packmanindex).getOrinet().toString());
 			//			System.out.println(start);
 			g.getArray().get(fruitindex).setDead(System.nanoTime()-start);
 			//			System.out.println(g.getArray().get(fruitindex).getDead());
@@ -66,11 +67,12 @@ public class ShortestPathAlg {
 		}
 		return time;
 	}
-	private static void patheat(Packman pack,Fruit f,Point3D norm) {
+	private static void patheat(Packman pack,Fruit f,Point3D norm) {//לסדר
+		System.out.println(pack.getOrinet().toString());
 		Circle c=new Circle(pack.getOrinet(),pack.getRadius());
 		double dist=c.distance3D(f.getOrient());
 		int i=0;
-		while(dist>0) {//להוסיף פור שירןץ לפי המהירות של הפקמן 
+		while(dist>0) {//להוסיף פור שירןץ לפי המהירות של הפקמן ולחשב שהפקמן ילך מטר ולא סתם צעד בנרמול 
 			c.get_cen().add(norm);
 			dist=c.distance3D(f.getOrient());
 			pack.getPath().getArr().add(c.get_cen());

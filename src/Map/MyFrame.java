@@ -8,6 +8,7 @@ import javax.imageio.ImageIO;
 import java.awt.event.*;
 import javax.swing.*;
 import Geom.Point3D;
+import jdk.internal.dynalink.linker.LinkerServices.Implementation;
 
 public class MyFrame implements ActionListener{
 	private ArrayList<Packman>Packmanarr=new ArrayList<>();
@@ -38,7 +39,7 @@ public class MyFrame implements ActionListener{
 	//	private String str="";
 	private JFrame frame;
 	private Map map;
-	private boolean ans2=false;
+	//	private boolean ans3=false;
 	private Thread thread;
 	private Runnable target;
 
@@ -117,7 +118,7 @@ public class MyFrame implements ActionListener{
 		}
 		@Override
 		public void paintComponent(Graphics g) {
-			super.paintComponent(g);
+			//	super.paintComponent(g);
 			g.drawImage(img, 0, 0,this.getWidth(),this.getHeight(),null);
 			for(int i=0;i<Packmanarr.size();i++) {
 				Point3D p=map.CoordsToPixel(Packmanarr.get(i).getOrinet(),width,hight);
@@ -129,56 +130,60 @@ public class MyFrame implements ActionListener{
 			}
 			if(ans) {//להדפיס מרחק של כל פקמן
 				int count=0;
-				//double dist=0;
-				for(int i=0;i<Packmanarr.size();i++) {
-					Packman tmp=Packmanarr.get(i);
-					Point3D p=map.CoordsToPixel(tmp.getOrinet(),width,hight);
-					tmp.setOrinet(p);
-					if(tmp.getPath().getArr().size()>1) {
-						for(int j=0;j<tmp.getPath().getArr().size();j++) {
-							if(count==7)
-								count=0;
-							Point3D p1=map.CoordsToPixel(tmp.getPath().getArr().get(j),width,hight);
-							try {
-								Point3D p2=map.CoordsToPixel(tmp.getPath().getArr().get(j+1),width,hight);
-								g.setColor(colors[count]);
-								g.drawLine(p1.ix(), p1.iy(),p2.ix(),p2.iy());
-								//								System.out.println(p1.ix()+": p1x "+p1.iy()+": p1y "+p2.ix()+": p2x "+p2.iy()+": p2y .");
-								Packmanarr.get(i).setOrinet(p2);
-								//dist+=p1.distance3D(p2);
-							}catch(IndexOutOfBoundsException e) {}
-							//							count++;
-						}
-						//str+=time.getActionCommand();
-						//System.out.println(dist+" count is: "+tmp.getID());
-					}
+				for(int i=0;i<Packmanarr.get(0).getPath().getArr().size();i++) {
+					//					System.out.println(Packmanarr.get(0).getPath().getArr().get(i).toString());
+					//					System.out.println(map.CoordsToPixel(Packmanarr.get(0).getPath().getArr().get(i), width, hight).toString());
+					//double dist=0;
+					//				for(int i=0;i<Packmanarr.size();i++) {
+					//					Packman tmp=Packmanarr.get(i);
+					//					Point3D p=map.CoordsToPixel(tmp.getOrinet(),width,hight);
+					//					tmp.setOrinet(p);
+					//					if(tmp.getPath().getArr().size()>1) {
+					//						System.out.println(tmp.getPath().getArr().size());
+					//						for(int j=1;j<tmp.getPath().getArr().size();j++) {
+					//							if(count==7)
+					//								count=0;
+					//							Point3D p1=map.CoordsToPixel(tmp.getPath().getArr().get(j-1),width,hight);
+					//							//							try {
+					//							Point3D p2=map.CoordsToPixel(tmp.getPath().getArr().get(j),width,hight);
+					//							g.setColor(colors[count]);
+					//							g.drawLine(p1.ix(), p1.iy(),p2.ix(),p2.iy());
+					//							System.out.println(p1.ix()+": p1x "+p1.iy()+": p1y "+p2.ix()+": p2x "+p2.iy()+": p2y .");
+					////							Packmanarr.get(i).setOrinet(p2);
+					//							//dist+=p1.distance3D(p2);
+					//							//							}catch(IndexOutOfBoundsException e) {System.out.println("wrong");}
+					//							//							count++;
+					//						}
+					//						//str+=time.getActionCommand();
+					//						//System.out.println(dist+" count is: "+tmp.getID());
+					//					}
 					//					System.out.println(count);
 					//dist=0;
 				}
 			}
-			if(ans2) {
-				target=new Runnable() {
-					@Override
-					public void run() {
-						for(int i=0;i<Packmanarr.size();i++) {
-							for(int j=0;j<Packmanarr.get(i).getPath().getArr().size();j++){
-								frame.repaint();
-								Packmanarr.get(i).setOrinet(Packmanarr.get(i).getPath().getArr().get(j));
-								frame.repaint();
-								try {
-									System.out.println(2);
-									Thread.sleep(100000);
-								} catch (InterruptedException e) {
-									System.out.println(1);
-									e.printStackTrace();
-								}
-							}
-						}
-						ans2=false;
-					}											
-				};
-				frame.repaint();
-			}
+			//			if(ans2) {
+			//				target=new Runnable() {
+			//					@Override
+			//					public void run() {
+			//						for(int i=0;i<Packmanarr.size();i++) {
+			//							for(int j=0;j<Packmanarr.get(i).getPath().getArr().size();j++){
+			//								frame.repaint();
+			//								Packmanarr.get(i).setOrinet(Packmanarr.get(i).getPath().getArr().get(j));
+			//								frame.repaint();
+			//								try {
+			//									System.out.println(2);
+			//									Thread.sleep(100000);
+			//								} catch (InterruptedException e) {
+			//									System.out.println(1);
+			//									e.printStackTrace();
+			//								}
+			//							}
+			//						}
+			//						ans2=false;
+			//					}											
+			//				};
+			//				frame.repaint();
+			//			}
 		}
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -301,6 +306,36 @@ public class MyFrame implements ActionListener{
 		//			str+=new Game(Packmanarr,Fruitarr).toString();
 		//			System.out.println("1");
 		//		}
+
+		//		@Override
+		//		public void run() {
+		//			if(ans3) {
+		//				System.out.println(1);
+		//				target=new Runnable() {
+		//					@Override
+		//					public void run() {
+		//						for(int i=0;i<Packmanarr.size();i++) {
+		//							for(int j=0;j<Packmanarr.get(i).getPath().getArr().size();j++){
+		//								System.out.println(Packmanarr.get(i).getPath().getArr().get(j).toString());
+		//								frame.repaint();
+		//								Packmanarr.get(i).setOrinet(Packmanarr.get(i).getPath().getArr().get(j));
+		//								frame.repaint();
+		//								try {
+		//									System.out.println(2);
+		//									Thread.sleep(100000);
+		//								} catch (InterruptedException e) {
+		//									System.out.println(1);
+		//									e.printStackTrace();
+		//								}
+		//							}
+		//						}
+		//						ans3=false;
+		//					}											
+		//				};
+		//				frame.repaint();
+		//			}
+		//		}
+
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -324,18 +359,19 @@ public class MyFrame implements ActionListener{
 		}
 		if(e.getSource()==run) {
 			System.out.println("run");
-			ans2=true;
-			thread=new Thread(target);
-			thread.start();
-			//			ans=true;
+			ans=true;
 			//			Packmanarrtemp.clear();
 			Packmanarrtemp.addAll(Packmanarr);
 			//			Fruitarrtemp.clear();
 			Fruitarrtemp.addAll(Fruitarr);
 			Game g=new Game(Packmanarr, Fruitarr);
-			System.out.println(ShortestPathAlg.Shortalgo(g));
+			//			System.out.println(ShortestPathAlg.Shortalgo(g));
+			System.out.println(test.Shortalgo(g));
 			Packmanarr=g.getArr();
 			Fruitarr=g.getArray();
+			//			ans3=true;
+			//			thread=new Thread(target);
+			//			thread.start();
 			//			ans2=true;
 		}
 		if(e.getSource()==how_to_run)
@@ -362,7 +398,9 @@ public class MyFrame implements ActionListener{
 			ans=false;
 		}
 		if(e.getSource()==Save_as_kml) {
+			Game g=new Game(Packmanarr,Fruitarr);
 			System.out.println("Save as kml");
+			Path2KML.path2kml(g);
 		}
 		frame.repaint();
 	}
