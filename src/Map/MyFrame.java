@@ -3,12 +3,10 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.TimerTask;
 import javax.imageio.ImageIO;
 import java.awt.event.*;
 import javax.swing.*;
 import Geom.Point3D;
-import jdk.internal.dynalink.linker.LinkerServices.Implementation;
 
 public class MyFrame implements ActionListener{
 	private ArrayList<Packman>Packmanarr=new ArrayList<>();
@@ -35,13 +33,13 @@ public class MyFrame implements ActionListener{
 	private Image img;
 	private int width;
 	private int hight;
-	private gameTimer timer;
+	//	private gameTimer timer;
 	//	private String str="";
 	private JFrame frame;
 	private Map map;
 	//	private boolean ans3=false;
-	private Thread thread;
-	private Runnable target;
+	//	private Thread thread;
+	//	private Runnable target;
 
 	public static void main(String[] args) {
 		new MyFrame();
@@ -86,7 +84,7 @@ public class MyFrame implements ActionListener{
 			frame.pack();
 			frame.setLocationRelativeTo(null);
 			frame.setVisible(true);
-			timer = new gameTimer();
+			//			timer = new gameTimer();
 
 		} catch (IOException | HeadlessException exp) {
 			exp.printStackTrace();
@@ -133,7 +131,7 @@ public class MyFrame implements ActionListener{
 				//				for(int i=0;i<Packmanarr.get(0).getPath().getArr().size();i++) {
 				//					System.out.println(Packmanarr.get(0).getPath().getArr().get(i).toString());
 				//					System.out.println(map.CoordsToPixel(Packmanarr.get(0).getPath().getArr().get(i), width, hight).toString());
-				double dist=0;
+				//				double dist=0;
 				for(int i=0;i<Packmanarr.size();i++) {
 					Packman tmp=Packmanarr.get(i);
 					Point3D p=map.CoordsToPixel(tmp.getOrinet(),width,hight);
@@ -157,7 +155,7 @@ public class MyFrame implements ActionListener{
 						//str+=time.getActionCommand();
 						//System.out.println(dist+" count is: "+tmp.getID());
 					}
-					dist=0;
+					//					dist=0;
 				}
 			}
 			//			if(ans2) {
@@ -358,7 +356,7 @@ public class MyFrame implements ActionListener{
 		}
 		if(e.getSource()==run) {
 			System.out.println("run");
-			play_Sound("pacman_ringtone_interlude.wav");
+			play_Sound("pacman.wav");
 			ans=true;
 			//			Packmanarrtemp.clear();
 			Packmanarrtemp.addAll(Packmanarr);
