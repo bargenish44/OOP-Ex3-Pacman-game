@@ -138,7 +138,7 @@ public class MyFrame implements ActionListener{
 					//					Packman tmp=Packmanarr.get(i);
 					//					Point3D p=map.CoordsToPixel(tmp.getOrinet(),width,hight);
 					//					tmp.setOrinet(p);
-					//					if(tmp.getPath().getArr().size()>1) {
+					//					if(tmp.getPath().getArr().size()>0) {
 					//						System.out.println(tmp.getPath().getArr().size());
 					//						for(int j=1;j<tmp.getPath().getArr().size();j++) {
 					//							if(count==7)

@@ -18,7 +18,6 @@ public class Packman {
 		setRadius(Radius);
 		setID(ID);
 		setPath(new Path());
-		path.getArr().add(getOrinet());
 	}
 	public Packman(int ID,Point3D p,double spped,double Raduis) {
 		setID(ID);
@@ -26,7 +25,6 @@ public class Packman {
 		setSpeed(spped);
 		setRadius(Raduis);
 		setPath(new Path());
-		path.getArr().add(getOrinet());
 	}
 	public Point3D getOrinet() {
 		return orinet;
