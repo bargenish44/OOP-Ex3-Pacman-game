@@ -130,35 +130,34 @@ public class MyFrame implements ActionListener{
 			}
 			if(ans) {//להדפיס מרחק של כל פקמן
 				int count=0;
-				for(int i=0;i<Packmanarr.get(0).getPath().getArr().size();i++) {
-					//					System.out.println(Packmanarr.get(0).getPath().getArr().get(i).toString());
-					//					System.out.println(map.CoordsToPixel(Packmanarr.get(0).getPath().getArr().get(i), width, hight).toString());
-					//double dist=0;
-					//				for(int i=0;i<Packmanarr.size();i++) {
-					//					Packman tmp=Packmanarr.get(i);
-					//					Point3D p=map.CoordsToPixel(tmp.getOrinet(),width,hight);
-					//					tmp.setOrinet(p);
-					//					if(tmp.getPath().getArr().size()>0) {
-					//						System.out.println(tmp.getPath().getArr().size());
-					//						for(int j=1;j<tmp.getPath().getArr().size();j++) {
-					//							if(count==7)
-					//								count=0;
-					//							Point3D p1=map.CoordsToPixel(tmp.getPath().getArr().get(j-1),width,hight);
-					//							//							try {
-					//							Point3D p2=map.CoordsToPixel(tmp.getPath().getArr().get(j),width,hight);
-					//							g.setColor(colors[count]);
-					//							g.drawLine(p1.ix(), p1.iy(),p2.ix(),p2.iy());
-					//							System.out.println(p1.ix()+": p1x "+p1.iy()+": p1y "+p2.ix()+": p2x "+p2.iy()+": p2y .");
-					////							Packmanarr.get(i).setOrinet(p2);
-					//							//dist+=p1.distance3D(p2);
-					//							//							}catch(IndexOutOfBoundsException e) {System.out.println("wrong");}
-					//							//							count++;
-					//						}
-					//						//str+=time.getActionCommand();
-					//						//System.out.println(dist+" count is: "+tmp.getID());
-					//					}
-					//					System.out.println(count);
-					//dist=0;
+				//				for(int i=0;i<Packmanarr.get(0).getPath().getArr().size();i++) {
+				//					System.out.println(Packmanarr.get(0).getPath().getArr().get(i).toString());
+				//					System.out.println(map.CoordsToPixel(Packmanarr.get(0).getPath().getArr().get(i), width, hight).toString());
+				double dist=0;
+				for(int i=0;i<Packmanarr.size();i++) {
+					Packman tmp=Packmanarr.get(i);
+					Point3D p=map.CoordsToPixel(tmp.getOrinet(),width,hight);
+					tmp.setOrinet(p);
+					if(tmp.getPath().getArr().size()>0) {
+						System.out.println(tmp.getPath().getArr().size());
+						if(count==7)
+							count=0;
+						for(int j=1;j<tmp.getPath().getArr().size();j++) {
+							Point3D p1=map.CoordsToPixel(tmp.getPath().getArr().get(j-1),width,hight);
+							//							try {
+							Point3D p2=map.CoordsToPixel(tmp.getPath().getArr().get(j),width,hight);
+							g.setColor(colors[count]);
+							g.drawLine(p1.ix(), p1.iy(),p2.ix(),p2.iy());
+							//							System.out.println(p1.ix()+": p1x "+p1.iy()+": p1y "+p2.ix()+": p2x "+p2.iy()+": p2y .");
+							//							Packmanarr.get(i).setOrinet(p2);
+							//dist+=p1.distance3D(p2);
+							//							}catch(IndexOutOfBoundsException e) {System.out.println("wrong");}
+						}
+						count++;
+						//str+=time.getActionCommand();
+						//System.out.println(dist+" count is: "+tmp.getID());
+					}
+					dist=0;
 				}
 			}
 			//			if(ans2) {
@@ -359,6 +358,7 @@ public class MyFrame implements ActionListener{
 		}
 		if(e.getSource()==run) {
 			System.out.println("run");
+			play_Sound("pacman_ringtone_interlude.wav");
 			ans=true;
 			//			Packmanarrtemp.clear();
 			Packmanarrtemp.addAll(Packmanarr);
@@ -403,5 +403,13 @@ public class MyFrame implements ActionListener{
 			Path2KML.path2kml(g);
 		}
 		frame.repaint();
+	}
+	public void play_Sound(String path) {
+		try {
+			@SuppressWarnings("unused")
+			PlaySound p = new PlaySound(path);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
