@@ -1,6 +1,5 @@
 package Map;
 
-import java.sql.Time;
 
 import Geom.Point3D;
 
@@ -13,11 +12,13 @@ public class Fruit {
 		setID(ID);
 		setOrient(new Point3D(x, y,z));
 		setWeight(weight);
+		time=new Time();
 	}
 	public Fruit(int ID,Point3D P,double weight) {
 		setID(ID);
 		setOrient(P);
 		setWeight(weight);
+		time=new Time();
 	}
 	public int getID() {
 		return ID;

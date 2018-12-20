@@ -294,7 +294,9 @@ public class Point3D implements Geom_element, Serializable {
 
 	}
 	public Time getTime() {
-		return time;
+		try {
+			return time;
+		}catch(NullPointerException e) {time=new Time();return time;} 
 	}
 
 	public void setTime(Time time) {

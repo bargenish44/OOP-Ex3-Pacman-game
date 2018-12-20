@@ -27,7 +27,7 @@ public class Path2KML {
 						"<styleUrl>"+"Fruit"+"</styleUrl>"+"<Point>\n" +
 						"<coordinates>"+tmp.getOrient().y()+","+tmp.getOrient().x()+","+tmp.getOrient().z()+"</coordinates>" +
 						"</Point>\n" +
-						"<TimeStamp>\n\t<when>"+g.getArray().get(i).getTime().toString()+"</when>"+"\n</TimeStamp>"+
+						"<TimeStamp>\n\t<when>"+tmp.getTime().toString()+"</when>"+"\n</TimeStamp>"+
 						"</Placemark>";
 				content.add(kmlelement);
 			}
@@ -41,7 +41,7 @@ public class Path2KML {
 						"</styleUrl>"+"<Point>\n" +
 						"<coordinates>"+tmp.getOrinet().y()+","+tmp.getOrinet().x()+","+tmp.getOrinet().z()+"</coordinates>" +
 						"</Point>\n" +
-						"<TimeStamp>\n\t<when>"+g.getArr().get(i).getOrinet().getTime().toString()+"</when>"+"\n</TimeStamp>"+
+						"<TimeStamp>\n\t<when>"+tmp.getTime().toString()+"</when>"+"\n</TimeStamp>"+
 						"</Placemark>";
 				content.add(kmlelement);
 			}

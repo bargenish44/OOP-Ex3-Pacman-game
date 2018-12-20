@@ -13,7 +13,7 @@ Weight: 4.0</description>
 <styleUrl>Fruit</styleUrl><Point>
 <coordinates>35.20573393,32.10462702,10.0</coordinates></Point>
 <TimeStamp>
-	<when>0</when>
+	<when>2000-01-01T01:01:21</when>
 </TimeStamp></Placemark><Placemark>
 <name>fruit1</name>
 <description>Type: Fruit
@@ -24,7 +24,7 @@ Weight: 2.0</description>
 <styleUrl>Fruit</styleUrl><Point>
 <coordinates>35.20498036,32.10478793,0.0</coordinates></Point>
 <TimeStamp>
-	<when>0</when>
+	<when>2000-01-01T01:01:02</when>
 </TimeStamp></Placemark><Placemark>
 <name>Packman0</name>
 <description>Type: Packman
@@ -37,7 +37,7 @@ Score: 0.0</description>
 <styleUrl>Packman</styleUrl><Point>
 <coordinates>35.2035022,32.1045513,10.0</coordinates></Point>
 <TimeStamp>
-	<when>null</when>
+	<when>2000-01-01T01:04:21</when>
 </TimeStamp></Placemark><Placemark>
 <name>Packman1</name>
 <description>Type: Packman
@@ -50,6 +50,6 @@ Score: 0.0</description>
 <styleUrl>Packman</styleUrl><Point>
 <coordinates>35.21019738,32.10451344,0.0</coordinates></Point>
 <TimeStamp>
-	<when>null</when>
+	<when>2000-01-01T01:01:21</when>
 </TimeStamp></Placemark>
 </Document></kml>
