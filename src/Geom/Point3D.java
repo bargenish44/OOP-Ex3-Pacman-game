@@ -19,21 +19,24 @@ public class Point3D implements Geom_element, Serializable {
 		_x=x;
 		_y=y;
 		_z=z;
+		time=new Time();
 	}
 
 	public Point3D(Point3D p) {
 		_x=p.x();
 		_y=p.y();
 		_z=p.z();
+		time=new Time();
 	}
 
 	public Point3D(double x,double y) 
-	{this(x,y,0);}
+	{this(x,y,0);time=new Time();}
 	public Point3D(String s) {
 		String[] a = s.split(",");
 		_x = Double.parseDouble(a[0]);
 		_y = Double.parseDouble(a[1]);
 		_z = Double.parseDouble(a[2]);
+		time=new Time();
 	}
 	///////////////////////////////////////////////////////////////////////////
 	////////////////////////////       methods        /////////////////////////

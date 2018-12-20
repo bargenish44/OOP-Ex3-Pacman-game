@@ -359,7 +359,8 @@ public class MyFrame implements ActionListener{
 			Fruitarrtemp.addAll(Fruitarr);
 			Game g=new Game(Packmanarr, Fruitarr);
 			//			System.out.println(ShortestPathAlg.Shortalgo(g));
-			System.out.println(ShortestPathAlg.Shortalgo(g));
+//			System.out.println(ShortestPathAlg.Shortalgo(g));
+			System.out.println(test.Shortalgo(g));
 			Packmanarr=g.getArr();
 			Fruitarr=Fruitarrtemp;
 			for(int i=0;i<Packmanarr.size();i++) {
@@ -405,7 +406,6 @@ public class MyFrame implements ActionListener{
 	}
 	public void play_Sound(String path) {
 		try {
-			//			@SuppressWarnings("unused")
 			PlaySound p = new PlaySound(path);
 		} catch (IOException e) {
 			e.printStackTrace();
