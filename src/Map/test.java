@@ -50,8 +50,10 @@ public class test {
 			fruittmp=g.getArray().get(fruitindex);
 			g.getArr().get(packmanindex).setScore(g.getArray().get(fruitindex).getWeight());
 			Point3D p=calcvector(g.getArr().get(packmanindex).getOrinet(),fruittmp.getOrient());
-			//			p=normalvector(p);
-			p=new Point3D(p.x()/100,p.y()/100,p.z()/100);
+						p=normalvector(p);
+			double speed=g.getArr().get(packmanindex).getSpeed();
+			p=new Point3D(p.x()*speed,p.y()*speed,p.z()*speed);
+//			p=new Point3D(p.x()/speed,p.y()/speed,p.z()/speed);
 			time+=min;
 			patheat(arr.get(packmanindex),fruittmp,p);
 			g.getArray().remove(fruitindex);
