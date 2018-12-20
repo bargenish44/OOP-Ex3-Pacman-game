@@ -1,15 +1,16 @@
 ﻿# OOP Ex3 - Pacman 
-the tasks written by:
+## the tasks written by:
 
-Bar genish - 313174583
+## Bar genish - 313174583
 
-elyashiv deri - 305368433
+## elyashiv deri - 305368433
 
-What is Pacman ## ?
-Open here -------> http://speakers-institute.org/wp-content/uploads/2013/11/pacman-151558_1280-1200x878.png
-And pay attention ## !!
+## What is Pacman  ?
+## Open here -------> 
+http://speakers-institute.org/wp-content/uploads/2013/11/pacman-151558_1280-1200x878.png
+## And pay attention  !!
 
-we have 4 package in our projact:
+## we have 4 package in our projact:
 
 ## Map.
  ### Map has several interface methods:
