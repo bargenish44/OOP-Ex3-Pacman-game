@@ -23,7 +23,7 @@ http://speakers-institute.org/wp-content/uploads/2013/11/pacman-151558_1280-1200
 7. Time - classifies a department that tells each Pacman the running time in the  KML
 8. PlaySound - A class that plays music when playing
 
-### Coords:
+## Coords:
 Pakage that convert coordinates, from global coordinates to local coordinates.
 
 ## Geom: 
