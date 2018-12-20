@@ -1,12 +1,10 @@
 package Map;
 
 import java.util.ArrayList;
-
-import Coords.MyCoords;
 import Geom.Circle;
 import Geom.Point3D;
 import Map.Map;
-public class ShortestPathAlg {
+public class algo3 {
 
 	private static double Calculatetime(Packman p,Fruit f) {
 		Circle c=new Circle(p.getOrinet(),p.getRadius());
@@ -40,8 +38,7 @@ public class ShortestPathAlg {
 			Point3D p=calcvector(g.getArr().get(packmanindex).getOrinet(),fruittmp.getOrient());
 			if(!p.toString().equals("0.0,0.0,0.0")){
 				System.out.println(p.toString());
-				//				p=normalvector(p);
-				p=new Point3D(p.x()/100,p.y()/100,p.z()/100);
+				p=normalvector(p);
 				System.out.println("p is: "+p.toString());
 				//				g.getArr().get(packmanindex).setTime(min);
 				patheat(arr.get(packmanindex),fruittmp,p);
@@ -63,15 +60,13 @@ public class ShortestPathAlg {
 		Circle c=new Circle(pack.getOrinet(),pack.getRadius());
 		double dist=Map.distance3d(c.get_cen(),f.getOrient())-c.get_radius();
 		int i=0;
-		MyCoords my=new MyCoords();
 		boolean ans=false;
 		while(dist>0) {//להוסיף פור שירןץ לפי המהירות של הפקמן ולחשב שהפקמן ילך מטר ולא סתם צעד בנרמול 
 			for(int j=1;j<=pack.getSpeed();j++) {
-				//				c.set_cen(my.add(c.get_cen(), norm));
 				c.get_cen().add(norm);
 				dist=Map.distance3d(c.get_cen(),f.getOrient())-c.get_radius();
 				if(dist<=0) {
-					pack.getTime().setSecond(1/j);
+					pack.setTime(1/j);
 					pack.getPath().getArr().add(c.get_cen());
 					System.out.println(pack.getPath().getArr().get(i++));
 					pack.setOrinet(c.get_cen());
@@ -79,7 +74,7 @@ public class ShortestPathAlg {
 				}
 			}
 			if(!ans) {
-				pack.getTime().setSecond(1);
+				pack.setTime(1);
 				pack.getPath().getArr().add(c.get_cen());
 				pack.setOrinet(c.get_cen());
 			}

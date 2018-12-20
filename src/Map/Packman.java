@@ -9,8 +9,8 @@ public class Packman {
 	private double speed;
 	private double Radius;
 	private Path path;
-	private double time=0;
 	private double score=0;
+	private Time time; 
 
 	public Packman(int ID,double x,double y,double z, double speed, double Radius) {
 		setOrinet(new Point3D(x, y, z));
@@ -68,13 +68,10 @@ public class Packman {
 	public void resetScore() {
 		this.score=0;
 	}
-	public double getTime() {
+	public Time getTime() {
 		return time;
 	}
-	public void setTime(double time) {
-		this.time += time;
-	}
-	public void resetTime() {
-		this.time=0;
+	public void setTime(Time time) {
+		this.time = time;
 	}
 }

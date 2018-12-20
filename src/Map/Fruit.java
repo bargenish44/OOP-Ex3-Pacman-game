@@ -8,7 +8,7 @@ public class Fruit {
 	private int ID;
 	private Point3D orient;
 	private double Weight;
-	private long dead;
+	private Time time;
 	public Fruit(int ID,double x,double y,double z, double weight) {
 		setID(ID);
 		setOrient(new Point3D(x, y,z));
@@ -40,10 +40,10 @@ public class Fruit {
 	public String toString() {
 		return ID+","+orient.toString()+","+Weight;
 	}
-	public long getDead() {
-		return dead;
+	public Time getTime() {
+		return time;
 	}
-	public void setDead(long dead) {
-		this.dead = dead;
+	public void setTime(Time time) {
+		this.time = time;
 	}
 }

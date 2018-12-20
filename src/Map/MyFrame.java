@@ -13,7 +13,6 @@ public class MyFrame implements ActionListener{
 	private ArrayList<Fruit>Fruitarr=new ArrayList<>();
 	private ArrayList<Packman>Packmanarrtemp=new ArrayList<>();
 	private ArrayList<Fruit>Fruitarrtemp=new ArrayList<>();
-	//	private double[] times;
 	private boolean ans=false;
 	private ImageIcon packmanimage;
 	private ImageIcon cherryimage;
@@ -156,28 +155,28 @@ public class MyFrame implements ActionListener{
 				}
 				ans2=true;
 			}
-//			if(ans2) {
-//				System.out.println("arr pos: "+Packmanarr.get(0).getOrinet());
-//				System.out.println("arrtemp pos: "+Packmanarrtemp.get(0).getOrinet());
-//				int max=MaxPathSize(Packmanarr);
-//				for(int k=0;k<max;k++) {
-//					frame.repaint();
-//					int j=0;
-//					for(int i=0;i<Packmanarr.size();i++) {
-//						try {
-//							Packmanarr.get(i).setOrinet(Packmanarr.get(i).getPath().getArr().get((int)(j*10*Packmanarr.get(i).getSpeed())));
-//						}catch (Exception e) {}
-//						j++;
-//					}
-//					frame.repaint();
-//					try {
-//						Thread.sleep(10);
-//					} catch (InterruptedException e) {
-//						e.printStackTrace();
-//					}
-//				}
-//				ans2=false;
-//			}
+			//			if(ans2) {
+			//				System.out.println("arr pos: "+Packmanarr.get(0).getOrinet());
+			//				System.out.println("arrtemp pos: "+Packmanarrtemp.get(0).getOrinet());
+			//				int max=MaxPathSize(Packmanarr);
+			//				for(int k=0;k<max;k++) {
+			//					frame.repaint();
+			//					int j=0;
+			//					for(int i=0;i<Packmanarr.size();i++) {
+			//						try {
+			//							Packmanarr.get(i).setOrinet(Packmanarr.get(i).getPath().getArr().get((int)(j*10*Packmanarr.get(i).getSpeed())));
+			//						}catch (Exception e) {}
+			//						j++;
+			//					}
+			//					frame.repaint();
+			//					try {
+			//						Thread.sleep(10);
+			//					} catch (InterruptedException e) {
+			//						e.printStackTrace();
+			//					}
+			//				}
+			//				ans2=false;
+			//			}
 		}
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -344,7 +343,7 @@ public class MyFrame implements ActionListener{
 				Fruitarr=g.getArray();
 				System.out.println(Fruitarr.size());
 				System.out.println(Packmanarr.size());
-				
+
 			}
 		}
 		if(e.getSource()==save) {
@@ -398,8 +397,9 @@ public class MyFrame implements ActionListener{
 		}
 		if(e.getSource()==Save_as_kml) {
 			Game g=new Game(Packmanarr,Fruitarr);
-			System.out.println("Save as kml");
-			Path2KML.path2kml(g);
+			ans=Path2KML.path2kml(g);
+			if(ans)System.out.println("saved int data folder under name:mygamekml.kml");
+			else System.out.println("Ops something went weong");
 		}
 		frame.repaint();
 	}
