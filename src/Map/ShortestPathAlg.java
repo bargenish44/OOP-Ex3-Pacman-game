@@ -1,8 +1,6 @@
 package Map;
 
 import java.util.ArrayList;
-
-import Coords.MyCoords;
 import Geom.Circle;
 import Geom.Point3D;
 import Map.Map;
@@ -39,12 +37,13 @@ public class ShortestPathAlg {
 			g.getArr().get(packmanindex).setScore(g.getArray().get(fruitindex).getWeight());
 			Point3D p=calcvector(g.getArr().get(packmanindex).getOrinet(),fruittmp.getOrient());
 			if(!p.toString().equals("0.0,0.0,0.0")){
-				System.out.println(p.toString());
-				//				p=normalvector(p);
-				p=new Point3D(p.x()/100,p.y()/100,p.z()/100);
-				System.out.println("p is: "+p.toString());
+				//				System.out.println(p.toString());
+				p=normalvector(p);
+				Point3D p2=new Point3D(p.x()+arr.get(packmanindex).getOrinet().x(),p.y()+arr.get(packmanindex).getOrinet().y(),p.z()+arr.get(packmanindex).getOrinet().z());
+				//				p=new Point3D(p.x()/100,p.y()/100,p.z()/100);
+				//				System.out.println("p is: "+p.toString());
 				//				g.getArr().get(packmanindex).setTime(min);
-				patheat(arr.get(packmanindex),fruittmp,p);
+				patheat(arr.get(packmanindex),fruittmp,p,p2);
 			}
 			//			g.getArray().get(fruitindex).setDead(System.nanoTime()-start);
 			//			System.out.println(g.getArray().get(fruitindex).getDead());
@@ -59,13 +58,17 @@ public class ShortestPathAlg {
 		}
 		return time;
 	}
-	private static void patheat(Packman pack,Fruit f,Point3D norm) {//לסדר
+	private static void patheat(Packman pack,Fruit f,Point3D norm,Point3D p2) {//לסדר
 		Circle c=new Circle(pack.getOrinet(),pack.getRadius());
 		double dist=Map.distance3d(c.get_cen(),f.getOrient())-c.get_radius();
 		int i=0;
-		MyCoords my=new MyCoords();
+		//		MyCoords my=new MyCoords();
 		boolean ans=false;
-		while(dist>0) {//להוסיף פור שירןץ לפי המהירות של הפקמן ולחשב שהפקמן ילך מטר ולא סתם צעד בנרמול 
+		double dist2=Map.distance3d(p2, pack.getOrinet());
+		System.out.println(dist2+" dist2");
+		System.out.println(dist+" dist1");
+		//		System.out.println("first "+c.get_cen());
+		while(dist>dist2) {//להוסיף פור שירןץ לפי המהירות של הפקמן ולחשב שהפקמן ילך מטר ולא סתם צעד בנרמול 
 			for(int j=1;j<=pack.getSpeed();j++) {
 				//				c.set_cen(my.add(c.get_cen(), norm));
 				c.get_cen().add(norm);
@@ -73,7 +76,8 @@ public class ShortestPathAlg {
 				if(dist<=0) {
 					pack.getTime().setSecond(1/j);
 					pack.getPath().getArr().add(c.get_cen());
-					System.out.println(pack.getPath().getArr().get(i++));
+					System.out.println("every step "+c.get_cen());
+					//					System.out.println(pack.getPath().getArr().get(i++));
 					pack.setOrinet(c.get_cen());
 					ans=true;
 				}
@@ -82,6 +86,7 @@ public class ShortestPathAlg {
 				pack.getTime().setSecond(1);
 				pack.getPath().getArr().add(c.get_cen());
 				pack.setOrinet(c.get_cen());
+				System.out.println("after speed path "+c.get_cen());
 			}
 		}
 	}

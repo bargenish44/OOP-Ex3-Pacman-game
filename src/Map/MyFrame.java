@@ -155,28 +155,28 @@ public class MyFrame implements ActionListener{
 				}
 				ans2=true;
 			}
-						if(ans2) {
-							System.out.println("arr pos: "+Packmanarr.get(0).getOrinet());
-							System.out.println("arrtemp pos: "+Packmanarrtemp.get(0).getOrinet());
-							int max=MaxPathSize(Packmanarr);
-							for(int k=0;k<max;k++) {
-								frame.repaint();
-								int j=0;
-								for(int i=0;i<Packmanarr.size();i++) {
-									try {
-										Packmanarr.get(i).setOrinet(Packmanarr.get(i).getPath().getArr().get((int)(j*10*Packmanarr.get(i).getSpeed())));
-									}catch (Exception e) {}
-									j++;
-								}
-								frame.repaint();
-								try {
-									Thread.sleep(10);
-								} catch (InterruptedException e) {
-									e.printStackTrace();
-								}
-							}
-							ans2=false;
-						}
+			if(ans2) {
+				System.out.println("arr pos: "+Packmanarr.get(0).getOrinet());
+				System.out.println("arrtemp pos: "+Packmanarrtemp.get(0).getOrinet());
+				int max=MaxPathSize(Packmanarr);
+				for(int k=0;k<max;k++) {
+					frame.repaint();
+					int j=0;
+					for(int i=0;i<Packmanarr.size();i++) {
+						try {
+							Packmanarr.get(i).setOrinet(Packmanarr.get(i).getPath().getArr().get((int)(j*10*Packmanarr.get(i).getSpeed())));
+						}catch (Exception e) {}
+						j++;
+					}
+					frame.repaint();
+					try {
+						Thread.sleep(10);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+				ans2=false;
+			}
 		}
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -359,8 +359,8 @@ public class MyFrame implements ActionListener{
 			Fruitarrtemp.addAll(Fruitarr);
 			Game g=new Game(Packmanarr, Fruitarr);
 			//			System.out.println(ShortestPathAlg.Shortalgo(g));
-//			System.out.println(ShortestPathAlg.Shortalgo(g));
-			System.out.println(test2.Shortalgo(g));
+			//			System.out.println(ShortestPathAlg.Shortalgo(g));
+			System.out.println(ShortestPathAlg.Shortalgo(g));
 			Packmanarr=g.getArr();
 			Fruitarr=Fruitarrtemp;
 			for(int i=0;i<Packmanarr.size();i++) {
@@ -371,7 +371,7 @@ public class MyFrame implements ActionListener{
 			//			ans3=true;
 			//			thread=new Thread(target);
 			//			thread.start();
-						ans2=true;
+			ans2=true;
 		}
 		if(e.getSource()==how_to_run)
 			JOptionPane.showMessageDialog(null, "For new Packman pressed left click on mouse on the place in the map that you want"
