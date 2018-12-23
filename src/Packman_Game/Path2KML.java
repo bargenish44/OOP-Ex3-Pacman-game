@@ -17,6 +17,9 @@ public class Path2KML {
 	 * @return boolean if we succeed to create the kml or not.
 	 */
 	public static boolean path2kml(Game g) {
+		Time time=new Time();
+		Time maxtime=new Time();
+		maxtime.setYear(1);
 		ArrayList<String> content = new ArrayList<String>();
 		String kmlstart = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
 				"<kml xmlns=\"http://www.opengis.net/kml/2.2\">\n<Document><Style id=\"red\">\r\n" + 

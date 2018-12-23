@@ -53,10 +53,10 @@ public class ShortestPathAlg {
 			double speed = g.getArr().get(packmanindex).getSpeed();
 			Point3D step = calcStepVec(pacP, fruP, dist,speed);
 			Packman pTemp = g.getArr().get(packmanindex);
-			Point3D next=fruP;
+			Point3D next=new Point3D(fruP);
 			for(int i = 0;i<(dist/speed);i++) {
 				next =new Point3D(pacP.x()+(i*step.x()),pacP.y()+(i*step.y()),pacP.z()+(i*step.z()));
-				next.getTime().setSecond(1);
+				next.getTime().setSecond(i+1);
 				pTemp.getPath().getArr().add(next);
 			}
 			pTemp.setOrinet(next);
