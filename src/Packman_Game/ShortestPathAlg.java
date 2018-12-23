@@ -111,8 +111,4 @@ public class ShortestPathAlg {
 		double newZ = pacman.z()*B+fruit.z()*A;
 		return new Point3D(newX-pacman.x(),newY-pacman.y(),newZ-pacman.z());
 	}
-	//	public static void main(String[] args) {
-	//		Game g=Game.load("C:\\Users\\barge\\Desktop\\מונחה עצמים מטלה 3\\data\\game_1543685769754.csv");
-	//		System.out.println(Shortalgo(g));
-	//	}
 }

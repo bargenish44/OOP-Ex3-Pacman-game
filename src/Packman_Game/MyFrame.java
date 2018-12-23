@@ -124,7 +124,6 @@ public class MyFrame implements ActionListener{
 			super.paintComponent(g);
 			g.drawImage(img, 0, 0,this.getWidth(),this.getHeight(),null);
 			for(int i=0;i<Packmanarr.size();i++) {
-				System.out.println("Paint:"+Packmanarr.get(i).getOrinet());
 				Point3D p=map.CoordsToPixel(Packmanarr.get(i).getOrinet(),width,hight);
 				g.drawImage(packmanimage.getImage(), p.ix()-25, p.iy()-25,50,50,null);
 			}
@@ -132,15 +131,13 @@ public class MyFrame implements ActionListener{
 				Point3D p=map.CoordsToPixel(Fruitarr.get(i).getOrient(),width,hight);
 				g.drawImage(cherryimage.getImage(), p.ix()-25, p.iy()-25,50,50,null);
 			}
-			if(ans) {//להדפיס מרחק של כל פקמן
+			if(ans) {
 				int count=0;
-				//double dist=0;
 				for(int i=0;i<Packmanarr.size();i++) {
 					Packman tmp=new Packman(Packmanarr.get(i));
 					Point3D p=map.CoordsToPixel(tmp.getOrinet(),width,hight);
 					tmp.setOrinet(p);
 					if(tmp.getPath().getArr().size()>0) {
-						System.out.println(tmp.getPath().getArr().size());
 						if(count==6)
 							count=0;
 						for(int j=1;j<tmp.getPath().getArr().size();j++) {
@@ -148,13 +145,9 @@ public class MyFrame implements ActionListener{
 							Point3D p2=map.CoordsToPixel(tmp.getPath().getArr().get(j),width,hight);
 							g.setColor(colors[count]);
 							g.drawLine(p1.ix(), p1.iy(),p2.ix(),p2.iy());
-							//Packmanarr.get(i).setOrinet(p2);
-							//dist+=p1.distance3D(p2);
 						}
 						count++;
-						//System.out.println(dist+" count is: "+tmp.getID());
 					}
-					//					dist=0;
 				}
 			}
 		}
@@ -306,9 +299,11 @@ public class MyFrame implements ActionListener{
 		if(e.getSource()==run) {
 			play_Sound("pacman.wav");
 			Packmanarrtemp.clear();
-			for(int i=0;i<Packmanarr.size();i++) {
+			for(int i=0;i<Packmanarr.size();i++) 
 				Packmanarrtemp.add(new Packman(Packmanarr.get(i)));
-			}
+//			Fruitarrtemp.clear();
+//			for(int i=0;i<Fruitarr.size();i++) 
+//				Fruitarrtemp.add(new Fruit(Fruitarr.get(i)));
 			Game g=new Game(Packmanarr, Fruitarr);
 			ShortestPathAlg s=new ShortestPathAlg();
 			System.out.println(s.Shortalgo(g));
@@ -318,10 +313,14 @@ public class MyFrame implements ActionListener{
 			for(int i=0;i<Fruitarr.size();i++) {
 				Fruitarrtemp.add(new Fruit(Fruitarr.get(i)));
 			}
-			Fruitarr.clear();
+			double dist=0;
+			double score=0;
 			for(int i=0;i<Packmanarr.size();i++) {
-				Packmanarr.get(i).setOrinet(Packmanarrtemp.get(i).getOrinet());
+				dist=Packmanarr.get(i).getPath().GetDist();	
+				score=Packmanarr.get(i).getScore();
+				System.out.println("Packman: "+i+" ,distance is: "+dist+" , score is: "+score);
 			}
+			Fruitarr.clear();
 			ans=true;
 		}
 		if(e.getSource()==how_to_run)
@@ -340,7 +339,6 @@ public class MyFrame implements ActionListener{
 					"About the game", JOptionPane.PLAIN_MESSAGE);
 		}
 		if(e.getSource()==reload) {
-			System.out.println("reload");
 			Fruitarr.clear();
 			for(int i=0;i<Fruitarrtemp.size();i++) {
 				Fruitarr.add(new Fruit(Fruitarrtemp.get(i)));
@@ -352,6 +350,10 @@ public class MyFrame implements ActionListener{
 			ans=false;
 		}
 		if(e.getSource()==Save_as_kml) {
+			Fruitarr.clear();
+			for(int i=0;i<Packmanarr.size();i++) {
+				Packmanarr.get(i).setOrinet(Packmanarrtemp.get(i).getOrinet());
+			}
 			Game g=new Game(Packmanarr,Fruitarrtemp);
 			ans=Path2KML.path2kml(g);
 			if(ans)System.out.println("saved int data folder under name:mygamekml.kml");
