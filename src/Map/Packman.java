@@ -28,6 +28,15 @@ public class Packman {
 		setPath(new Path());
 		time=new Time();
 	}
+	public Packman(Packman ot) {
+		setID(ot.getID());
+		setOrinet(ot.getOrinet());
+		setSpeed(ot.getSpeed());
+		setRadius(ot.getRadius());
+		setPath(ot.getPath());
+		setTime(ot.getTime());
+		setScore(ot.getScore());
+	}
 	public Point3D getOrinet() {
 		return orinet;
 	}

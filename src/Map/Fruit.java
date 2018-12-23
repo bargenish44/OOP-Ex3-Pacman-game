@@ -20,6 +20,12 @@ public class Fruit {
 		setWeight(weight);
 		time=new Time();
 	}
+	public Fruit(Fruit ot) {
+		setID(ot.getID());
+		setOrient(ot.getOrient());
+		setWeight(ot.getWeight());
+		setTime(ot.getTime());
+	}
 	public int getID() {
 		return ID;
 	}

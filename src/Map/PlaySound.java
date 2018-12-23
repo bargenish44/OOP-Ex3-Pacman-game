@@ -5,7 +5,7 @@ import sun.audio.*;
 public class PlaySound {
 
 	public static void main(String[] args) throws IOException {
-		PlaySound obj = new PlaySound("pacman.wav");
+//		PlaySound obj = new PlaySound("pacman.wav");
 		PlaySound obj2=new PlaySound("bite.wav");
 	}
 

@@ -29,7 +29,7 @@ public class Time {
 		return day;
 	}
 	public void setDay(int day) {
-		if(mounth==1||mounth==31||mounth==5||mounth==7||mounth==8||mounth==10||mounth==12) {
+		if(mounth==1||mounth==3||mounth==5||mounth==7||mounth==8||mounth==10||mounth==12) {
 			day+=this.day;
 			while(day>=31) {
 				mounth++;

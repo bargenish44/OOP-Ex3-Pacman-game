@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import java.awt.event.*;
 import javax.swing.*;
+
 import Geom.Point3D;
 
 public class MyFrame implements ActionListener{
@@ -25,20 +26,17 @@ public class MyFrame implements ActionListener{
 	private JMenuItem run;
 	private JMenuItem how_to_run;
 	private JMenuItem about_the_game;
-	private JMenuItem clear;
+	private JMenuItem reload;
 	private JMenuItem Save_as_kml;
 	private JMenu menu2;
 	private JMenu menu;
 	private Image img;
 	private int width;
 	private int hight;
-	//	private gameTimer timer;
-	//	private String str="";
 	private JFrame frame;
 	private Map map;
 	private boolean ans2=false;
-	//	private Thread thread;
-	//	private Runnable target;
+	private ImagePanel panel;
 
 	public static void main(String[] args) {
 		new MyFrame();
@@ -60,9 +58,9 @@ public class MyFrame implements ActionListener{
 			how_to_run.addActionListener(this);
 			menu.add(how_to_run);
 			menu2=new JMenu("Option");
-			clear=new JMenuItem("Clear");
-			clear.addActionListener(this);
-			menu2.add(clear);
+			reload=new JMenuItem("Reload");
+			reload.addActionListener(this);
+			menu2.add(reload);
 			Save_as_kml=new JMenuItem("Save as kml");
 			Save_as_kml.addActionListener(this);
 			menu2.add(Save_as_kml);
@@ -79,11 +77,11 @@ public class MyFrame implements ActionListener{
 			frame.setJMenuBar(menubar);
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.setLayout(new BorderLayout());
-			frame.add(new ImagePanel(img));
+			panel = new  ImagePanel(img);
+			frame.add(panel);
 			frame.pack();
 			frame.setLocationRelativeTo(null);
 			frame.setVisible(true);
-			//			timer = new gameTimer();
 
 		} catch (IOException | HeadlessException exp) {
 			exp.printStackTrace();
@@ -118,6 +116,7 @@ public class MyFrame implements ActionListener{
 			super.paintComponent(g);
 			g.drawImage(img, 0, 0,this.getWidth(),this.getHeight(),null);
 			for(int i=0;i<Packmanarr.size();i++) {
+				System.out.println("Paint:"+Packmanarr.get(i).getOrinet());
 				Point3D p=map.CoordsToPixel(Packmanarr.get(i).getOrinet(),width,hight);
 				g.drawImage(packmanimage.getImage(), p.ix()-25, p.iy()-25,50,50,null);
 			}
@@ -127,9 +126,9 @@ public class MyFrame implements ActionListener{
 			}
 			if(ans) {//להדפיס מרחק של כל פקמן
 				int count=0;
-				//				double dist=0;
+				//double dist=0;
 				for(int i=0;i<Packmanarr.size();i++) {
-					Packman tmp=Packmanarr.get(i);
+					Packman tmp=new Packman(Packmanarr.get(i));
 					Point3D p=map.CoordsToPixel(tmp.getOrinet(),width,hight);
 					tmp.setOrinet(p);
 					if(tmp.getPath().getArr().size()>0) {
@@ -138,45 +137,39 @@ public class MyFrame implements ActionListener{
 							count=0;
 						for(int j=1;j<tmp.getPath().getArr().size();j++) {
 							Point3D p1=map.CoordsToPixel(tmp.getPath().getArr().get(j-1),width,hight);
-							//							try {
 							Point3D p2=map.CoordsToPixel(tmp.getPath().getArr().get(j),width,hight);
 							g.setColor(colors[count]);
 							g.drawLine(p1.ix(), p1.iy(),p2.ix(),p2.iy());
-							//							System.out.println(p1.ix()+": p1x "+p1.iy()+": p1y "+p2.ix()+": p2x "+p2.iy()+": p2y .");
-							//							Packmanarr.get(i).setOrinet(p2);
+							//Packmanarr.get(i).setOrinet(p2);
 							//dist+=p1.distance3D(p2);
-							//							}catch(IndexOutOfBoundsException e) {System.out.println("wrong");}
 						}
 						count++;
-						//str+=time.getActionCommand();
 						//System.out.println(dist+" count is: "+tmp.getID());
 					}
 					//					dist=0;
 				}
 				ans2=true;
 			}
-			if(ans2) {
-				System.out.println("arr pos: "+Packmanarr.get(0).getOrinet());
-				System.out.println("arrtemp pos: "+Packmanarrtemp.get(0).getOrinet());
-				int max=MaxPathSize(Packmanarr);
-				for(int k=0;k<max;k++) {
-					frame.repaint();
-					int j=0;
-					for(int i=0;i<Packmanarr.size();i++) {
-						try {
-							Packmanarr.get(i).setOrinet(Packmanarr.get(i).getPath().getArr().get((int)(j*10*Packmanarr.get(i).getSpeed())));
-						}catch (Exception e) {}
-						j++;
-					}
-					frame.repaint();
-					try {
-						Thread.sleep(10);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-				ans2=false;
-			}
+			//			if(ans2) {
+			//				int max=MaxPathSize(Packmanarr);
+			//				for(int k=0;k<max;k++) {
+			//					System.out.println(k);
+			//					frame.repaint();
+			//					for(int i=0;i<Packmanarr.size();i++) {
+			//						try {
+			//							Packmanarr.get(i).setOrinet(Packmanarr.get(i).getPath().getArr().get(k));
+			//						}catch (Exception e) {}
+			//					}
+			//					frame.repaint();
+			//					System.out.println(k);
+			//					try {
+			//						Thread.sleep(100);
+			//					} catch (InterruptedException e) {
+			//						e.printStackTrace();
+			//					}
+			//				}
+			//				ans2=false;
+			//			}
 		}
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -294,41 +287,6 @@ public class MyFrame implements ActionListener{
 		@Override
 		public void mouseReleased(MouseEvent e) {
 		}
-		//		@Override
-		//		public void actionPerformed(ActionEvent arg0) {
-		//			str+=new Game(Packmanarr,Fruitarr).toString();
-		//			System.out.println("1");
-		//		}
-
-		//		@Override
-		//		public void run() {
-		//			if(ans3) {
-		//				System.out.println(1);
-		//				target=new Runnable() {
-		//					@Override
-		//					public void run() {
-		//						for(int i=0;i<Packmanarr.size();i++) {
-		//							for(int j=0;j<Packmanarr.get(i).getPath().getArr().size();j++){
-		//								System.out.println(Packmanarr.get(i).getPath().getArr().get(j).toString());
-		//								frame.repaint();
-		//								Packmanarr.get(i).setOrinet(Packmanarr.get(i).getPath().getArr().get(j));
-		//								frame.repaint();
-		//								try {
-		//									System.out.println(2);
-		//									Thread.sleep(100000);
-		//								} catch (InterruptedException e) {
-		//									System.out.println(1);
-		//									e.printStackTrace();
-		//								}
-		//							}
-		//						}
-		//						ans3=false;
-		//					}											
-		//				};
-		//				frame.repaint();
-		//			}
-		//		}
-
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -343,7 +301,6 @@ public class MyFrame implements ActionListener{
 				Fruitarr=g.getArray();
 				System.out.println(Fruitarr.size());
 				System.out.println(Packmanarr.size());
-
 			}
 		}
 		if(e.getSource()==save) {
@@ -354,30 +311,61 @@ public class MyFrame implements ActionListener{
 			System.out.println("run");
 			play_Sound("pacman.wav");
 			Packmanarrtemp.clear();
-			Packmanarrtemp.addAll(Packmanarr);
-			//			Fruitarrtemp.clear();
-			Fruitarrtemp.addAll(Fruitarr);
+			for(int i=0;i<Packmanarr.size();i++) {
+				Packmanarrtemp.add(new Packman(Packmanarr.get(i)));
+			}
+			Fruitarrtemp.clear();
+			for(int i=0;i<Fruitarr.size();i++) {
+				Fruitarrtemp.add(new Fruit(Fruitarr.get(i)));
+			}
 			Game g=new Game(Packmanarr, Fruitarr);
-			//			System.out.println(ShortestPathAlg.Shortalgo(g));
-			//			System.out.println(ShortestPathAlg.Shortalgo(g));
-			System.out.println(ShortestPathAlg.Shortalgo(g));
+			ShortestPathAlg s=new ShortestPathAlg();
+			System.out.println(s.Shortalgo(g));
 			Packmanarr=g.getArr();
-			Fruitarr=Fruitarrtemp;
+			Fruitarr.clear();
+			for(int i=0;i<Fruitarrtemp.size();i++) {
+				Fruitarr.add(new Fruit(Fruitarrtemp.get(i)));
+			}
 			for(int i=0;i<Packmanarr.size();i++) {
 				Packmanarr.get(i).setOrinet(Packmanarrtemp.get(i).getOrinet());
 			}
 			ans=true;
-			//			Fruitarr=g.getArray();
-			//			ans3=true;
-			//			thread=new Thread(target);
-			//			thread.start();
-			ans2=true;
+
+			for(int i = 0;i<Packmanarr.get(0).getPath().getArr().size();i++) {
+				System.out.println(i+": "+Packmanarr.get(0).getPath().getArr().get(i));
+			}
+
+			ActionListener ac = new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					frame.repaint();
+				}
+			};
+
+			javax.swing.Timer time = new Timer(1,ac ) ;
+			int max=MaxPathSize(Packmanarr);
+			//time.start();
+			for(int k=0;k<max;k++) {
+				//System.out.println(k);
+				//frame.repaint();
+				for(int i=0;i<Packmanarr.size();i++) {
+					try {
+						//System.out.println("**");
+						Packmanarr.get(i).setOrinet(Packmanarr.get(i).getPath().getArr().get(k));
+						//System.out.println("^^");
+					}catch (Exception ex) {}
+				}
+
+
+			}
+			time.stop();
 		}
 		if(e.getSource()==how_to_run)
 			JOptionPane.showMessageDialog(null, "For new Packman pressed left click on mouse on the place in the map that you want"
 					+ ",\nFor new Fruit pressed right click on mouse on the place in the map that you want,"
 					+ "\nFor run the game pressed on run button on menu under option,"
-					+ "\nIf you want to go back before you run the game click clear button on menu under option.",
+					+ "\nIf you want to go back before you run the game click reload button on menu under option.",
 					"How to play", JOptionPane.PLAIN_MESSAGE);
 		if(e.getSource()==about_the_game) {
 			JOptionPane.showMessageDialog(null, "This is a packman game:\n"
@@ -387,13 +375,16 @@ public class MyFrame implements ActionListener{
 					+ " \nCreated & Designed by :\nBar Genish and Elyashiv Deri." ,
 					"About the game", JOptionPane.PLAIN_MESSAGE);
 		}
-		if(e.getSource()==clear) {//לסדר שחזרו למקום שלהם
-			System.out.println("clear");
+		if(e.getSource()==reload) {
+			System.out.println("reload");
 			Fruitarr.clear();
-			Fruitarr.addAll(Fruitarrtemp);
+			for(int i=0;i<Fruitarrtemp.size();i++) {
+				Fruitarr.add(new Fruit(Fruitarrtemp.get(i)));
+			}
 			Packmanarr.clear();
-			Packmanarr.addAll(Packmanarrtemp);
-			//Packmanarr=Packmanarrtemp;
+			for(int i=0;i<Packmanarrtemp.size();i++) {
+				Packmanarr.add(new Packman(Packmanarrtemp.get(i)));
+			}
 			ans=false;
 		}
 		if(e.getSource()==Save_as_kml) {
@@ -402,7 +393,7 @@ public class MyFrame implements ActionListener{
 			if(ans)System.out.println("saved int data folder under name:mygamekml.kml");
 			else System.out.println("Ops something went weong");
 		}
-		frame.repaint();
+		panel.repaint();
 	}
 	public void play_Sound(String path) {
 		try {
