@@ -4,17 +4,6 @@
 <IconStyle><Icon><href>http://maps.google.com/mapfiles/ms/icons/red-dot.png</href></Icon></IconStyle>
 </Style><Style id="Packman"><IconStyle><Icon><href>https://png2.kisspng.com/sh/cbe6dbcf1fface5c8a4892f6c04c955c/L0KzQYm3V8MxN5DohJH0aYP2gLBuTf10NaFme592YX6wgLLqTf1idl58hAR1ZD21PcHog71uaZ8ySp99aHWwfrbATfFlfl51edU2bXHxPbL1hL11cJYyf9p4c4TviX7ohQZmdqV6itd8LUXlRbbpWcY1PWdnT9U5Lkm5Q4WBWcE1OWY4Sqs8NEWzQIS8VcIveJ9s/kisspng-ms-pac-man-pac-man-world-2-pac-man-2-the-new-adv-pac-man-and-the-ghostly-adventures-5b5eb96456b7c0.9634891415329345003552.png</href></Icon></IconStyle>
 </Style><Style id="Fruit"><IconStyle><Icon><href>http://chittagongit.com//images/cherry-icon/cherry-icon-15.jpg</href></Icon></IconStyle></Style><Placemark>
-<name>fruit0</name>
-<description>Type: Fruit
-lat: 35.20573393
-lon :32.10462702
-Alt: 10.0
-Weight: 4.0</description>
-<styleUrl>Fruit</styleUrl><Point>
-<coordinates>35.20573393,32.10462702,10.0</coordinates></Point>
-<TimeStamp>
-	<when>2000-01-01T01:01:21</when>
-</TimeStamp></Placemark><Placemark>
 <name>fruit1</name>
 <description>Type: Fruit
 lat: 35.20498036
@@ -23,22 +12,27 @@ Alt: 0.0
 Weight: 2.0</description>
 <styleUrl>Fruit</styleUrl><Point>
 <coordinates>35.20498036,32.10478793,0.0</coordinates></Point>
-<TimeStamp>
-	<when>2000-01-01T01:01:02</when>
-</TimeStamp></Placemark><Placemark>
+<TimeSpan><begin>2000-01-01T01:01:01</begin><end>2000-01-01T01:01:36</end></TimeSpan></Placemark><Placemark>
+<name>fruit0</name>
+<description>Type: Fruit
+lat: 35.20573393
+lon :32.10462702
+Alt: 10.0
+Weight: 4.0</description>
+<styleUrl>Fruit</styleUrl><Point>
+<coordinates>35.20573393,32.10462702,10.0</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:01</begin><end>2000-01-01T01:01:19</end></TimeSpan></Placemark><Placemark>
 <name>Packman0</name>
 <description>Type: Packman
-lat: 35.2035022
-lon :32.1045513
-Alt: 10.0
+lat: 35.20570356677543
+lon :32.104633236193
+Alt: 9.611407705623524
 Speed: 4.0
 Radius: 4.0
-Score: 0.0</description>
+Score: 6.0</description>
 <styleUrl>Packman</styleUrl><Point>
-<coordinates>35.2035022,32.1045513,10.0</coordinates></Point>
-<TimeStamp>
-	<when>2000-01-01T01:04:21</when>
-</TimeStamp></Placemark><Placemark>
+<coordinates>35.20570356677543,32.104633236193,9.611407705623524</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:01</begin><end>2000-01-01T01:01:03</end></TimeSpan></Placemark><Placemark>
 <name>Packman1</name>
 <description>Type: Packman
 lat: 35.21019738
@@ -49,7 +43,588 @@ Radius: 2.0
 Score: 0.0</description>
 <styleUrl>Packman</styleUrl><Point>
 <coordinates>35.21019738,32.10451344,0.0</coordinates></Point>
-<TimeStamp>
-	<when>2000-01-01T01:01:21</when>
-</TimeStamp></Placemark>
+<TimeSpan><begin>2000-01-01T01:01:01</begin><end>2000-01-01T01:01:21</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.2035022
+lon :32.1045513
+Alt: 10.0
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.2035022,32.1045513,10.0</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:05</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20354514050175
+lon :32.104558174094095
+Alt: 9.709500312898701
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20354514050175,32.104558174094095,9.709500312898701</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:06</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.2035880810035
+lon :32.10456504818819
+Alt: 9.419000625797402
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.2035880810035,32.10456504818819,9.419000625797402</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:07</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20363102150525
+lon :32.10457192228229
+Alt: 9.128500938696103
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20363102150525,32.10457192228229,9.128500938696103</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:08</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.203673962007
+lon :32.10457879637639
+Alt: 8.838001251594804
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.203673962007,32.10457879637639,8.838001251594804</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:09</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20371690250875
+lon :32.104585670470485
+Alt: 8.547501564493505
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20371690250875,32.104585670470485,8.547501564493505</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:010</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.2037598430105
+lon :32.10459254456458
+Alt: 8.257001877392206
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.2037598430105,32.10459254456458,8.257001877392206</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:11</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20380278351225
+lon :32.10459941865868
+Alt: 7.966502190290907
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20380278351225,32.10459941865868,7.966502190290907</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:12</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.203845724014
+lon :32.10460629275278
+Alt: 7.676002503189608
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.203845724014,32.10460629275278,7.676002503189608</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:13</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20388866451575
+lon :32.104613166846875
+Alt: 7.385502816088309
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20388866451575,32.104613166846875,7.385502816088309</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:14</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.2039316050175
+lon :32.10462004094097
+Alt: 7.09500312898701
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.2039316050175,32.10462004094097,7.09500312898701</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:15</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20397454551925
+lon :32.10462691503507
+Alt: 6.804503441885711
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20397454551925,32.10462691503507,6.804503441885711</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:16</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.204017486021
+lon :32.10463378912917
+Alt: 6.514003754784412
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.204017486021,32.10463378912917,6.514003754784412</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:17</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20406042652275
+lon :32.104640663223265
+Alt: 6.223504067683113
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20406042652275,32.104640663223265,6.223504067683113</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:18</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.2041033670245
+lon :32.10464753731736
+Alt: 5.933004380581814
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.2041033670245,32.10464753731736,5.933004380581814</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:19</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20414630752625
+lon :32.10465441141146
+Alt: 5.6425046934805145
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20414630752625,32.10465441141146,5.6425046934805145</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:20</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.204189248028
+lon :32.10466128550556
+Alt: 5.3520050063792155
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.204189248028,32.10466128550556,5.3520050063792155</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:21</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20423218852975
+lon :32.104668159599655
+Alt: 5.0615053192779165
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20423218852975,32.104668159599655,5.0615053192779165</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:22</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.2042751290315
+lon :32.10467503369375
+Alt: 4.771005632176617
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.2042751290315,32.10467503369375,4.771005632176617</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:23</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20431806953325
+lon :32.10468190778785
+Alt: 4.480505945075318
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20431806953325,32.10468190778785,4.480505945075318</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:24</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.204361010035
+lon :32.10468878188195
+Alt: 4.190006257974019
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.204361010035,32.10468878188195,4.190006257974019</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:25</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20440395053675
+lon :32.104695655976045
+Alt: 3.8995065708727203
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20440395053675,32.104695655976045,3.8995065708727203</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:26</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.2044468910385
+lon :32.10470253007014
+Alt: 3.6090068837714213
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.2044468910385,32.10470253007014,3.6090068837714213</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:27</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20448983154025
+lon :32.10470940416424
+Alt: 3.3185071966701223
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20448983154025,32.10470940416424,3.3185071966701223</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:28</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.204532772042
+lon :32.10471627825834
+Alt: 3.0280075095688233
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.204532772042,32.10471627825834,3.0280075095688233</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:29</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20457571254375
+lon :32.104723152352435
+Alt: 2.737507822467524
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20457571254375,32.104723152352435,2.737507822467524</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:30</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.2046186530455
+lon :32.10473002644653
+Alt: 2.447008135366225
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.2046186530455,32.10473002644653,2.447008135366225</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:31</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20466159354725
+lon :32.10473690054063
+Alt: 2.156508448264926
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20466159354725,32.10473690054063,2.156508448264926</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:32</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.204704534049
+lon :32.10474377463473
+Alt: 1.8660087611636271
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.204704534049,32.10474377463473,1.8660087611636271</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:33</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20474747455075
+lon :32.104750648728825
+Alt: 1.575509074062328
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20474747455075,32.104750648728825,1.575509074062328</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:34</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.2047904150525
+lon :32.10475752282292
+Alt: 1.285009386961029
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.2047904150525,32.10475752282292,1.285009386961029</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:35</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20483335555425
+lon :32.10476439691702
+Alt: 0.99450969985973
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20483335555425,32.10476439691702,0.99450969985973</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:36</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.204876296056
+lon :32.10477127101112
+Alt: 0.704010012758431
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.204876296056,32.10477127101112,0.704010012758431</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:02</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20491923655775
+lon :32.104778145105215
+Alt: 0.41351032565713197
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20491923655775,32.104778145105215,0.41351032565713197</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:03</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.2049621770595
+lon :32.10478501919931
+Alt: 0.12301063855583294
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.2049621770595,32.10478501919931,0.12301063855583294</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:04</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.2049621770595
+lon :32.10478501919931
+Alt: 0.12301063855583294
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.2049621770595,32.10478501919931,0.12301063855583294</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:05</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20500578821926
+lon :32.104776090787176
+Alt: 0.6811516425009913
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20500578821926,32.104776090787176,0.6811516425009913</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:06</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20504939937902
+lon :32.10476716237504
+Alt: 1.2392926464461496
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20504939937902,32.10476716237504,1.2392926464461496</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:07</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20509301053878
+lon :32.104758233962905
+Alt: 1.7974336503913078
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20509301053878,32.104758233962905,1.7974336503913078</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:08</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20513662169854
+lon :32.10474930555077
+Alt: 2.355574654336466
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20513662169854,32.10474930555077,2.355574654336466</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:09</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.205180232858304
+lon :32.10474037713863
+Alt: 2.9137156582816246
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.205180232858304,32.10474037713863,2.9137156582816246</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:010</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.205223844018064
+lon :32.1047314487265
+Alt: 3.4718566622267826
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.205223844018064,32.1047314487265,3.4718566622267826</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:11</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.205267455177825
+lon :32.10472252031436
+Alt: 4.0299976661719406
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.205267455177825,32.10472252031436,4.0299976661719406</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:12</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.205311066337586
+lon :32.104713591902225
+Alt: 4.588138670117099
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.205311066337586,32.104713591902225,4.588138670117099</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:13</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20535467749735
+lon :32.10470466349009
+Alt: 5.146279674062257
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20535467749735,32.10470466349009,5.146279674062257</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:14</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20539828865711
+lon :32.104695735077954
+Alt: 5.704420678007416
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20539828865711,32.104695735077954,5.704420678007416</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:15</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20544189981687
+lon :32.10468680666582
+Alt: 6.262561681952574
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20544189981687,32.10468680666582,6.262561681952574</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:16</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20548551097663
+lon :32.10467787825368
+Alt: 6.820702685897732
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20548551097663,32.10467787825368,6.820702685897732</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:17</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20552912213639
+lon :32.104668949841546
+Alt: 7.378843689842891
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20552912213639,32.104668949841546,7.378843689842891</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:18</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20557273329615
+lon :32.10466002142941
+Alt: 7.936984693788049
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20557273329615,32.10466002142941,7.936984693788049</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:19</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20561634445591
+lon :32.104651093017274
+Alt: 8.495125697733208
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20561634445591,32.104651093017274,8.495125697733208</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:19</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20565995561567
+lon :32.10464216460514
+Alt: 9.053266701678366
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20565995561567,32.10464216460514,9.053266701678366</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:19</end></TimeSpan></Placemark><Placemark>
+<name>Packman0</name>
+<description>Type: Packman
+lat: 35.20570356677543
+lon :32.104633236193
+Alt: 9.611407705623524
+Speed: 4.0
+Radius: 4.0
+Score: 6.0</description>
+<styleUrl>Packman</styleUrl><Point>
+<coordinates>35.20570356677543,32.104633236193,9.611407705623524</coordinates></Point>
+<TimeSpan><begin>2000-01-01T01:01:19</begin><end>2000-01-01T01:01:19</end></TimeSpan></Placemark>
 </Document></kml>

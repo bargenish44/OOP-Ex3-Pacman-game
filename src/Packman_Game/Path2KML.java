@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class Path2KML {
 	/**
@@ -19,7 +20,7 @@ public class Path2KML {
 	public static boolean path2kml(Game g) {
 		Time time=new Time();
 		Time maxtime=new Time();
-		maxtime.setYear(1);
+		maxtime.setHour(1);
 		ArrayList<String> content = new ArrayList<String>();
 		String kmlstart = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
 				"<kml xmlns=\"http://www.opengis.net/kml/2.2\">\n<Document><Style id=\"red\">\r\n" + 
@@ -40,7 +41,10 @@ public class Path2KML {
 						"<styleUrl>"+"Fruit"+"</styleUrl>"+"<Point>\n" +
 						"<coordinates>"+tmp.getOrient().y()+","+tmp.getOrient().x()+","+tmp.getOrient().z()+"</coordinates>" +
 						"</Point>\n" +
-						"<TimeStamp>\n\t<when>"+tmp.getTime().toString()+"</when>"+"\n</TimeStamp>"+
+						"<TimeSpan>"
+						+"<begin>"+time+"</begin>"
+						+"<end>"+tmp.getTime()+"</end>"
+						+"</TimeSpan>"+
 						"</Placemark>";
 				content.add(kmlelement);
 			}
@@ -54,13 +58,30 @@ public class Path2KML {
 						"</styleUrl>"+"<Point>\n" +
 						"<coordinates>"+tmp.getOrinet().y()+","+tmp.getOrinet().x()+","+tmp.getOrinet().z()+"</coordinates>" +
 						"</Point>\n" +
-						"<TimeStamp>\n\t<when>"+tmp.getTime().toString()+"</when>"+"\n</TimeStamp>"+
-						"</Placemark>";
+						"<TimeSpan>"
+						+"<begin>"+time+"</begin>"
+						+"<end>"+tmp.getTime()+"</end>"
+						+"</TimeSpan>"
+						+"</Placemark>";
 				content.add(kmlelement);
 			}
+			Time start=new Time(time);
 			for(int i=0;i<g.getArr().size();i++) {
 				Packman tmp=g.getArr().get(i);
 				for(int j=0;j<g.getArr().get(i).getPath().getArr().size();j++) {
+					if(j==0)
+						start=tmp.getTime();
+					else
+						start=tmp.getPath().getArr().get(j-1).getTime();
+				}
+			}
+			for(int i=0;i<g.getArr().size();i++) {
+				Packman tmp=g.getArr().get(i);
+				Time ends=new Time(maxtime);
+				for(int j=0;j<g.getArr().get(i).getPath().getArr().size();j++) {
+					try {
+						ends=tmp.getPath().getArr().get(j+1).getTime();
+					} catch(Exception e) {}
 					String kmlelement ="<Placemark>\n" +
 							"<name>Packman"+tmp.getID()+"</name>\n" +
 							"<description>Type: Packman\nlat: "+tmp.getPath().getArr().get(j).y()+"\nlon :"+tmp.getPath().getArr().get(j).x()+"\nAlt: "+tmp.getPath().getArr().get(j).z()+"\nSpeed: "+tmp.getSpeed()+"\nRadius: "+tmp.getRadius()+"\nScore: "+tmp.getScore()+
@@ -68,7 +89,10 @@ public class Path2KML {
 							"<styleUrl>"+"Packman"+"</styleUrl>"+"<Point>\n" +
 							"<coordinates>"+tmp.getPath().getArr().get(j).y()+","+tmp.getPath().getArr().get(j).x()+","+tmp.getPath().getArr().get(j).z()+"</coordinates>" +
 							"</Point>\n" +
-							"<TimeStamp>\n\t<when>"+tmp.getPath().getArr().get(j).getTime().toString()+"</when>"+"\n</TimeStamp>"+
+							"<TimeSpan>"
+							+"<begin>"+start+"</begin>"
+							+"<end>"+ends+"</end>"
+							+"</TimeSpan>"+
 							"</Placemark>";
 					content.add(kmlelement);
 				}

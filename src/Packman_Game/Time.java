@@ -6,13 +6,29 @@ public class Time {
 	 * @author Bar Genish
 	 * @author Elyashiv Deri
 	 */
-	private int year=2000;
-	private int mounth=1;
-	private int day=1;
-	private int hour=1;
-	private int minute=1;
-	private int second=1;
+	private int year;
+	private int mounth;
+	private int day;
+	private int hour;
+	private int minute;
+	private int second;
 
+	public Time() {
+		setYear(2000);
+		setMounth(1);
+		setDay(1);
+		setHour(1);
+		setMinute(1);
+		setSecond(1);
+	}
+	public Time(Time ot) {
+		setYear(ot.year);
+		setMounth(ot.mounth);
+		setDay(ot.day);
+		setHour(ot.hour);
+		setMinute(ot.minute);
+		setSecond(ot.second);
+	}
 	public int getYear() {//getters and setters
 		return year;
 	}

@@ -9,6 +9,11 @@ import Packman_Game.Packman;
 
 
 class MyFrameTest {
+	/**
+	 * MyFrame tests.
+	 * @author Bar Genish
+	 * @author Elyashiv Deri
+	 */
 	ArrayList<Packman> arr_test = new ArrayList<>();
 	Class<MyFrame> test_1 ;
 	MyFrame test_4 ;

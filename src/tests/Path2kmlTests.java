@@ -11,6 +11,7 @@ import Packman_Game.Fruit;
 import Packman_Game.Game;
 import Packman_Game.Packman;
 import Packman_Game.Path2KML;
+import Packman_Game.ShortestPathAlg;
 
 class Path2kmlTests {
 	/**
@@ -38,6 +39,8 @@ class Path2kmlTests {
 		array.get(0).getTime().setSecond(20);
 		array.get(1).getTime().setSecond(1);
 		Game g=new Game(arr,array);
+		ShortestPathAlg s=new ShortestPathAlg();
+		s.Shortalgo(g);
 		boolean ans=Path2KML.path2kml(g);
 		if(!ans)
 			fail("Path2kml problem");

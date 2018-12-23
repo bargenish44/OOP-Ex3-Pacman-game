@@ -1,5 +1,7 @@
 package Packman_Game;
 
+import java.util.ArrayList;
+
 import Geom.Circle;
 import Geom.Point3D;
 import Packman_Game.Map;
@@ -29,6 +31,7 @@ public class ShortestPathAlg {
 	 */
 	public double Shortalgo(Game g) {
 		double time=0;
+		ArrayList<Fruit>fruittmp=new ArrayList<>();
 		double min=Double.MAX_VALUE;
 		int packmanindex=0;
 		int fruitindex=0;
@@ -55,12 +58,15 @@ public class ShortestPathAlg {
 			Packman pTemp = g.getArr().get(packmanindex);
 			Point3D next=new Point3D(fruP);
 			for(int i = 0;i<(dist/speed);i++) {
+				if(i==0)
+					pTemp.getTime().setSecond(i+1);
 				next =new Point3D(pacP.x()+(i*step.x()),pacP.y()+(i*step.y()),pacP.z()+(i*step.z()));
 				next.getTime().setSecond(i+1);
 				pTemp.getPath().getArr().add(next);
 			}
 			pTemp.setOrinet(next);
 			g.getArray().get(fruitindex).setTime(next.getTime());
+			fruittmp.add(new Fruit(g.getArray().get(fruitindex)));
 			g.getArray().remove(fruitindex);
 			min=Double.MAX_VALUE;
 			time+=dist/speed;
@@ -73,6 +79,19 @@ public class ShortestPathAlg {
 					p.getPath().getArr().get(j).setTime(p.getPath().getArr().get(j+1).getTime());
 				}catch(Exception e) {}
 			}
+		}
+		for(int i=0;i<g.getArr().size();i++) {
+			try {
+				g.getArr().get(i).setTime(g.getArr().get(i).getPath().getArr().get(0).getTime());
+			}catch(Exception e) {}
+			for(int j=0;j<g.getArr().get(i).getPath().getArr().size();j++) {
+				try {
+					g.getArr().get(i).getPath().getArr().get(j).setTime(g.getArr().get(i).getPath().getArr().get(j+1).getTime());
+				} catch(Exception e) {}
+			}
+		}
+		for(int i=0;i<fruittmp.size();i++) {
+			g.getArray().add(new Fruit(fruittmp.get(i)));
 		}
 		return time;
 	}
