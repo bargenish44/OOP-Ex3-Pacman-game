@@ -3,7 +3,7 @@ package Geom;
 import java.io.Serializable;
 
 import Coords.Geom_element;
-import Map.Time;
+import Packman_Game.Time;
 
 public class Point3D implements Geom_element, Serializable {
 

@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import Geom.Point3D;
-import Map.Fruit;
+import Packman_Game.Fruit;
 
 class FruitTests {
 

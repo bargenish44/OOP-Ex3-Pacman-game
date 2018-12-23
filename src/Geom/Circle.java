@@ -1,7 +1,7 @@
 package Geom;
 
 import Coords.Geom_element;
-import Map.Map;
+import Packman_Game.Map;
 
 /**
  * This class represents Circle.

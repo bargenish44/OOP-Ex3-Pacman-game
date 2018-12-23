@@ -1,4 +1,4 @@
-package Map;
+package Packman_Game;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

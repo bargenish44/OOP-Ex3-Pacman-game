@@ -4,9 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 import Geom.Point3D;
-import Map.Fruit;
-import Map.Game;
-import Map.Packman;
+import Packman_Game.Fruit;
+import Packman_Game.Game;
+import Packman_Game.Packman;
 
 class GameTests {
 

@@ -1,4 +1,4 @@
-package Map;
+package Packman_Game;
 
 import Geom.Path;
 import Geom.Point3D;

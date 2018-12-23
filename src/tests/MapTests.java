@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import Coords.MyCoords;
 import Geom.Point3D;
-import Map.Map;
+import Packman_Game.Map;
 
 class MapTests {
 

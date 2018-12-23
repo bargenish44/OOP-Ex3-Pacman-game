@@ -5,10 +5,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import Geom.Point3D;
-import Map.Fruit;
-import Map.Game;
-import Map.Packman;
-import Map.ShortestPathAlg;
+import Packman_Game.Fruit;
+import Packman_Game.Game;
+import Packman_Game.Packman;
+import Packman_Game.ShortestPathAlg;
 
 class ShortestPathAlgTest {
 

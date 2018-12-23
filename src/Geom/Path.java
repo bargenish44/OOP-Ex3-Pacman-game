@@ -2,7 +2,6 @@ package Geom;
 
 import java.util.ArrayList;
 import Geom.Point3D;
-import Map.Packman;
 /**
  * This class represents a path- arraylist of 3D point in space.
  * @author Bar Genish

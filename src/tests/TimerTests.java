@@ -4,7 +4,7 @@ import static org.junit.Assert.fail;
 
 import java.util.TimerTask;
 import org.junit.jupiter.api.Test;
-import Map.gameTimer;
+import Packman_Game.gameTimer;
 
 class TimerTests {
 	gameTimer timer;

@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import Map.Time;
+import Packman_Game.Time;
 
 class TimeTests {
 

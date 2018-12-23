@@ -1,8 +1,8 @@
-package Map;
+package Packman_Game;
 
 import Geom.Circle;
 import Geom.Point3D;
-import Map.Map;
+import Packman_Game.Map;
 public class ShortestPathAlg {
 	/**
 	 * A class that calculates the shortest path so that all the fruits to eat as soon as possible.

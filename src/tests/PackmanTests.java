@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import Geom.Path;
 import Geom.Point3D;
-import Map.Packman;
+import Packman_Game.Packman;
 
 class PackmanTests {
 

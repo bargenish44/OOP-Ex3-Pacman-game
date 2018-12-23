@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 
 import Geom.Point3D;
-import Map.Fruit;
-import Map.Game;
-import Map.Packman;
-import Map.Path2KML;
+import Packman_Game.Fruit;
+import Packman_Game.Game;
+import Packman_Game.Packman;
+import Packman_Game.Path2KML;
 
 class Path2kmlTests {
 
