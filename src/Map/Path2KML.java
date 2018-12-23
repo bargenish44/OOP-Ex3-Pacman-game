@@ -6,6 +6,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Path2KML {
+	/**
+	 * This class convert Game to kml.
+	 * @author Bar Genish
+	 * @author Elyashiv Deri
+	 */
+	/**
+	 * This function write all the game details in new kml.
+	 * @param g Game that we want to write his details in the kml.
+	 * @return boolean if we succeed to create the kml or not.
+	 */
 	public static boolean path2kml(Game g) {
 		ArrayList<String> content = new ArrayList<String>();
 		String kmlstart = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +

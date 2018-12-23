@@ -42,12 +42,12 @@ public class Map {
 	}
 	/**
 	 * Convert pixel to coordinations.
-	 * @param int x - the x pixel.
-	 * @param int y - the y pixel.
-	 * @param int high - the high.
-	 * @param int width the current width of the screen.
-	 * @param int hight the current hight of the screen.
-	 * @return Point3D the point that we convert.
+	 * @param x - the x pixel.
+	 * @param y - the y pixel.
+	 * @param high - the high.
+	 * @param width the current width of the screen.
+	 * @param hight the current hight of the screen.
+	 * @return Point3D the point that we convert(int coordinations).
 	 */
 	public Point3D PixelToCoords(int x, int y,double high,int width,int hight) {
 		double YCoords = (((hight-(double)y)*RightDown.y())+((double)y*leftUp.y()))/hight;
@@ -56,13 +56,11 @@ public class Map {
 		return p2;
 	}
 	/**
-	 * Convert pixel to coordinations.
-	 * @param int x - the x pixel.
-	 * @param int y - the y pixel.
-	 * @param int high - the high.
-	 * @param int width the current width of the screen.
-	 * @param int hight the current hight of the screen.
-	 * @return Point3D the point that we convert.
+	 * Convert coordinations to pixels.
+	 * @param p - the point on coordinations that we wane to convert.
+	 * @param width the current width of the screen.
+	 * @param hight the current hight of the screen.
+	 * @return Point3D the point that we convert(int pixels).
 	 */
 	public Point3D CoordsToPixel(Point3D p,int width,int hight) {
 		int widthcoords=(int) (width*((p.x()-RightDown.x())/(leftUp.x()-RightDown.x())));
@@ -70,6 +68,12 @@ public class Map {
 		Point3D p2=new Point3D(widthcoords,Heightcoords,p.z());
 		return p2;
 	}
+	/**
+	 * Calculate distance between 2 pixels in meter.
+	 * @param p1 - the first point.
+	 * @param p2 - the second point.
+	 * @return double the distance between the pixels in meters.
+	 */
 	public double Distance_IN_Pixels(Point3D p1, Point3D p2) {
 		final int R = 6371; // Radius of the earth
 		double latDistance = Math.toRadians(p2.x() - p1.x());
@@ -83,6 +87,12 @@ public class Map {
 		distance = Math.pow(distance, 2) + Math.pow(height, 2);
 		return Math.sqrt(distance);
 	}
+	/**
+	 * Calculate the azimuth between 2 point3D.
+	 * @param gps0 - the first point.
+	 * @param gps1 - the second point.
+	 * @return double[] the azimuth between the 2 Points.
+	 */
 	public  double[] azimuth_elevation_dist(Point3D gps0, Point3D gps1) {
 		double [] ans = {0,0,0};
 		ans[0] = gps0.north_angle(gps1);
@@ -90,6 +100,12 @@ public class Map {
 		ans[2] =(distance3d(gps0, gps1));
 		return ans;
 	}
+	/**
+	 * Calculate distance between 2 points on coordinations in meter.
+	 * @param gps0 - the first point.
+	 * @param gps1 - the second point.
+	 * @return double the distance between the coordinations in meters.
+	 */
 	public double distance3d(Point3D gps0, Point3D gps1) {
 		final int R = 6371;
 		double LonNorm=Math.cos(gps0.x()*Math.PI/180);

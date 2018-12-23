@@ -3,12 +3,16 @@ import java.io.*;
 import sun.audio.*;
 
 public class PlaySound {
-
-	public static void main(String[] args) throws IOException {
-//		PlaySound obj = new PlaySound("pacman.wav");
-		PlaySound obj2=new PlaySound("bite.wav");
-	}
-
+	/**
+	 * This Department is responsible for the music.
+	 * @author Bar Genish
+	 * @author Elyashiv Deri
+	 */
+	/**
+	 * Play specific sound.
+	 * @param path - the path of the files that we want to play.
+	 * @throws IOException - if he didn't play the sound.
+	 */
 	public PlaySound(String path) throws IOException {// open the sound file as a Java input stream
 		String gongFile = path;
 		InputStream in = new FileInputStream(gongFile);

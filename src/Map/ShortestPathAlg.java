@@ -4,7 +4,17 @@ import Geom.Circle;
 import Geom.Point3D;
 import Map.Map;
 public class ShortestPathAlg {
-
+	/**
+	 * A class that calculates the shortest path so that all the fruits to eat as soon as possible.
+	 * @author Bar Genish
+	 * @author Elyashiv Deri
+	 */
+	/**
+	 * Calculate time between Fruit to Packman.
+	 * @param Packman p - the packman.
+	 * @param Fruit f - the fruit.
+	 * @return double the time that it takes to the packman to eat the fruit based on the packman speed and raduis.
+	 */
 	private double Calculatetime(Packman p,Fruit f) {
 		Circle c=new Circle(p.getOrinet(),p.getRadius());
 		Map m=new Map();
@@ -12,6 +22,11 @@ public class ShortestPathAlg {
 		if(dist<=0)return 0;
 		return dist/p.getSpeed();
 	}
+	/**
+	 * Calculates the shortest path so that all the fruits to eat as soon as possible and updates all the packman paths.
+	 * @param g Game - the game that we want to calculate his path.
+	 * @return double - how many seconds the path takes.
+	 */
 	public double Shortalgo(Game g) {
 		double time=0;
 		double min=Double.MAX_VALUE;
@@ -60,6 +75,14 @@ public class ShortestPathAlg {
 		}
 		return time;
 	}
+	/**
+	 * Calculate thie packman next step (the point that the packman will be in the next second) based on his speed and raduis.
+	 * @param Packman pacman - the packman.
+	 * @param Fruit fruit - the fruit.
+	 * @param distance - the distance between the packman to the fruit in meters.
+	 * @param speed - the packman speed.
+	 * @return Point3D the position of the next step of the packman.
+	 */
 	private Point3D calcStepVec(Point3D pacman,Point3D fruit,double distance,double speed) {
 		double A = speed/distance;
 		double B = 1-A;
