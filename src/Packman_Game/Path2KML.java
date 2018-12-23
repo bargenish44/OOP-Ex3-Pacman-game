@@ -79,9 +79,9 @@ public class Path2KML {
 				Packman tmp=g.getArr().get(i);
 				Time ends=new Time(maxtime);
 				for(int j=0;j<g.getArr().get(i).getPath().getArr().size();j++) {
-					try {
-						ends=tmp.getPath().getArr().get(j+1).getTime();
-					} catch(Exception e) {}
+					//					try {
+					ends=tmp.getPath().getArr().get(j).getTime();
+					//					} catch(Exception e) {}
 					String kmlelement ="<Placemark>\n" +
 							"<name>Packman"+tmp.getID()+"</name>\n" +
 							"<description>Type: Packman\nlat: "+tmp.getPath().getArr().get(j).y()+"\nlon :"+tmp.getPath().getArr().get(j).x()+"\nAlt: "+tmp.getPath().getArr().get(j).z()+"\nSpeed: "+tmp.getSpeed()+"\nRadius: "+tmp.getRadius()+"\nScore: "+tmp.getScore()+
