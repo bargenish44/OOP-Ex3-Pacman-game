@@ -12,8 +12,8 @@ https://en.wikipedia.org/wiki/Pac-Man
 
 ### we have 4 packages in our projact:
 
-## Map.
- ### Map has several interface methods:
+## Packman_Game.
+ ### Packman_Game has several interface methods:
 1. Fruit - represents the fruit eaten by the Pacman.
 2. Pacman - represents Pecman and his abilities.
 3. Map - represents the game map.
