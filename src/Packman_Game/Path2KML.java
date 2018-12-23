@@ -17,7 +17,7 @@ public class Path2KML {
 	 * @param g Game that we want to write his details in the kml.
 	 * @return boolean if we succeed to create the kml or not.
 	 */
-	public static boolean path2kml(Game g) {
+	public boolean path2kml(Game g) {
 		Time time=new Time();
 		Time maxtime=new Time();
 		maxtime.setHour(1);

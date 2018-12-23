@@ -22,7 +22,8 @@ class Path2kmlTests {
 	@Test
 	void test() {
 		Game g=new Game();
-		boolean ans=Path2KML.path2kml(g);
+		Path2KML p2k=new Path2KML();
+		boolean ans=p2k.path2kml(g);
 		if(!ans)
 			fail("Path2kml problem");
 	}
@@ -41,7 +42,8 @@ class Path2kmlTests {
 		Game g=new Game(arr,array);
 		ShortestPathAlg s=new ShortestPathAlg();
 		s.Shortalgo(g);
-		boolean ans=Path2KML.path2kml(g);
+		Path2KML p2k=new Path2KML();
+		boolean ans=p2k.path2kml(g);
 		if(!ans)
 			fail("Path2kml problem");
 	}

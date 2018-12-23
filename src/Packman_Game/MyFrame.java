@@ -7,6 +7,7 @@ import javax.imageio.ImageIO;
 import java.awt.event.*;
 import javax.swing.*;
 
+import Geom.Path;
 import Geom.Point3D;
 
 public class MyFrame implements ActionListener{
@@ -301,9 +302,9 @@ public class MyFrame implements ActionListener{
 			Packmanarrtemp.clear();
 			for(int i=0;i<Packmanarr.size();i++) 
 				Packmanarrtemp.add(new Packman(Packmanarr.get(i)));
-//			Fruitarrtemp.clear();
-//			for(int i=0;i<Fruitarr.size();i++) 
-//				Fruitarrtemp.add(new Fruit(Fruitarr.get(i)));
+			//			Fruitarrtemp.clear();
+			//			for(int i=0;i<Fruitarr.size();i++) 
+			//				Fruitarrtemp.add(new Fruit(Fruitarr.get(i)));
 			Game g=new Game(Packmanarr, Fruitarr);
 			ShortestPathAlg s=new ShortestPathAlg();
 			System.out.println(s.Shortalgo(g));
@@ -355,7 +356,8 @@ public class MyFrame implements ActionListener{
 				Packmanarr.get(i).setOrinet(Packmanarrtemp.get(i).getOrinet());
 			}
 			Game g=new Game(Packmanarr,Fruitarrtemp);
-			ans=Path2KML.path2kml(g);
+			Path2KML p2k=new Path2KML();
+			ans=p2k.path2kml(g);
 			if(ans)System.out.println("saved int data folder under name:mygamekml.kml");
 			else System.out.println("Ops something went weong");
 		}
