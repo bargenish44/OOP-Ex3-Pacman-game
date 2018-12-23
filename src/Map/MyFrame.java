@@ -35,7 +35,6 @@ public class MyFrame implements ActionListener{
 	private int hight;
 	private JFrame frame;
 	private Map map;
-	private boolean ans2=false;
 	private ImagePanel panel;
 
 	public static void main(String[] args) {
@@ -148,7 +147,6 @@ public class MyFrame implements ActionListener{
 					}
 					//					dist=0;
 				}
-				ans2=true;
 			}
 			//			if(ans2) {
 			//				int max=MaxPathSize(Packmanarr);

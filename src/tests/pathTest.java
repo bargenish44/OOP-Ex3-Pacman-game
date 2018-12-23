@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import Geom.Path;
 import Geom.Point3D;
 
-class Pathtests {
+class pathTest {
 
 	@Test
 	void NewPattest() {
@@ -28,13 +28,14 @@ class Pathtests {
 		Path p=new Path();
 		if(p.GetDist()!=0)
 			fail("distance problem");
-		p.getArr().add(new Point3D(0,0,0));
-		p.getArr().add(new Point3D(10,0,0));
-		p.getArr().add(new Point3D(0,0,0));
-		p.getArr().add(new Point3D(10,0,0));
-		p.getArr().add(new Point3D(0,0,0));
-		p.getArr().add(new Point3D(40,0,0));
-		if(p.GetDist()!=80.0)
+		p.getArr().add(new Point3D(32.10290536,35.20950241,0));
+		p.getArr().add(new Point3D(32.10290536,35.20950241,0));
+		p.getArr().add(new Point3D(32.10290536,35.20950241,0));
+		p.getArr().add(new Point3D(32.10290536,35.20950241,0));
+		if(p.GetDist()!=0.0)
+			fail("distance problem");
+		p.getArr().add(new Point3D(32.10290536,36.20950241,0));
+		if(p.GetDist()==0.0)
 			fail("distance problem");
 		ArrayList<Point3D>arr=new ArrayList<>();
 		arr.add(new Point3D(0,0,0));

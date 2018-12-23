@@ -4,11 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import Coords.Geom_element;
 import Geom.Point3D;
-import javafx.scene.shape.Circle;
 
-class circletests {
+class CircleTest {
 
 	@Test
 	void NewCircle_and_to_stirngtest() {
@@ -22,11 +20,10 @@ class circletests {
 	@Test
 	void distanc3detest() {
 		Geom.Circle c=new Geom.Circle(new Point3D(4,3,0),5);
-		if(c.distance3D(new Point3D(9,3,0))!=0.0)
+		if(c.distance3D(new Point3D(4,3,0))!=0.0)
 			fail("You have problem with the distance3d");
-		if(c.distance3D(new Point3D(10,3,0))!=1.0) {
+		if(c.distance3D(new Point3D(10,3,0))==0.0) 
 			fail("You have problem with the distance3d");
-		}
 	}
 	@Test
 	void distanc2detest() {
