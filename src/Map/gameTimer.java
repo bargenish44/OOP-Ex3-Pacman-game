@@ -5,6 +5,11 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class gameTimer {
+	/**
+	 * This class represents Timer.
+	 * @author Bar Genish
+	 * @author Elyashiv Deri
+	 */
 	private Timer _timer;
 
 	public void startTimer(TimerTask task) {

@@ -4,11 +4,16 @@ package Map;
 import Geom.Point3D;
 
 public class Fruit {
+	/**
+	 * This class represents Fruit- target on space every fruit have id, point3D,weight and time(the time that he were eaten in).
+	 * @author Bar Genish
+	 * @author Elyashiv Deri
+	 */
 	private int ID;
 	private Point3D orient;
 	private double Weight;
 	private Time time;
-	public Fruit(int ID,double x,double y,double z, double weight) {
+	public Fruit(int ID,double x,double y,double z, double weight) {//constractors
 		setID(ID);
 		setOrient(new Point3D(x, y,z));
 		setWeight(weight);
@@ -26,7 +31,7 @@ public class Fruit {
 		setWeight(ot.getWeight());
 		setTime(ot.getTime());
 	}
-	public int getID() {
+	public int getID() {//getters and setters
 		return ID;
 	}
 	public void setID(int iD) {
@@ -44,13 +49,17 @@ public class Fruit {
 	public void setWeight(double weight) {
 		Weight = weight;
 	}
-	public String toString() {
-		return ID+","+orient.toString()+","+Weight;
-	}
 	public Time getTime() {
 		return time;
 	}
 	public void setTime(Time time) {
 		this.time = time;
+	}
+	/**
+	 * write the Fruit as string.
+	 * @return string of the Fruit.
+	 */
+	public String toString() {
+		return ID+","+orient.toString()+","+Weight;
 	}
 }

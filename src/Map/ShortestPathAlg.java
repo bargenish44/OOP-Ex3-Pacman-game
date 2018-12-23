@@ -7,7 +7,8 @@ public class ShortestPathAlg {
 
 	private double Calculatetime(Packman p,Fruit f) {
 		Circle c=new Circle(p.getOrinet(),p.getRadius());
-		double dist=Map.distance3d(c.get_cen(),f.getOrient())-c.get_radius();
+		Map m=new Map();
+		double dist=m.distance3d(c.get_cen(),f.getOrient())-c.get_radius();
 		if(dist<=0)return 0;
 		return dist/p.getSpeed();
 	}
@@ -31,7 +32,8 @@ public class ShortestPathAlg {
 			g.getArr().get(packmanindex).setScore(g.getArray().get(fruitindex).getWeight());
 			Point3D pacP = g.getArr().get(packmanindex).getOrinet();
 			Point3D fruP = g.getArray().get(fruitindex).getOrient();
-			double dist = Map.distance3d(pacP, fruP)-g.getArr().get(packmanindex).getRadius();
+			Map m=new Map();
+			double dist = m.distance3d(pacP, fruP)-g.getArr().get(packmanindex).getRadius();
 			double speed = g.getArr().get(packmanindex).getSpeed();
 			Point3D step = calcStepVec(pacP, fruP, dist,speed);
 			Packman pTemp = g.getArr().get(packmanindex);

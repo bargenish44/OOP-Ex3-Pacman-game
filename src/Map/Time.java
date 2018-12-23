@@ -1,6 +1,11 @@
 package Map;
 
 public class Time {
+	/**
+	 * This class represents time on TimeStamp format.
+	 * @author Bar Genish
+	 * @author Elyashiv Deri
+	 */
 	private int year=2000;
 	private int mounth=1;
 	private int day=1;
@@ -8,7 +13,7 @@ public class Time {
 	private int minute=1;
 	private int second=1;
 
-	public int getYear() {
+	public int getYear() {//getters and setters
 		return year;
 	}
 	public void setYear(int year) {
@@ -86,6 +91,10 @@ public class Time {
 		}
 		this.second=second;
 	}
+	/**
+	 * write the time as string on kml timestamp format.
+	 * @return time.
+	 */
 	public String toString() {
 		String s="";
 		int dig=countdigits(year);
@@ -110,6 +119,11 @@ public class Time {
 		else s+=second;
 		return s;
 	}
+	/**
+	 * help func that count how many digits the number have.
+	 * @param a the number that we want to count his digits.
+	 * @return int how many digits the number have.
+	 */
 	private int countdigits(int a) {
 		int i=1;
 		if(a<10)return 1;

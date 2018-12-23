@@ -284,7 +284,8 @@ public class Point3D implements Geom_element, Serializable {
 		return Math.toRadians(a);
 	}
 
-
+	/** transform from polar to cartes.
+	 */
 	public void PolarToCartes() {
 
 		double R=6371000,lat=this._x,lon=this._y;

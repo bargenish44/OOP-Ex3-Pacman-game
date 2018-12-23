@@ -192,46 +192,5 @@ public class MyCoords implements coords_converter {
 
 	}
 
-	public void PolarToCartes() {
-
-		double R=6371000,lat=this._x,lon=this._y;
-
-		this._x=R*Math.cos(lat)*Math.cos(lon);
-
-		this._y=R*Math.cos(lat)*Math.sin(lon);
-
-		this._z=R*Math.sin(lat);
-
-	}
-
-	//GPS-המרה ל 
-	public Point3D Convert_To_Gps() {		
-
-		double x=Math.asin(_z/world)*180/Math.PI;
-
-		double y=Math.atan2(_y, _x)*180/Math.PI;
-
-		double r =Math.sqrt(Math.pow(_x, 2)+Math.pow(_y, 2)+Math.pow(_z, 2))-world;
-
-		return new Point3D (x,y,r);
-
-
-
-	}
-
-
-	//המרת קרטזית
-	public Point3D ConvertToCartesian() {
-
-		double Gps_x = Math.cos(_y/180*Math.PI) * Math.cos(_x/180*Math.PI)*(world+_z);;
-
-		double Gps_y = Math.sin(_y/180*Math.PI) * Math.cos(_x/180*Math.PI)*(world+_z);
-
-		double Gps_z = (world+_z)*Math.sin(_x/180*Math.PI);
-
-		return new Point3D(Gps_x,Gps_y,Gps_z);
-
-	}
-
 }
 

@@ -13,10 +13,16 @@ import java.util.ArrayList;
 import Geom.Point3D;
 
 public class Game {
+	/**
+	 * This class represents game- list of packmans and fruits.
+	 * Game can be saved on scv file and can be read from csv file.
+	 * @author Bar Genish
+	 * @author Elyashiv Deri
+	 */
 	private ArrayList<Fruit> array=new ArrayList<>();
 	private ArrayList<Packman>arr=new ArrayList<>();
-	public static String GameName;//for the test.
-	public Game(ArrayList<Packman>arr,ArrayList<Fruit> array) {
+	public String GameName;//for the test.
+	public Game(ArrayList<Packman>arr,ArrayList<Fruit> array) {//constracors
 		this.arr=arr;	
 		this.array=array;
 	}
@@ -28,6 +34,22 @@ public class Game {
 		arr=g.arr;
 		array=g.array;
 	}
+	public ArrayList<Packman> getArr() {//getters and setters
+		return arr;
+	}
+	public void setArr(ArrayList<Packman> arr) {
+		this.arr = arr;
+	}
+	public ArrayList<Fruit> getArray() {
+		return array;
+	}
+	public void setArray(ArrayList<Fruit> array) {
+		this.array = array;
+	}
+	/**
+	 * write the Game as string(helps to save the game in csv file).
+	 * @return string of the Game.
+	 */
 	public String toString() {
 		String s="Type,id,Lat,Lon,Alt,Speed/Weight,Radius,"+arr.size()+","+array.size()+"\n";
 		for(int i=0;i<arr.size();i++) {
@@ -40,7 +62,12 @@ public class Game {
 		}
 		return s;
 	}
-	public static Game load(String CsvFile) 
+	/**
+	 * This function make a new game from the csv that we got. 
+	 * @param CsvFile the path of csv file that we want to read from him.
+	 * @return Game g with all data from the csv.
+	 */
+	public Game load(String CsvFile) 
 	{
 		String line = "";
 		String cvsSplitBy = ",";
@@ -64,7 +91,11 @@ public class Game {
 		}
 		return g;
 	}
-	public static void save(Game g) {
+	/**
+	 * This function make a new csv file with all the game details. 
+	 * @param g the Game that we want to saved his details on csv.
+	 */
+	public void save(Game g) {
 		LocalTime s=LocalTime.now();
 		String time=s.toString().replaceAll(":", ".");
 		String fileName="game"+time+".csv";
@@ -83,17 +114,5 @@ public class Game {
 		pw.write(g.toString());
 		pw.close();
 		System.out.println("saved: "+newfilepath);
-	}
-	public ArrayList<Packman> getArr() {
-		return arr;
-	}
-	public void setArr(ArrayList<Packman> arr) {
-		this.arr = arr;
-	}
-	public ArrayList<Fruit> getArray() {
-		return array;
-	}
-	public void setArray(ArrayList<Fruit> array) {
-		this.array = array;
 	}
 }

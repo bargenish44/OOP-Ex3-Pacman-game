@@ -296,7 +296,8 @@ public class MyFrame implements ActionListener{
 			int returnValue = fileChooser.showOpenDialog(null);
 			if (returnValue == JFileChooser.APPROVE_OPTION) {
 				File selectedFile = fileChooser.getSelectedFile();
-				Game g=new Game(Game.load(selectedFile.toString()));
+				Game g=new Game();
+				g=new Game(g.load(selectedFile.toString()));
 				Packmanarr=g.getArr();
 				Fruitarr=g.getArray();
 				System.out.println(Fruitarr.size());
@@ -305,7 +306,8 @@ public class MyFrame implements ActionListener{
 		}
 		if(e.getSource()==save) {
 			System.out.println("save");
-			Game.save(new Game(Packmanarr,Fruitarr));
+			Game g=new Game();
+			g.save(new Game(Packmanarr,Fruitarr));
 		}
 		if(e.getSource()==run) {
 			System.out.println("run");

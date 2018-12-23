@@ -4,6 +4,12 @@ import Geom.Path;
 import Geom.Point3D;
 
 public class Packman {
+	/**
+	 * This class represents Packman- robot on space that can move.
+	 * every Packman have id, point3D , speed , radius, score, path and time(the time that he stay in the same spot).
+	 * @author Bar Genish
+	 * @author Elyashiv Deri
+	 */
 	private int ID;
 	private Point3D orinet;
 	private double speed;
@@ -12,7 +18,7 @@ public class Packman {
 	private double score=0;
 	private Time time; 
 
-	public Packman(int ID,double x,double y,double z, double speed, double Radius) {
+	public Packman(int ID,double x,double y,double z, double speed, double Radius) {//constractors
 		setOrinet(new Point3D(x, y, z));
 		setSpeed(speed);
 		setRadius(Radius);
@@ -37,7 +43,7 @@ public class Packman {
 		setTime(ot.getTime());
 		setScore(ot.getScore());
 	}
-	public Point3D getOrinet() {
+	public Point3D getOrinet() {//getters and setters
 		return orinet;
 	}
 	public void setOrinet(Point3D orinet) {
@@ -60,11 +66,7 @@ public class Packman {
 	}
 	public void setID(int iD) {
 		ID = iD;
-	}
-	public String toString() {
-		return ID+","+orinet.toString()+","+speed+","+Radius;
-	}
-	public Path getPath() {
+	}public Path getPath() {
 		return path;
 	}
 	public void setPath(Path path) {
@@ -84,5 +86,12 @@ public class Packman {
 	}
 	public void setTime(Time time) {
 		this.time = time;
+	}
+	/**
+	 * write the Packman as string.
+	 * @return string of the Packman.
+	 */
+	public String toString() {
+		return ID+","+orinet.toString()+","+speed+","+Radius;
 	}
 }

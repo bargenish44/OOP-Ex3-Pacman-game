@@ -2,11 +2,17 @@ package Map;
 import Geom.Point3D;
 
 public class Map {
+	/**
+	 * This class represents Map- this class can convert from pixels to coordinations and backward.
+	 * Every map have 2 Point3D the leftup and the rightdown on coordination, and a map(String/file of map).
+	 * This class have severl func as: find distance in meters between 2 pixels and 2 coordinations and find the azimuth between 2 Point3D.
+	 * @author Bar Genish
+	 * @author Elyashiv Deri
+	 */
 	private Point3D leftUp;
 	private Point3D RightDown;
 	private String map;
-	final static int R = 6371;
-	public Map() {
+	public Map() {//constractors
 		leftUp = new Point3D(32.105770,  35.202469);
 		RightDown = new Point3D(32.101899, 35.211588);
 		this.setMap("Ariel1.png");
@@ -34,13 +40,30 @@ public class Map {
 	public void setRightDown(Point3D rightDown) {
 		RightDown = rightDown;
 	}
+	/**
+	 * Convert pixel to coordinations.
+	 * @param int x - the x pixel.
+	 * @param int y - the y pixel.
+	 * @param int high - the high.
+	 * @param int width the current width of the screen.
+	 * @param int hight the current hight of the screen.
+	 * @return Point3D the point that we convert.
+	 */
 	public Point3D PixelToCoords(int x, int y,double high,int width,int hight) {
 		double YCoords = (((hight-(double)y)*RightDown.y())+((double)y*leftUp.y()))/hight;
 		double XCoords = (((width-(double)x)*RightDown.x())+((double)x*leftUp.x()))/width;
 		Point3D p2=new Point3D(XCoords,YCoords,high);
-		//		System.out.println(p2.toString());
 		return p2;
 	}
+	/**
+	 * Convert pixel to coordinations.
+	 * @param int x - the x pixel.
+	 * @param int y - the y pixel.
+	 * @param int high - the high.
+	 * @param int width the current width of the screen.
+	 * @param int hight the current hight of the screen.
+	 * @return Point3D the point that we convert.
+	 */
 	public Point3D CoordsToPixel(Point3D p,int width,int hight) {
 		int widthcoords=(int) (width*((p.x()-RightDown.x())/(leftUp.x()-RightDown.x())));
 		int Heightcoords=(int) (hight*(RightDown.y()-p.y())/((RightDown.y()-leftUp.y())));
@@ -67,7 +90,8 @@ public class Map {
 		ans[2] =(distance3d(gps0, gps1));
 		return ans;
 	}
-	public static double distance3d(Point3D gps0, Point3D gps1) {
+	public double distance3d(Point3D gps0, Point3D gps1) {
+		final int R = 6371;
 		double LonNorm=Math.cos(gps0.x()*Math.PI/180);
 		double diff = gps1.x()-gps0.x();
 		double radian = (diff*Math.PI)/180;
@@ -77,12 +101,4 @@ public class Map {
 		double tometer2 = Math.sin(radian2)*R*1000*LonNorm;
 		return Math.sqrt((tometer1*tometer1) + (tometer2*tometer2));
 	}
-
-	//	public Point3D calcvector(Point3D p,Point3D p2) {
-	//		return new Point3D(p.x()-p2.x(),p.y()-p2.y(),p.z()-p2.z());
-	//	}
-	//	public Point3D normalvector(Point3D p,Point3D vector) {
-	//		double sum=vector.x()*vector.x()+vector.y()*vector.y()+vector.z()*vector.z();
-	//		return new Point3D(vector.x()/sum,vector.y()/sum,vector.z()/sum);
-	//	}
 }

@@ -1,8 +1,7 @@
 package Geom;
 
-import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
-
 import Coords.Geom_element;
+import Map.Map;
 
 /**
  * This class represents Circle.
@@ -32,7 +31,8 @@ public class Circle implements Geom_element {
 	 * */
 	@Override
 	public double distance3D(Point3D p) {
-		double dist=Map.Map.distance3d(cen, p);
+		Map m = new Map();
+		double dist=m.distance3d(cen, p);
 		if(dist<=radius)return 0;
 		return dist-radius;
 	}
@@ -62,6 +62,10 @@ public class Circle implements Geom_element {
 	public void set_radius(double radius) {
 		this.radius = radius;
 	}
+	/**
+	 * write the circle as string
+	 * @return string of all the circle
+	 */
 	public String toString() {
 		return "Center is: "+cen.toString()+", radius is: "+radius;
 	}
