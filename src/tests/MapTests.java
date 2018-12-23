@@ -11,7 +11,11 @@ import Geom.Point3D;
 import Packman_Game.Map;
 
 class MapTests {
-
+	/**
+	 * Map tests.
+	 * @author Bar Genish
+	 * @author Elyashiv Deri
+	 */
 	@Test
 	void New_Map_Tests() {
 		Map map=new Map();

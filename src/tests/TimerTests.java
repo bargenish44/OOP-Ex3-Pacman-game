@@ -7,6 +7,11 @@ import org.junit.jupiter.api.Test;
 import Packman_Game.gameTimer;
 
 class TimerTests {
+	/**
+	 * Timer tests.
+	 * @author Bar Genish
+	 * @author Elyashiv Deri
+	 */	
 	gameTimer timer;
 	static int i;
 	@Test

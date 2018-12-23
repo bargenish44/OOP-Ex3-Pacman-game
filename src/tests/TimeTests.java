@@ -7,7 +7,11 @@ import org.junit.jupiter.api.Test;
 import Packman_Game.Time;
 
 class TimeTests {
-
+	/**
+	 * Time tests.
+	 * @author Bar Genish
+	 * @author Elyashiv Deri
+	 */	
 	@Test
 	void Time_tests() {
 		Time time=new Time();

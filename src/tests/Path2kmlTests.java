@@ -13,7 +13,11 @@ import Packman_Game.Packman;
 import Packman_Game.Path2KML;
 
 class Path2kmlTests {
-
+	/**
+	 * Path2kml tests.
+	 * @author Bar Genish
+	 * @author Elyashiv Deri
+	 */
 	@Test
 	void test() {
 		Game g=new Game();

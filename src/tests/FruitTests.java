@@ -8,7 +8,11 @@ import Geom.Point3D;
 import Packman_Game.Fruit;
 
 class FruitTests {
-
+	/**
+	 * Fruit tests.
+	 * @author Bar Genish
+	 * @author Elyashiv Deri
+	 */
 	@Test
 	void NewFruit_and_to_stirngtest() {
 		Fruit f=new Fruit(0, new Point3D(4,2,0), 5);

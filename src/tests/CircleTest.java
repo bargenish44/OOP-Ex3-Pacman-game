@@ -7,7 +7,11 @@ import org.junit.jupiter.api.Test;
 import Geom.Point3D;
 
 class CircleTest {
-
+	/**
+	 * Circle tests.
+	 * @author Bar Genish
+	 * @author Elyashiv Deri
+	 */
 	@Test
 	void NewCircle_and_to_stirngtest() {
 		Geom.Circle c=new Geom.Circle(new Point3D(4,3,0),5);

@@ -10,7 +10,11 @@ import Coords.MyCoords;
 import Geom.Point3D;
 
 class CoordsTests {
-	
+	/**
+	 * Coords tests.
+	 * @author Bar Genish
+	 * @author Elyashiv Deri
+	 */	
 	@Test
 	void testAdd() {
  

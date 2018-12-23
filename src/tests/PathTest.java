@@ -9,8 +9,12 @@ import org.junit.jupiter.api.Test;
 import Geom.Path;
 import Geom.Point3D;
 
-class pathTest {
-
+class PathTest {
+	/**
+	 * Path tests.
+	 * @author Bar Genish
+	 * @author Elyashiv Deri
+	 */
 	@Test
 	void NewPattest() {
 		Path p=new Path();

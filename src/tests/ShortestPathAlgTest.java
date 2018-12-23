@@ -11,7 +11,11 @@ import Packman_Game.Packman;
 import Packman_Game.ShortestPathAlg;
 
 class ShortestPathAlgTest {
-
+	/**
+	 * ShortestPathAlg tests.
+	 * @author Bar Genish
+	 * @author Elyashiv Deri
+	 */
 	@Test
 	void Timetest() {
 		Game g=new Game();

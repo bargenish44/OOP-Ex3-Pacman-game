@@ -8,7 +8,11 @@ import Geom.Point3D;
 import Packman_Game.Packman;
 
 class PackmanTests {
-
+	/**
+	 * Packman tests.
+	 * @author Bar Genish
+	 * @author Elyashiv Deri
+	 */
 	@Test
 	void Packman_Tests() {
 		Packman p=new Packman(0,2,2,2,5,5);

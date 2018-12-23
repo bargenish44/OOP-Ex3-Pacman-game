@@ -9,7 +9,11 @@ import Packman_Game.Game;
 import Packman_Game.Packman;
 
 class GameTests {
-
+	/**
+	 * Game tests.
+	 * @author Bar Genish
+	 * @author Elyashiv Deri
+	 */
 	@Test
 	void NewGame_and_to_stirng_tests() {
 		Game g=new Game();

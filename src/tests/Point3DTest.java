@@ -7,7 +7,11 @@ import org.junit.jupiter.api.Test;
 import Geom.Point3D;
 
 class Point3DTest {
-
+	/**
+	 * Point3D tests.
+	 * @author Bar Genish
+	 * @author Elyashiv Deri
+	 */
 
 	@Test
 	void testAddPoint3D() {
