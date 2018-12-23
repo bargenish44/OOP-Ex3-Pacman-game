@@ -10,6 +10,11 @@ import javax.swing.*;
 import Geom.Point3D;
 
 public class MyFrame implements ActionListener{
+	/**
+	 * This class is the graphic class and use all the project methods. 
+	 * @author Bar Genish
+	 * @author Elyashiv Deri
+	 */
 	private ArrayList<Packman>Packmanarr=new ArrayList<>();
 	private ArrayList<Fruit>Fruitarr=new ArrayList<>();
 	private ArrayList<Packman>Packmanarrtemp=new ArrayList<>();
@@ -40,7 +45,7 @@ public class MyFrame implements ActionListener{
 	public static void main(String[] args) {
 		new MyFrame();
 	}
-	public MyFrame(){
+	public MyFrame(){//constractor
 		try {
 			map=new Map();
 			img = ImageIO.read(new File(map.getMap()));
@@ -110,6 +115,10 @@ public class MyFrame implements ActionListener{
 		public Dimension getPreferredSize() {
 			return img == null ? new Dimension(200, 200) : new Dimension(img.getWidth(this), img.getHeight(this));
 		}
+		/**
+		 * This is the paint func it paints the image.
+		 * @param g - Graphics that we want to paint.
+		 */
 		@Override
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
@@ -148,27 +157,13 @@ public class MyFrame implements ActionListener{
 					//					dist=0;
 				}
 			}
-			//			if(ans2) {
-			//				int max=MaxPathSize(Packmanarr);
-			//				for(int k=0;k<max;k++) {
-			//					System.out.println(k);
-			//					frame.repaint();
-			//					for(int i=0;i<Packmanarr.size();i++) {
-			//						try {
-			//							Packmanarr.get(i).setOrinet(Packmanarr.get(i).getPath().getArr().get(k));
-			//						}catch (Exception e) {}
-			//					}
-			//					frame.repaint();
-			//					System.out.println(k);
-			//					try {
-			//						Thread.sleep(100);
-			//					} catch (InterruptedException e) {
-			//						e.printStackTrace();
-			//					}
-			//				}
-			//				ans2=false;
-			//			}
 		}
+		/**
+		 * This is the mouseClicked func.
+		 * You can add new Packmans if you use mouse left click on screen.
+		 * You can add new Fruit if you use mouse right click on screen.
+		 * @param e - MouseEvent by the button that you use it create new Packman/fruit.
+		 */
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			if(e.getButton() == MouseEvent.BUTTON1) {
@@ -286,10 +281,14 @@ public class MyFrame implements ActionListener{
 		public void mouseReleased(MouseEvent e) {
 		}
 	}
+	/**
+	 * This is the actionPerformed func.
+	 * this func can save game,load game,run game,reload the game,save as kml the game and have 2 helps actions how to play and about the game.
+	 * @param e - ActionEvent Open you what you want depending on the button you clicked on.
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==load) {
-			System.out.println("load");
 			JFileChooser fileChooser = new JFileChooser();
 			int returnValue = fileChooser.showOpenDialog(null);
 			if (returnValue == JFileChooser.APPROVE_OPTION) {
@@ -298,74 +297,39 @@ public class MyFrame implements ActionListener{
 				g=new Game(g.load(selectedFile.toString()));
 				Packmanarr=g.getArr();
 				Fruitarr=g.getArray();
-				System.out.println(Fruitarr.size());
-				System.out.println(Packmanarr.size());
 			}
 		}
 		if(e.getSource()==save) {
-			System.out.println("save");
 			Game g=new Game();
 			g.save(new Game(Packmanarr,Fruitarr));
 		}
 		if(e.getSource()==run) {
-			System.out.println("run");
 			play_Sound("pacman.wav");
 			Packmanarrtemp.clear();
 			for(int i=0;i<Packmanarr.size();i++) {
 				Packmanarrtemp.add(new Packman(Packmanarr.get(i)));
 			}
-			Fruitarrtemp.clear();
-			for(int i=0;i<Fruitarr.size();i++) {
-				Fruitarrtemp.add(new Fruit(Fruitarr.get(i)));
-			}
 			Game g=new Game(Packmanarr, Fruitarr);
 			ShortestPathAlg s=new ShortestPathAlg();
 			System.out.println(s.Shortalgo(g));
 			Packmanarr=g.getArr();
-			Fruitarr.clear();
-			for(int i=0;i<Fruitarrtemp.size();i++) {
-				Fruitarr.add(new Fruit(Fruitarrtemp.get(i)));
+			Fruitarr=g.getArray();
+			Fruitarrtemp.clear();
+			for(int i=0;i<Fruitarr.size();i++) {
+				Fruitarrtemp.add(new Fruit(Fruitarr.get(i)));
 			}
+			Fruitarr.clear();
 			for(int i=0;i<Packmanarr.size();i++) {
 				Packmanarr.get(i).setOrinet(Packmanarrtemp.get(i).getOrinet());
 			}
 			ans=true;
-
-			for(int i = 0;i<Packmanarr.get(0).getPath().getArr().size();i++) {
-				System.out.println(i+": "+Packmanarr.get(0).getPath().getArr().get(i));
-			}
-
-			ActionListener ac = new ActionListener() {
-
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					frame.repaint();
-				}
-			};
-
-			javax.swing.Timer time = new Timer(1,ac ) ;
-			int max=MaxPathSize(Packmanarr);
-			//time.start();
-			for(int k=0;k<max;k++) {
-				//System.out.println(k);
-				//frame.repaint();
-				for(int i=0;i<Packmanarr.size();i++) {
-					try {
-						//System.out.println("**");
-						Packmanarr.get(i).setOrinet(Packmanarr.get(i).getPath().getArr().get(k));
-						//System.out.println("^^");
-					}catch (Exception ex) {}
-				}
-
-
-			}
-			time.stop();
 		}
 		if(e.getSource()==how_to_run)
 			JOptionPane.showMessageDialog(null, "For new Packman pressed left click on mouse on the place in the map that you want"
 					+ ",\nFor new Fruit pressed right click on mouse on the place in the map that you want,"
 					+ "\nFor run the game pressed on run button on menu under option,"
-					+ "\nIf you want to go back before you run the game click reload button on menu under option.",
+					+ "\nIf you want to go back before you run the game click reload button on menu under option,"
+					+"\nIf you want to go create a kml and see the path of the packmans click Save as kml button on menu under option.",
 					"How to play", JOptionPane.PLAIN_MESSAGE);
 		if(e.getSource()==about_the_game) {
 			JOptionPane.showMessageDialog(null, "This is a packman game:\n"
@@ -388,26 +352,22 @@ public class MyFrame implements ActionListener{
 			ans=false;
 		}
 		if(e.getSource()==Save_as_kml) {
-			Game g=new Game(Packmanarr,Fruitarr);
+			Game g=new Game(Packmanarr,Fruitarrtemp);
 			ans=Path2KML.path2kml(g);
 			if(ans)System.out.println("saved int data folder under name:mygamekml.kml");
 			else System.out.println("Ops something went weong");
 		}
 		panel.repaint();
 	}
+	/**
+	 * This func is responsible for play specific music.
+	 * @param path - the path of the files that we want to play.
+	 */	
 	public void play_Sound(String path) {
 		try {
 			PlaySound p = new PlaySound(path);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-	public static int MaxPathSize(ArrayList<Packman>arr) {
-		int max=0;
-		for(int i=0;i<arr.size();i++) {
-			if(arr.get(i).getPath().getArr().size()>max)
-				max=arr.get(i).getPath().getArr().size();
-		}
-		return max;
 	}
 }

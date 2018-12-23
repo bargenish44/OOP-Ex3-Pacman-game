@@ -49,20 +49,4 @@ class MyFrameTest {
 			fail("Not yet implemented");
 	}
 
-	@Test
-	void testMaxPathSize() {
-
-		MyFrame newtest = new MyFrame();
-
-		MyFrame.MaxPathSize(arr_test);
-
-		MyFrame newtest_1 = new MyFrame();
-
-		MyFrame.MaxPathSize(arr_test_2);
-
-		if(newtest.hashCode()==newtest_1.hashCode())
-			
-			fail("Not yet implemented");
-	}
-
 }
