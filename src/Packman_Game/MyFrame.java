@@ -298,7 +298,7 @@ public class MyFrame implements ActionListener{
 			g.save(new Game(Packmanarr,Fruitarr));
 		}
 		if(e.getSource()==run) {
-			play_Sound("pacman.wav");
+//			play_Sound("pacman.wav");
 			Packmanarrtemp.clear();
 			for(int i=0;i<Packmanarr.size();i++) 
 				Packmanarrtemp.add(new Packman(Packmanarr.get(i)));
@@ -367,11 +367,11 @@ public class MyFrame implements ActionListener{
 	 * This func is responsible for play specific music.
 	 * @param path - the path of the files that we want to play.
 	 */	
-	public void play_Sound(String path) {
-		try {
-			PlaySound p = new PlaySound(path);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+//	public void play_Sound(String path) {
+//		try {
+//			PlaySound p = new PlaySound(path);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//	}
 }
